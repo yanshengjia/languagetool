@@ -42,15 +42,6 @@ USA
     <!-- Possible typo -->
     <!-- ====================================================================== -->
     <category id="TYPOS" name="Possible Typo" type="misspelling">
-        <rule id="EXAMPLE_RULE" name="My example rule">
-            <pattern>
-              <token>foo</token>
-              <token>bar</token>
-            </pattern>
-            <message>你是说 <suggestion>bicycle</suggestion> 吗?</message>
-            <example type="incorrect">My <marker>foo bar</marker> is broken.</example>
-            <example type="correct">My bicycle is broken.</example>
-        </rule>
        <rulegroup id="IN_LAWS" name="brother-in-laws (brothers-in-law)">
            <rule>
                <pattern>
