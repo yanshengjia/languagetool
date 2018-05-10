@@ -90,6 +90,11 @@ public class GermanSpellerRuleTest {
     assertTrue(rule.isProhibited("Standart-Test"));
     assertTrue(rule.isProhibited("Weihnachtfreier"));
     assertFalse(rule.isProhibited("Standard-Test"));
+    assertTrue(rule.isProhibited("Abstellgreis"));
+    assertTrue(rule.isProhibited("Abstellgreise"));
+    assertTrue(rule.isProhibited("Abstellgreisen"));
+    assertTrue(rule.isProhibited("Landstreckenflüge"));
+    assertTrue(rule.isProhibited("Landstreckenflügen"));
   }
 
   @Test
@@ -99,6 +104,7 @@ public class GermanSpellerRuleTest {
     assertThat(rule.match(lt.getAnalyzedSentence("konservierungsstoffstatistik"))[0].getSuggestedReplacements().toString(), is("[Konservierungsstoffstatistik]"));
     assertThat(rule.match(lt.getAnalyzedSentence("konservierungsstoffsasdsasda"))[0].getSuggestedReplacements().size(), is(0));
     assertThat(rule.match(lt.getAnalyzedSentence("Ventrolateral")).length, is(0));
+    assertThat(rule.match(lt.getAnalyzedSentence("Kleindung")).length, is(1));  // ignored due to ignoreCompoundWithIgnoredWord(), but still in ignore.txt -> ignore.txt must override this
     assertThat(rule.match(lt.getAnalyzedSentence("Majonäse."))[0].getSuggestedReplacements().toString(), is("[Mayonnaise.]"));
     assertFirstSuggestion("konservierungsstoffe", "Konservierungsstoffe", rule, lt);
     assertFirstSuggestion("Ist Ventrolateral", "ventrolateral", rule, lt);
@@ -169,6 +175,7 @@ public class GermanSpellerRuleTest {
     assertFirstSuggestion("konflikationen", "Komplikationen", rule, lt);
     assertFirstSuggestion("unswar", "und zwar", rule, lt);
     assertFirstSuggestion("fomelare", "Formulare", rule, lt);
+    assertFirstSuggestion("immoment", "im Moment", rule, lt);
     assertFirstSuggestion("inordnung", "in Ordnung", rule, lt);
     assertFirstSuggestion("inbälde", "in Bälde", rule, lt);
     assertFirstSuggestion("unaufbesichtigt", "unbeaufsichtigt", rule, lt);
@@ -187,6 +194,7 @@ public class GermanSpellerRuleTest {
     assertFirstSuggestion("Heileit", "Highlight", rule, lt);
     assertFirstSuggestion("todesbedrohende", "lebensbedrohende", rule, lt);
     assertFirstSuggestion("todesbedrohliches", "lebensbedrohliches", rule, lt);
+    assertFirstSuggestion("einfühlsvoller", "einfühlsamer", rule, lt);
     assertFirstSuggestion("folklorisch", "folkloristisch", rule, lt);
     assertFirstSuggestion("Religiösischen", "Religiösen", rule, lt);
     assertFirstSuggestion("reschaschiert", "recherchiert", rule, lt);
@@ -217,6 +225,7 @@ public class GermanSpellerRuleTest {
     assertFirstSuggestion("problemhafte", "problembehaftete", rule, lt);
     assertFirstSuggestion("solltes", "solltest", rule, lt);
     assertFirstSuggestion("Kilimanjaro", "Kilimandscharo", rule, lt);
+    assertFirstSuggestion("unzerbrechbare", "unzerbrechliche", rule, lt);
     assertFirstSuggestion("voraussichtige", "voraussichtliche", rule, lt);
     assertFirstSuggestion("Aleine", "Alleine", rule, lt);
     assertFirstSuggestion("abenzu", "ab und zu", rule, lt);
@@ -232,6 +241,9 @@ public class GermanSpellerRuleTest {
     assertFirstSuggestion("konektschen", "Connection", rule, lt);
     assertFirstSuggestion("Neukundenaquise", "Neukundenakquise", rule, lt);
     assertFirstSuggestion("Gehorsamkeitsverweigerung", "Gehorsamsverweigerung", rule, lt);
+    assertFirstSuggestion("leinensamens", "Leinsamens", rule, lt);
+    assertFirstSuggestion("Oldheimer", "Oldtimer", rule, lt);
+    assertFirstSuggestion("verhing", "verhängte", rule, lt);
   }
 
   @Test

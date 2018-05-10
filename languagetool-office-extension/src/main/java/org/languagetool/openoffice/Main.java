@@ -1120,7 +1120,7 @@ public class Main extends WeakBase implements XJobExecutor,
    * Gives Back the StartPosition of Paragraph
    */
   private int getStartOfParagraph(int nPara, int docNum) {
-    if (allParas.get(docNum) != null && nPara >= 0 && nPara < allParas.get(docNum).size()) {
+    if (docNum >= 0 && allParas.get(docNum) != null && nPara >= 0 && nPara < allParas.get(docNum).size()) {
       int startPos;
       if (numParasToCheck < 1 || doFullTextCheck) {
         startPos = 0;
@@ -1167,7 +1167,7 @@ public class Main extends WeakBase implements XJobExecutor,
    */
   private int getParaPos(String chPara, int numThread, int docNum) {
 
-    if (numParasToCheck == 0) {
+    if (numParasToCheck == 0 || docNum < 0) {
       return returnOneParaCheck();  //  check only the processed paragraph
     }
 
@@ -1318,6 +1318,7 @@ public class Main extends WeakBase implements XJobExecutor,
 
   /**
    * Get or Create a Number from docID
+   * Return -1 if failed
    */
   private int getNumDocID(String docID) {
     if (docIDs == null) {
@@ -1346,6 +1347,10 @@ public class Main extends WeakBase implements XJobExecutor,
     //  Add new document
     if (!testMode) {
       XComponent xComponent = getXComponent();
+      if (xComponent == null) {
+        printToLogFile("Error: Document (ID: " + docID + ") has no XComponent -> Analyse only single paragraphs");
+        return -1;
+      }
       xComponent.addEventListener(this);
       xComponents.add(xComponent);
     } else {
@@ -1392,12 +1397,24 @@ public class Main extends WeakBase implements XJobExecutor,
     goneContext.removeEventListener(this); 
   }
 
+
+  private static String getLogPath() {
+    String xdgDataHome = System.getenv().get("XDG_DATA_HOME");
+    String logHome = xdgDataHome != null ? xdgDataHome + "/LanguageTool" : getHomeDir().toString();
+    String path = logHome + "/" + LOG_FILE;
+    File parentDir = new File(path).getParentFile();
+    if (parentDir != null) {
+      parentDir.mkdirs();
+    }
+    return path;
+  }
+
+
   /**
    * Initialize log-file
    */
   private void initLogFile() {
-    String path = getHomeDir() + "/" + LOG_FILE;
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(getLogPath()))) {
       Date date = new Date();
       bw.write("LT office integration log from " + date.toString() + logLineBreak);
     } catch (Throwable t) {
@@ -1409,8 +1426,7 @@ public class Main extends WeakBase implements XJobExecutor,
    * write to log-file
    */
   static void printToLogFile(String str) {
-    String path = getHomeDir() + "/" + LOG_FILE;
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(getLogPath(), true))) {
       bw.write(str + logLineBreak);
     } catch (Throwable t) {
       showError(t);

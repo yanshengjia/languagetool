@@ -40,7 +40,6 @@ Deutschen? Museums?
 Digital (Video|Natives?)
 (Dreißig|Hundert|Sieben)jährigen? Kriege?s?
 Dritte[ns]? Welt|Reiche?s?
-(Osmanischen?|Dritten?) Reich(es|s)?
 Drum und Dran
 Duisburger
 Dunklen? Materie|Energie
@@ -144,11 +143,13 @@ Nationale[nr]? Sicherheitsrat(e?s)?|Volksarmee
 Neuen? Medien
 Niels Bohr
 Norddeutsche[nr]? Bund(e?s)?
+Nördlichen? Kalkalpen
 Obersten Gerichtshofe?s
 Oberste[nrs]? Gericht(shof)?s?|Heeresleitung|Bundesgerichts?
 of Modern
 Olympische[ns]? Komitees?|Dorf(e?s)?|Sommerspielen|Flagge|Winterspielen?|Spielen
-Olympische[nr]? Spiele
+Olympische[nr]? Spiele|Sportbunds?
+Osmanischen? Reich(es|s)?
 Österreichische[mnrs]? Klimaschutzpreis|Nationalbibliothek|Rundfunks?|Volkspartei
 Palästinensischen? Autonomie.+
 Parlamentarische[rn]? Rats?|Rates|Kontrollgremiums?|Untersuchungsausschuss(es)?
@@ -181,7 +182,7 @@ Seiner? Exzellenz
 .+ischen? Akademie der
 Seltene[nr]? Erden
 Single Malt
-Smart Cit(y|ies)
+Smart Cit(y|ies)|Card|Home|Phone|Watch
 SK Rapid
 Sozialistischen? Sowjetrepublik(en)?|(Einheits)?[pP]artei
 Spanischen? Grippe|Erbfolgekriegs?|Bürgerkriegs?|Niederlanden?|Treppe|Fliege|Reitschule
@@ -193,6 +194,7 @@ Statistische[rn]?|Theoretische[rn]? Physik
 Steinerne[sn]? Meers?|Brücke
 Stiege
 Süddeutschen? Zeitung
+Südlichen? Kalkalpen
 Süßes oder Saures
 Syrischen? Beobachtungsstelle
 Technische[ns]? Hilfswerks?

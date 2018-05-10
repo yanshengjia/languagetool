@@ -171,6 +171,7 @@ carmaker
 carmakers
 catenaries
 catenary
+cathexis
 cavitation
 cavitations
 CD-ROM
@@ -280,7 +281,7 @@ coupé
 coupés
 coupler
 couplers
-coverture
+covertures
 criticality
 crore
 crores
@@ -644,6 +645,7 @@ graphemic
 graphemically
 graphemics
 graphene
+grappa
 guest-starred
 gyrocompass
 gyrocompasses
@@ -765,6 +767,8 @@ Ivano-Frankivsk
 Javadoc
 jQuery
 kabocha
+kakistocracies
+kakistocracy
 ketone
 ketones
 Kharkiv
@@ -1028,6 +1032,8 @@ modus operandi
 modus vivendi
 moiré
 Molière
+monad
+monads
 Montauk
 motional
 muchly
@@ -1035,6 +1041,7 @@ mudder
 multichannel
 multifunction
 multipart
+multisided
 mutagenic
 mutatis mutandis
 myeloma
@@ -1143,6 +1150,7 @@ passivate
 passivated
 passivates
 passivating
+payed
 penetrant
 penetrants
 pentane
@@ -1323,6 +1331,7 @@ repressurize
 repressurized
 repressurizes
 repressurizing
+reprogrammable
 reseller
 resellers
 resistivity
@@ -1357,6 +1366,7 @@ safetied
 safetying
 salafist
 salafists
+sarin
 scalability
 scalable
 Schengen
@@ -1377,6 +1387,7 @@ self-adjoint
 semiautomatically
 semiautonomous
 semilinear
+semipublic
 seriatim
 sesquilinear
 shiitake
@@ -1391,8 +1402,10 @@ siemens
 sievert
 sieverts
 single-handedly
+Siri
 siting
 slantways
+slimeball
 smackdown
 spacetime
 spanwise
@@ -1446,6 +1459,7 @@ suppressively
 surreally
 switchgear
 Symbian
+symbiote
 symplectic
 tabula rasa
 tankage
@@ -1626,6 +1640,7 @@ weber
 webers
 weeklong
 well-known
+weltschmerz
 wherefrom
 whereinto
 wherethrough
