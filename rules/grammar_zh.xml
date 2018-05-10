@@ -22177,7 +22177,7 @@ USA
                 </marker>
                 <token><exception postag="SENT_END"/></token>
             </pattern>
-            <message>这里不需要用"\2"。/message>
+            <message>这里不需要用"\2"。</message>
             <short>Possibly needless word</short>
             <example correction="">I am pretty sure <marker>that</marker> this is right.</example>
             <example>I am pretty sure this is right.</example>
@@ -27645,7 +27645,7 @@ USA
                     <token regexp="yes">an|a|each</token>
                     <token>expertise</token>
                 </pattern>
-                <message>Expertise是一个不可数名词，意思是“某一领域的专家知识或技能”或“经验”。另一方面，在欧盟文件中，它不仅是可数的，而且还被用来表示“专家的评估”。试试: <suggestion>expertis是一个不可数名词，意思是“某一领域的专家知识或技能”或“经验”。另一方面，在欧盟文件中，它不仅是可数的，而且还被用来表示“专家的评估”。试试: <suggestion>expertise</suggestion>(singular), <suggestion>expert advice</suggestion> or (expert) <suggestion>opinion</suggestion>, <suggestion>assessment</suggestion>, <suggestion>appraisal</suggestion> or <suggestion>evaluation</suggestion>.</message>
+                <message>Expertise是一个不可数名词，意思是“某一领域的专家知识或技能”或“经验”。另一方面，在欧盟文件中，它不仅是可数的，而且还被用来表示“专家的评估”。试试: <suggestion>expertise</suggestion>是一个不可数名词，意思是“某一领域的专家知识或技能”或“经验”。另一方面，在欧盟文件中，它不仅是可数的，而且还被用来表示“专家的评估”。试试: <suggestion>expertise</suggestion>(singular), <suggestion>expert advice</suggestion> or (expert) <suggestion>opinion</suggestion>, <suggestion>assessment</suggestion>, <suggestion>appraisal</suggestion> or <suggestion>evaluation</suggestion>.</message>
                 <url>http://euenglish.webs.com/</url>
                 <short>EU English: expertises</short>
                 <example type="incorrect" correction="expertise|expert advice|opinion|assessment|appraisal|evaluation">The authority had obtained <marker>an expertise</marker> on the question…</example>
