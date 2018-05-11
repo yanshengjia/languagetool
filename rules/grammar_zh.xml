@@ -14687,7 +14687,7 @@ USA
                         <token>than</token>
                     </marker>
                 </pattern>
-                <message>形容词 \1 通常与 <suggestion>to</suggestion>连用。</message>
+                <message>形容词 \1 通常与 <suggestion>to</suggestion> 连用。</message>
                 <short>Wrong collocation</short>
                 <example correction="to">He feels inferior <marker>than</marker> us.</example>
             </rule>
