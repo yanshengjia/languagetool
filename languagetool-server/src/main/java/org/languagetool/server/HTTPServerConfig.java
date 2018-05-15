@@ -47,7 +47,7 @@ public class HTTPServerConfig {
   static final String WORD2VEC_MODEL_OPTION = "--word2vecModel";
 
   protected boolean verbose = false;
-  protected boolean publicAccess = false;
+  protected boolean publicAccess = true;
   protected int port = DEFAULT_PORT;
   protected String allowOriginUrl = null;
   protected int maxTextLength = Integer.MAX_VALUE;

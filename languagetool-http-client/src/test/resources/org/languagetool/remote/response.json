@@ -12,7 +12,7 @@
   },
   "matches": [
     {
-      "message": "Use \"an\" instead of 'a' if the following word starts with a vowel sound, e.g. 'an article', 'an hour'",
+      "message": "如果后一个的单词以元音开头, 就用 an 代替 a, 比如, 'an article', 'an hour'",
       "shortMessage": "Wrong article",
       "replacements": [
         {

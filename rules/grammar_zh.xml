@@ -71,7 +71,7 @@ USA
                 <token postag="PRP$"></token>
                 <marker><token>words</token></marker>
             </pattern>
-            <message>你是说我们常说的“忠于某人的 <suggestion>word</suggestion>”就是信守诺言吗?</message>
+            <message>你是说我们常说的“忠于某人的 <suggestion>word</suggestion> ”就是信守诺言吗?</message>
             <url>https://www.merriam-webster.com/dictionary/true%20to%20word</url>
             <example correction="word">She was true to her <marker>words</marker>.</example>
         </rule>
@@ -91,7 +91,7 @@ USA
                 <token>the</token>
                 <token>line</token>
             </pattern>
-            <message>你是说 <suggestion>toe</suggestion>吗?</message>
+            <message>你是说 <suggestion>toe</suggestion> 吗?</message>
             <example correction="toe">We'll <marker>tow</marker> the line.</example>
         </rule>
         <rule id="RACK_BRAIN" name="wrack (rack) one's brain about">

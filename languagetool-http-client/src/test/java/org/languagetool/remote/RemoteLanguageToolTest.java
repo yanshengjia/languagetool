@@ -56,7 +56,7 @@ public class RemoteLanguageToolTest {
     assertThat(result.getMatches().size(), is(1));
     RemoteRuleMatch match1 = result.getMatches().get(0);
     assertThat(match1.getRuleId(), is("EN_A_VS_AN"));
-    assertThat(match1.getMessage(), is("Use \"an\" instead of 'a' if the following word starts with a vowel sound, e.g. 'an article', 'an hour'"));
+    assertThat(match1.getMessage(), is("如果后一个的单词以元音开头, 就用 an 代替 a, 比如, 'an article', 'an hour'"));
     assertThat(match1.getRuleSubId().isPresent(), is(false));
     assertThat(match1.getContext(), is("It happened a hour ago."));
     assertThat(match1.getContextOffset(), is(12));
