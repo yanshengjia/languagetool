@@ -38,7 +38,7 @@ public class HTTPServerConfig {
 
   enum Mode { LanguageTool }
 
-  public static final String DEFAULT_HOST = "localhost";
+  public static final String DEFAULT_HOST = "10.0.5.40";
 
   /** The default port on which the server is running (8081). */
   public static final int DEFAULT_PORT = 8081;
