@@ -50,10 +50,10 @@ public class CompoundRule extends AbstractCompoundRule {
 
   public CompoundRule(ResourceBundle messages) throws IOException {    
     super(messages,
-            "This word is normally spelled with hyphen.", 
-            "This word is normally spelled as one.", 
-            "This expression is normally spelled as one or with hyphen.",
-            "Hyphenation problem");
+            "这个单词通常用连字符来拼写.",
+            "这个单词通常写成一个.",
+            "这个表达式通常写成一个或者用连字符来拼写.",
+            "连字符问题");
     addExamplePair(Example.wrong("I now have a <marker>part time</marker> job."),
                    Example.fixed("I now have a <marker>part-time</marker> job."));
   }
@@ -65,7 +65,7 @@ public class CompoundRule extends AbstractCompoundRule {
 
   @Override
   public String getDescription() {
-    return "Hyphenated words, e.g., 'case-sensitive' instead of 'case sensitive'";
+    return "连字符单词, 例如, 'case-sensitive' 而不是 'case sensitive'";
   }
 
   @Override

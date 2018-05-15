@@ -2,8 +2,13 @@
 echo "Cleaning..."
 mvn clean
 
+echo "Moving properties..."
+
+
 echo "Building..."
 ./build.sh languagetool-standalone package -DskipTests
+rm ./languagetool-core/src/main/resources/org/languagetool/MessagesBundle_en.properties
+cp ./rules/MessagesBundle_zh.properties ./languagetool-core/src/main/resources/org/languagetool/MessagesBundle_en.properties
 
 echo "Translating..."
 rm ./languagetool-standalone/target/LanguageTool-4.2-SNAPSHOT/LanguageTool-4.2-SNAPSHOT/org/languagetool/rules/en/grammar.xml

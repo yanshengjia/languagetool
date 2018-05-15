@@ -46,7 +46,7 @@ public class WordCoherencyRule extends AbstractWordCoherencyRule {
 
   @Override
   protected String getMessage(String word1, String word2) {
-    return "Do not mix variants of the same word ('" + word1 + "' and '" + word2 + "') within a single text.";
+    return "不要在单条文本中混淆同一个单词 ('" + word1 + "' 和 '" + word2 + "') 的变体.";
   }
   
   @Override
@@ -56,7 +56,7 @@ public class WordCoherencyRule extends AbstractWordCoherencyRule {
 
   @Override
   public String getDescription() {
-    return "Coherent spelling of words with two admitted variants.";
+    return "具有两个变体的单词的连贯拼写.";
   }
 
 }

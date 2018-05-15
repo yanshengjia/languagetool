@@ -33,7 +33,7 @@ import java.util.List;
 public class EnglishDashRule extends AbstractDashRule {
 
   private static final List<PatternRule> dashRules = loadCompoundFile("/en/compounds.txt",
-          "A dash was used instead of a hyphen. Did you mean: ", Languages.getLanguageForShortCode("en"));
+          "使用了破折号而不是连字符. 你是指: ", Languages.getLanguageForShortCode("en"));
 
   public EnglishDashRule() throws IOException {
     super(dashRules);
@@ -46,7 +46,7 @@ public class EnglishDashRule extends AbstractDashRule {
 
   @Override
   public String getDescription() {
-    return "Checks if hyphenated words were spelled with dashes (e.g., 'T — shirt' instead 'T-shirt').";
+    return "检查连字符是否被写为破折号。 (例如., 'T — shirt' instead 'T-shirt').";
   }
 
 }
