@@ -1,0 +1,64 @@
+{"type": "NO_MSG", "category_id": "TYPOS", "category_name": "Possible Typo", "category_type": "misspelling", "rule_id": "APART_A_PART", "rule_name": "apart of (a part of, apart from)"}
+{"type": "NO_MSG", "category_id": "TYPOS", "category_name": "Possible Typo", "category_type": "misspelling", "rule_id": "LETS_LET", "rule_name": "let's (lets)"}
+{"type": "NO_MSG", "category_id": "TYPOS", "category_name": "Possible Typo", "category_type": "misspelling", "rule_id": "LETS_LET", "rule_name": "let's (lets)"}
+{"type": "NO_MSG", "category_id": "TYPOS", "category_name": "Possible Typo", "category_type": "misspelling", "rule_id": "WHOS", "rule_name": "who's (whose)"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "IN_WHO", "rule_name": "Preposition + who (whom)"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "FEWER_LESS", "rule_name": "fewer with countable nouns (less)"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "ADVERB_WORD_ORDER", "rule_name": "Word order: Wrong position of adverb, e.g. 'Always I am happy. (I am always happy.)'"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "AGREEMENT_THEIR_HIS", "rule_name": "Possible agreement error: Each of them likes their (his/her)"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "BEEN_PART_AGREEMENT", "rule_name": "Agreement: 'been' or 'was' + past tense"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "IN_1990s", "rule_name": "Missing definite article in the date"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "ALLOW_TO", "rule_name": "'allow' + 'to' + infinitive"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "ADMIT_ENJOY_VB", "rule_name": "'admit', 'appreciate', 'avoid', 'enjoy' etc. with a base form of a verb"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "THE_SUPERLATIVE", "rule_name": "Zero or indefinite article ('a'/'an') before superlatives"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "THE_SUPERLATIVE", "rule_name": "Zero or indefinite article ('a'/'an') before superlatives"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "NON3PRS_VERB", "rule_name": "Agreement error: Third person verb with a non-third person pronoun"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "HE_VERB_AGR", "rule_name": "Agreement error: Non-third person/past tense verb with 'he/she/it' or a pronoun"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "CANT_HELP_BUT", "rule_name": "can't help but (can't help + gerund)"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "DOUBLE_NEGATIVE", "rule_name": "Double negative (e.g., 'not... nothing' instead of 'not... anything')"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "SENTENCE_FRAGMENT", "rule_name": "Sentence is a fragment"}
+{"type": "NO_MSG", "category_id": "GRAMMAR", "category_name": "Grammar", "category_type": "grammar", "rule_id": "MEAN_FOR_TO", "rule_name": "mean something for (to) somebody"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "COLLOCATION_ERRORS_BOKOMARU", "rule_name": "Common colocation errors"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "COLLOCATION_ERRORS_BOKOMARU", "rule_name": "Common colocation errors"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "DO_A_PARTY", "rule_name": "Collocation: do/throw/have a party"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "DO_A_PARTY", "rule_name": "Collocation: do/throw/have a party"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "IN_CHARGE_FOR", "rule_name": "Collocation: in charge for/of/with"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "IN_CHARGE_FOR", "rule_name": "Collocation: in charge for/of/with"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "DURING_OVER_THE_WEEKENDS", "rule_name": "Collocation: during/over the weekends"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "DURING_OVER_THE_WEEKENDS", "rule_name": "Collocation: during/over the weekends"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "A_TRIP_TO", "rule_name": "Collocation: a trip to"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "A_TRIP_TO", "rule_name": "Collocation: a trip to"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "LISTEN_TO_MOVIES", "rule_name": "Collocation: listen to/watch movies"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "LISTEN_TO_MOVIES", "rule_name": "Collocation: listen to/watch movies"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "IN_ON_THE_TEAM", "rule_name": "Collocation: in/on the team"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "IN_ON_THE_TEAM", "rule_name": "Collocation: in/on the team"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "ARRIVAL_TO_THE_HOUSE", "rule_name": "Collocation: arrival to/in the house"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "ARRIVAL_TO_THE_HOUSE", "rule_name": "Collocation: arrival to/in the house"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "COME_IN_CAR", "rule_name": "Collocation: come in/by car"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "COME_IN_CAR", "rule_name": "Collocation: come in/by car"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "GOOD_IN_AT", "rule_name": "Collocation: Good in/at"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "GOOD_IN_AT", "rule_name": "Collocation: Good in/at"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "EXCEPTION_OF_TO", "rule_name": "Collocation: exception to/of"}
+{"type": "NO_MSG", "category_id": "COLLOCATIONS", "category_name": "Collocations", "category_type": "grammar", "rule_id": "EXCEPTION_OF_TO", "rule_name": "Collocation: exception to/of"}
+{"type": "NO_MSG", "category_id": "PUNCTUATION", "category_name": "Punctuation Errors", "category_type": "typographical", "rule_id": "SENT_START_CONJUNCTIVE_LINKING_ADVERB_COMMA", "rule_name": "Commas after conjunctive/linking adverbs in front of a new sentence."}
+{"type": "NO_MSG", "category_id": "PUNCTUATION", "category_name": "Punctuation Errors", "category_type": "typographical", "rule_id": "DASH_RULE", "rule_name": "Hyphen, n-dash and m-dash"}
+{"type": "NO_MSG", "category_id": "PUNCTUATION", "category_name": "Punctuation Errors", "category_type": "typographical", "rule_id": "DASH_RULE", "rule_name": "Hyphen, n-dash and m-dash"}
+{"type": "NO_MSG", "category_id": "CONFUSED_WORDS", "category_name": "Commonly Confused Words", "category_type": "misspelling", "rule_id": "LOG_IN", "rule_name": "login (log in)"}
+{"type": "NO_MSG", "category_id": "CONFUSED_WORDS", "category_name": "Commonly Confused Words", "category_type": "misspelling", "rule_id": "RATIONAL_RATIONALE", "rule_name": "rational (rationale)"}
+{"type": "NO_MSG", "category_id": "CONFUSED_WORDS", "category_name": "Commonly Confused Words", "category_type": "misspelling", "rule_id": "CLEAN_UP", "rule_name": "cleanup / clean up"}
+{"type": "NO_MSG", "category_id": "CONFUSED_WORDS", "category_name": "Commonly Confused Words", "category_type": "misspelling", "rule_id": "CLEAN_UP", "rule_name": "cleanup / clean up"}
+{"type": "NO_MSG", "category_id": "CONFUSED_WORDS", "category_name": "Commonly Confused Words", "category_type": "misspelling", "rule_id": "GIVE_ADVISE", "rule_name": "give/any/of advise (advice)"}
+{"type": "NO_MSG", "category_id": "CONFUSED_WORDS", "category_name": "Commonly Confused Words", "category_type": "misspelling", "rule_id": "BREATHE_BREATH", "rule_name": "breath (breathe)"}
+{"type": "NO_MSG", "category_id": "CONFUSED_WORDS", "category_name": "Commonly Confused Words", "category_type": "misspelling", "rule_id": "COARSE_COURSE", "rule_name": "coarse (course)"}
+{"type": "NO_MSG", "category_id": "CONFUSED_WORDS", "category_name": "Commonly Confused Words", "category_type": "misspelling", "rule_id": "AFFECT_EFFECT", "rule_name": "affect vs effect"}
+{"type": "NO_MSG", "category_id": "CONFUSED_WORDS", "category_name": "Commonly Confused Words", "category_type": "misspelling", "rule_id": "IN_PRINCIPAL", "rule_name": "principal (principle)"}
+{"type": "NO_MSG", "category_id": "CONFUSED_WORDS", "category_name": "Commonly Confused Words", "category_type": "misspelling", "rule_id": "NIB_NUB", "rule_name": "nib / nub"}
+{"type": "NO_MSG", "category_id": "CONFUSED_WORDS", "category_name": "Commonly Confused Words", "category_type": "misspelling", "rule_id": "SINCE_FOR", "rule_name": "since (for) +  'period of time'"}
+{"type": "NO_MSG", "category_id": "NONSTANDARD_PHRASES", "category_name": "Nonstandard Phrases", "category_type": "misspelling", "rule_id": "CD_00_O_CLOCK", "rule_name": "7:00 o'clock (7:00 or 7 o'clock)"}
+{"type": "NO_MSG", "category_id": "STYLE", "category_name": "Style", "category_type": "style", "rule_id": "CAPITALIZATION", "rule_name": "capitalize proper names, geographic terms, historic episodes..."}
+{"type": "NO_MSG", "category_id": "SEMANTICS", "category_name": "Semantic", "category_type": "inconsistency", "rule_id": "DATE_WEEKDAY", "rule_name": "Weekday doesn't match date"}
+{"type": "NO_MSG", "category_id": "SEMANTICS", "category_name": "Semantic", "category_type": "inconsistency", "rule_id": "DATE_WEEKDAY", "rule_name": "Weekday doesn't match date"}
+{"type": "NO_MSG", "category_id": "PLAIN_ENGLISH", "category_name": "Plain English", "category_type": "style", "rule_id": "DESPITE_THE_FACT", "rule_name": "despite the fact that, in spite of the fact that (although, though)"}
+{"type": "NO_MSG", "category_id": "PLAIN_ENGLISH", "category_name": "Plain English", "category_type": "style", "rule_id": "QUESTION_X_WHETHER", "rule_name": "question as to whether, question of whether (question whether)"}
+{"type": "NO_MSG", "category_id": "PLAIN_ENGLISH", "category_name": "Plain English", "category_type": "style", "rule_id": "EMPHATIC_REFLEXIVE_PRONOUNS", "rule_name": "emphatic reflexive pronouns (I myself)"}
+{"type": "NO_MSG", "category_id": "MISUSED_TERMS_EU_PUBLICATIONS", "category_name": "Misused terms in EU publications (Gardner)", "category_type": "style", "rule_id": "EUPUB_RESPECT", "rule_name": "respect (to respect/respect)"}

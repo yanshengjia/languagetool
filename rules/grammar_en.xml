@@ -42,7 +42,7 @@ USA
     <!-- Possible typo -->
     <!-- ====================================================================== -->
     <category id="TYPOS" name="Possible Typo" type="misspelling">
-       <rulegroup id="IN_LAWS" name="brother-in-laws (brothers-in-law)">
+        <rulegroup id="IN_LAWS" name="brother-in-laws (brothers-in-law)">
            <rule>
                <pattern>
                    <marker>
