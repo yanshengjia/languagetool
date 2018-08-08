@@ -20,6 +20,7 @@ def parse_rules(xml_path):
     tree = ET.parse(xml_path)
     root = tree.getroot()
 
+    rule_counter = 0
     for category in root:
         category_id = category.get('id')
         category_name = category.get('name')
@@ -29,6 +30,7 @@ def parse_rules(xml_path):
             rule_name = rule.get('name')
             if rule.tag == "rulegroup":
                 for r in rule:
+                    rule_counter += 1
                     rule_dict = {}
                     msg = r.find('message')
                     if msg is None:
@@ -50,6 +52,7 @@ def parse_rules(xml_path):
                             rule_dict['rule_name']     = rule_name
                             no_suggestion_rules.append(rule_dict)
             else:
+                rule_counter += 1
                 rule_dict = {}
                 msg = rule.find('message')
                 if msg is None:
@@ -69,6 +72,7 @@ def parse_rules(xml_path):
                         rule_dict['rule_id']       = rule_id
                         rule_dict['rule_name']     = rule_name
                         no_suggestion_rules.append(rule_dict)
+    print("Rule quantity: {}".format(rule_counter))
 
 def save_suspicious_rules():
     with codecs.open(no_msg_rules_path, 'a') as o_file:
