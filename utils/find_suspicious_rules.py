@@ -65,6 +65,7 @@ def parse_rules(xml_path):
                     no_msg_rules.append(rule_dict)
                 else:
                     if msg.find('suggestion') is None:
+                        rule_dict['type']          = 'NO_SUGGESTION'
                         rule_dict['message']       = "".join(msg.itertext())
                         rule_dict['category_id']   = category_id
                         rule_dict['category_name'] = category_name
@@ -79,18 +80,18 @@ def save_suspicious_rules():
         o_file.seek(0)
         o_file.truncate()
         for rule in no_msg_rules:
-            rule_str = json.dumps(rule)
+            rule_str = json.dumps(rule, ensure_ascii=False)
             o_file.write(rule_str + '\n')
     
     with codecs.open(no_suggestion_rules_path, 'a') as o_file:
         o_file.seek(0)
         o_file.truncate()
         for rule in no_suggestion_rules:
-            rule_str = json.dumps(rule)
+            rule_str = json.dumps(rule, ensure_ascii=False)
             o_file.write(rule_str + '\n')
 
 def main():
-    parse_rules(en_rules_path)
+    parse_rules(zh_rules_path)
     save_suspicious_rules()
 
 if __name__ == "__main__":
