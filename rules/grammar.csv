@@ -1,4 +1,4 @@
-type,group_index,category_id,category_name,category_type,rule_id,rule_name,error_type,en_msg,zh_msg
+﻿type,group_index,category_id,category_name,category_type,rule_id,rule_name,error_type,en_msg,zh_msg
 group,0,TYPOS,Possible Typo,misspelling,IN_LAWS,brother-in-laws (brothers-in-law),,"<message>Did you mean <suggestion><match no=""1"" regexp_match=""s$"" regexp_replace="""" /></suggestion>?</message>","<message>你是说 <suggestion><match no=""1"" regexp_match=""s$"" regexp_replace="""" /></suggestion> 吗?</message>"
 group,1,TYPOS,Possible Typo,misspelling,IN_LAWS,brother-in-laws (brothers-in-law),,"<message>Did you mean <suggestion><match no=""1"" regexp_match=""-in-laws$"" regexp_replace=""s-in-law"" /></suggestion>?</message>","<message>你是说 <suggestion><match no=""1"" regexp_match=""s$"" regexp_replace="""" /></suggestion> 吗?</message>"
 single,,TYPOS,Possible Typo,misspelling,TRUE_TO_WORD,true to her words (word),,<message>Did you mean the idiom 'true to one's <suggestion>word</suggestion>' (=keep one's promise)?</message>,"<message>你是说我们常说的""忠于某人的 <suggestion>word</suggestion> ""就是信守诺言吗?</message>"
