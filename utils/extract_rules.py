@@ -183,8 +183,6 @@ def main():
     rules = get_translation(en_rules_path, zh_rules_path)
     save_rules_as_csv(zh_rules_csv_path, rules)
     save_rules_as_json(zh_rules_json_path, rules)
-    
-
 
 if __name__ == "__main__":
     main()
