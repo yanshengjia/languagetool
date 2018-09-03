@@ -21,6 +21,8 @@ class Translater:
         self.rules_csv_path = '../rules/grammar.csv'
         self.en_rules_xml_path = '../rules/grammar_' + self.version + '_en.xml'
         self.zh_rules_xml_path = '../rules/grammar_' + self.version + '_zh.xml'
+        self.grammar_xml_path = '../rules/grammar.xml'
+        self.head_lines = 38
         self.rules = self.load_rules()
 
     def load_rules(self):
@@ -59,6 +61,7 @@ class Translater:
 
         tree = ET.parse(self.zh_rules_xml_path)
         root = tree.getroot()
+        trashed_rule_counter = 0
 
         for category in root:
             category_id = category.get('id')
@@ -83,8 +86,8 @@ class Translater:
                             r.remove(msg)
                             r.append(new_msg_element)
                         except Exception as e:
-                            print(e)
-                            print(rule_number, type, group_index, rule_id)
+                            trashed_rule_counter += 1
+                            print(rule_number, type, group_index, rule_id, e)
                         
                         group_index += 1
                 else:
@@ -100,14 +103,21 @@ class Translater:
                         rule.remove(msg)
                         rule.append(new_msg_element)
                     except Exception as e:
-                        print(e)
-                        print(rule_number, type, group_index, rule_id)
+                        trashed_rule_counter += 1
+                        print(rule_number, type, group_index, rule_id, e)
         tree.write(self.zh_rules_xml_path)
+        print("Trashed rule quantity: {}".format(trashed_rule_counter))
 
+    def produce_xml(self):
+        os.system("touch " + self.grammar_xml_path)
+        os.system("> " + self.grammar_xml_path)
+        os.system("head -" + str(self.head_lines) + ' ' + self.en_rules_xml_path + ' > ' + self.grammar_xml_path)
+        os.system("cat " + self.zh_rules_xml_path + " >> " + self.grammar_xml_path)
 
 def main():
     translater = Translater()
     translater.translate()
+    translater.produce_xml()
 
 if __name__ == "__main__":
     main()
