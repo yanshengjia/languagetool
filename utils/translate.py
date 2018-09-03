@@ -24,6 +24,7 @@ class Translater:
         self.zh_rules_xml_path = '../rules/grammar_' + self.version + '_zh.xml'
         self.grammar_xml_path = '../rules/grammar.xml'
         self.head_lines = 38
+        self.trashed_rules_path = '../rules/trashed_rules_list.txt'
         self.rules = self.load_rules()
 
     def load_rules(self):
@@ -49,18 +50,18 @@ class Translater:
 
     def search_zh_msg(self, type, group_index, rule_id):
         zh_msg = ''
-        rule_counter = 1
+        rule_counter = 0
         for rule in self.rules:
             if type == 'single':
                 if rule['type'] == type and rule['group_index'] == '' and rule['rule_id'] == rule_id:
                     zh_msg = rule['zh_msg']
-                    break
+                    return zh_msg, rule_counter
             else:
                 if rule['type'] == type and int(rule['group_index']) == group_index and rule['rule_id'] == rule_id:
                     zh_msg = rule['zh_msg']
-                    break
+                    return zh_msg, rule_counter
             rule_counter += 1
-        return zh_msg, rule_counter
+        return 'grammar.xls doesnt have such msg', -1
     
     def preprocess(self, msg):
         if len(msg) > 0 and msg[0] == "\"":
@@ -72,54 +73,61 @@ class Translater:
         os.system("> " + self.zh_rules_xml_path)
         os.system("cat " + self.en_rules_xml_path + " >> " + self.zh_rules_xml_path)
 
-        tree = ET.parse(self.zh_rules_xml_path)
-        root = tree.getroot()
-        trashed_rule_counter = 0
+        with open(self.trashed_rules_path, 'a') as o_file:
+            o_file.seek(0)
+            o_file.truncate()
 
-        for category in root:
-            category_id = category.get('id')
-            category_name = category.get('name')
-            category_type = category.get('type')
-            for rule in category:
-                rule_id = rule.get('id')
-                rule_name = rule.get('name')
-                if rule.tag == "rulegroup":
-                    group_index = 0
-                    for r in rule:
-                        msg = r.find('message')
-                        type = 'group'
+            tree = ET.parse(self.zh_rules_xml_path)
+            root = tree.getroot()
+            trashed_rule_counter = 0
+
+            for category in root:
+                category_id = category.get('id')
+                category_name = category.get('name')
+                category_type = category.get('type')
+                for rule in category:
+                    rule_id = rule.get('id')
+                    rule_name = rule.get('name')
+                    if rule.tag == "rulegroup":
+                        group_index = 0
+                        for r in rule:
+                            msg = r.find('message')
+                            type = 'group'
+
+                            if msg is None:
+                                group_index += 1
+                                continue
+                            
+                            try:
+                                new_zh_msg, rule_number = self.search_zh_msg(type, group_index, rule_id)
+                                new_msg_element = ET.XML(new_zh_msg)
+                                r.remove(msg)
+                                r.append(new_msg_element)
+                            except Exception as e:
+                                trashed_rule_counter += 1
+                                trashed_rule_str = "{} {} {} {} {}".format(rule_number, type, group_index, rule_id, e)
+                                o_file.write(trashed_rule_str + '\n')
+                            
+                            group_index += 1
+                    else:
+                        msg = rule.find('message')
+                        type = 'single'
+                        group_index = ''
 
                         if msg is None:
-                            group_index += 1
                             continue
                         
                         try:
                             new_zh_msg, rule_number = self.search_zh_msg(type, group_index, rule_id)
                             new_msg_element = ET.XML(new_zh_msg)
-                            r.remove(msg)
-                            r.append(new_msg_element)
+                            rule.remove(msg)
+                            rule.append(new_msg_element)
                         except Exception as e:
                             trashed_rule_counter += 1
-                            print(rule_number, type, group_index, rule_id, e)
-                        
-                        group_index += 1
-                else:
-                    msg = rule.find('message')
-                    type = 'single'
-
-                    if msg is None:
-                        continue
-                    
-                    try:
-                        new_zh_msg, rule_number = self.search_zh_msg(type, group_index, rule_id)
-                        new_msg_element = ET.XML(new_zh_msg)
-                        rule.remove(msg)
-                        rule.append(new_msg_element)
-                    except Exception as e:
-                        trashed_rule_counter += 1
-                        print(rule_number, type, group_index, rule_id, e)
-        tree.write(self.zh_rules_xml_path)
-        print("Trashed rule quantity: {}".format(trashed_rule_counter))
+                            trashed_rule_str = "{} {} {} {} {}".format(rule_number, type, group_index, rule_id, e)
+                            o_file.write(trashed_rule_str + '\n')
+            tree.write(self.zh_rules_xml_path)
+            print("Trashed rule quantity: {}".format(trashed_rule_counter))
 
     def produce_xml(self):
         os.system("touch " + self.grammar_xml_path)
