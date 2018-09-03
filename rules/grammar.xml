@@ -9258,7 +9258,6 @@ USA
                     </marker>
                     <token><exception regexp="yes">['&#8217;]</exception><exception postag="NNS" /></token>
                 </pattern>
-                <message>Consider using a past participle here: <suggestion><match no="2" postag="VBN" /></suggestion>.</message>
                 <short>Possible agreement error</short>
                 <example correction="introduced">The software was <marker>introduce</marker> yesterday.</example>
                 <example correction="introduced">The program has been <marker>introduce</marker>.</example>
@@ -9271,7 +9270,7 @@ USA
                 <example>The other patrons were taxi drivers.</example>
                 <example>All she does is eat.</example>
                 <example>Everybody's fault is nobody's fault.</example>
-            </rule>
+            <message>&#32771;&#34385;&#20351;&#29992;&#36807;&#21435;&#20998;&#35789;: <suggestion><match no="2" postag="VBN" /></suggestion>.</message></rule>
             <rule>
                 <antipattern>
                     <token regexp="yes">been|w(?:as|ere)|is|are|am</token>
@@ -9301,7 +9300,6 @@ USA
                     </marker>
                     <token><exception regexp="yes">['&#8217;]</exception><exception postag="VBN" /></token>
                 </pattern>
-                <message>Consider using a past participle here: <suggestion><match no="3" postag="VBN" /></suggestion>.</message>
                 <short>Possible agreement error</short>
                 <example>It has always been <marker>written</marker> like this.</example>
                 <example>The area the center of which is here was bombed.</example>
@@ -9312,7 +9310,7 @@ USA
                 <example>Indirect consumption is usually <marker>oil</marker>.</example>
                 <example>Indirect consumption is mainly <marker>oil and natural gas</marker>.</example>
                 <example>&#8220;There is still hope,&#8221; said Fernando.</example>
-            </rule>
+            <message>&#32771;&#34385;&#20351;&#29992;&#36807;&#21435;&#20998;&#35789;: <suggestion><match no="3" postag="VBN" /></suggestion>.</message></rule>
         </rulegroup>
         <rulegroup id="MASS_AGREEMENT" name="Agreement: Mass/singular noun + non-third person verb">
             <rule>
@@ -12703,7 +12701,6 @@ USA
                 </marker>
                 <token><exception postag="NN.*|JJ.*" postag_regexp="yes" /><exception regexp="yes">['&#8217;]</exception></token>
             </pattern>
-            <message>Possible agreement error. The noun <match no="2" /> seems to be countable; consider using: <suggestion><match no="1" /> <match no="2" postag="NNP?S" postag_regexp="yes" suppress_misspelled="yes" /></suggestion>.</message>
             <short>Grammatical problem</short>
             <example correction="several books">I have <marker>several book</marker>.</example>
             <example>I have <marker>many books</marker>.</example>
@@ -12717,7 +12714,7 @@ USA
             <example type="triggers_error">Not that <marker>many care</marker>, but it started as a dare.</example>
             <example>She never seemed to have <marker>many cares</marker> in the world.</example>
             <example>Although she seemed to have a life of luxury with very <marker>few cares</marker>, the reality was different.</example>
-        </rule>
+        <message>&#20027;&#35859;&#19981;&#19968;&#33268;. &#21517;&#35789; <match no="2" /> &#26159;&#21487;&#25968;&#30340;; &#32771;&#34385;&#29992;&#22797;&#25968;<suggestion><match no="1" /> <match no="2" postag="NNP?S" postag_regexp="yes" suppress_misspelled="yes" /></suggestion> .</message></rule>
         <rulegroup id="DT_JJ_NO_NOUN" name="Missing noun after an adjective">
             <rule>
                 <pattern>
@@ -18027,9 +18024,10 @@ USA
                 <marker><token>of</token></marker>
                 <token><exception>course</exception></token>
             </pattern>
+            <message>Did you mean <suggestion>have</suggestion>? ('\1 \2' is probably an incorrect use of the verb phrase '\1 have'; as contraction "\1've" sounds like "could of")</message>
             <short>Confused word</short>
             <example correction="have">I should <marker>of</marker> finished it by now.</example>
-        <message>&#20320;&#26159;&#24819;&#35828; <suggestion>have</suggestion> &#21527;? ('\1 \2'&#24456;&#21487;&#33021;&#26159;&#21160;&#35789;&#30701;&#35821;'\1 have'&#30340;&#38169;&#35823;&#29992;&#27861;; ""\1've"" &#30340;&#32553;&#20889;&#30475;&#36215;&#26469;&#20687;""could of"")</message></rule>
+        </rule>
         <rulegroup id="PEACE_PIECE" name="peace (piece)">
             <rule>
                 <pattern>
@@ -21128,11 +21126,12 @@ USA
                 </marker>
                 <token><exception postag="SENT_END" /></token>
             </pattern>
+            <message>"\2" may be unnecessary here.</message>
             <short>Possibly needless word</short>
             <example correction="">I am pretty sure <marker>that</marker> this is right.</example>
             <example>I am pretty sure this is right.</example>
             <example>It has grown way beyond that.</example>
-        <message>&#36825;&#37324;&#19981;&#38656;&#35201;&#29992;""\2""&#12290;</message></rule>
+        </rule>
         <rule id="SEND_AN_EMAIL" name="send an email to (email)">
             <pattern>
                 <token>send</token>
@@ -23668,9 +23667,10 @@ USA
                 <token inflected="yes" postag="VB.?" postag_regexp="yes">be</token>
                 <token>advised</token>
             </pattern>
+            <message>Remove wordy "\1 \2"</message>
             <example correction="">You <marker>are advised</marker> look after your belongings.</example>
             <example>Look after your belongings.</example>
-        <message>&#21435;&#25481;&#22810;&#20313;&#30340;&#21333;&#35789;""\1 \2""&#12290;</message></rule>
+        </rule>
 
         
         
@@ -23907,9 +23907,10 @@ USA
                 <token>end</token>
                 <token regexp="yes">result|product</token>
             </pattern>
+            <message>Remove repetitive "\1" with <suggestion>\2</suggestion></message>
             <example correction="result">The <marker>end result</marker> is clear.</example>
             <example>The result is clear.</example>
-        <message>&#21024;&#25481;&#37325;&#22797;&#30340;""\1"" <suggestion>\2</suggestion> </message></rule>
+        </rule>
 
         
         
@@ -24270,10 +24271,11 @@ USA
                 <token>nature</token>
                 <token>of</token>
             </pattern>
+            <message>Did you mean <suggestion>like</suggestion>"?</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction="like">Something <marker>in the nature of</marker> a repeal may soon take place.</example>
             <example>Something <marker>like</marker> a repeal may soon take place.</example>
-        <message>&#20320;&#26159;&#24819;&#35828; <suggestion>like</suggestion> ""&#21527;?</message></rule>
+        </rule>
 
         
 
@@ -24300,10 +24302,11 @@ USA
                 <token>process</token>
                 <token>of</token>
             </pattern>
+            <message>Possibly empty phrase "\1 \2 \3 \4" when it means "currently".</message>
             <url>http://grammarist.com/usage/in-the-process-of/</url>
             <example correction="">The work is <marker>in the process of</marker> getting done.</example>
             <example>The work is getting done.</example>
-        <message>&#24403;&#21477;&#24847;&#26159;""currently""&#26102;&#65292;""\1 \2 \3 \4""&#21487;&#33021;&#21487;&#20197;&#19981;&#35201;&#12290;.</message></rule>
+        </rule>
 
         
         
@@ -24326,10 +24329,11 @@ USA
                 <token regexp="yes">seems|appears</token>
                 <token>that</token>
             </pattern>
+            <message>Possibly empty phrase "\1 \2 \3"</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction=""><marker>It seems that</marker> they can't wait to get rid of this one.</example>
             <example><marker />They can't wait to get rid of this one.</example>
-        <message>&#24456;&#21487;&#33021;&#21487;&#20197;&#21435;&#25481;""\1 \2 \3""</message></rule>
+        </rule>
 
         
         
@@ -24401,9 +24405,10 @@ USA
                 <token>not</token>
                 <token>able</token>
             </pattern>
+            <message>Avoid using "not". Did you mean <suggestion>unable</suggestion>?</message>
             <example correction="unable">He was <marker>not able</marker> to join the meeting.</example>
             <example>He was <marker>unable</marker> to join the meeting.</example>
-        <message>&#36991;&#20813;&#20351;&#29992;""not""&#12290;&#20320;&#26159;&#24819;&#35828; <suggestion>unable</suggestion> &#21527;?</message></rule>
+        </rule>
 
         
         <rule id="NOT_ACCEPT" name="not accept (reject)">
@@ -24411,9 +24416,10 @@ USA
                 <token>not</token>
                 <token inflected="yes">accept</token>
             </pattern>
+            <message>Avoid using "not". Did you mean <suggestion>reject</suggestion>?</message>
             <example correction="reject">He does <marker>not accept</marker> the proposal.</example>
             <example>He <marker>rejects</marker> the proposal.</example>
-        <message>&#36991;&#20813;&#20351;&#29992;""not""&#12290;&#20320;&#26159;&#24819;&#35828; <suggestion>reject</suggestion> &#21527;?</message></rule>
+        </rule>
 
         
         <rule id="NOT_CERTAIN" name="not certain (uncertain)">
@@ -24421,9 +24427,10 @@ USA
                 <token>not</token>
                 <token>certain</token>
             </pattern>
+            <message>Avoid using "not". Did you mean <suggestion>uncertain</suggestion>?</message>
             <example correction="uncertain">Future is <marker>not certain</marker>.</example>
             <example>Future is <marker>uncertain</marker>.</example>
-        <message>&#36991;&#20813;&#20351;&#29992;""not""&#12290;&#20320;&#26159;&#24819;&#35828; <suggestion>uncertain</suggestion> &#21527;?</message></rule>
+        </rule>
 
         
         <rule id="NOT_UNLIKE" name="not unlike (similar, alike)">
@@ -24442,9 +24449,10 @@ USA
                 <token>not</token>
                 <token>many</token>
             </pattern>
+            <message>Avoid using "not". Did you mean <suggestion>few</suggestion>?</message>
             <example correction="Few"><marker>Not many</marker> people know this.</example>
             <example><marker>Few</marker> people know this.</example>
-        <message>&#36991;&#20813;&#20351;&#29992;""not""&#12290;&#20320;&#26159;&#24819;&#35828; <suggestion>few</suggestion> &#21527;?</message></rule>
+        </rule>
 
         
         <rule id="NOT_VERY_OFTEN" name="not often, not very often (seldom. rare, rarely)">
@@ -24464,9 +24472,10 @@ USA
                 <token>the</token>
                 <token>same</token>
             </pattern>
+            <message>Avoid using "not". Did you mean <suggestion>different</suggestion>?</message>
             <example correction="different">The taste is <marker>not the same</marker>.</example>
             <example>The taste is <marker>different</marker>.</example>
-        <message>&#36991;&#20813;&#20351;&#29992;""not""&#12290;&#20320;&#26159;&#24819;&#35828; <suggestion>different</suggestion> &#21527;?</message></rule>
+        </rule>
 
         
         
@@ -24635,9 +24644,10 @@ USA
                 <token>as</token>
                 <token>being</token>
             </pattern>
+            <message>Word "being" is redundant. Use <suggestion>\1 \2</suggestion>.</message>
             <example correction="regard as">What industries do you <marker>regard as being</marker> highly competitive?</example>
             <example>What industries do you <marker>regard as</marker> highly competitive?</example>
-        <message>&#21333;&#35789;""being""&#26159;&#22810;&#20313;&#30340;&#12290;&#29992; <suggestion>\1 \2</suggestion> .</message></rule>
+        </rule>
         
         
         
@@ -24803,10 +24813,11 @@ USA
                 <token>type</token>
                 <token>of</token>
             </pattern>
+            <message>Try removing the phrase "\1 \2".</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction="">Legislators need to be more careful of the <marker>type of</marker> policy they propose.</example>
             <example>Legislators need to be more careful of the <marker /> policy they propose.</example>
-        <message>&#35797;&#30528;&#25226;&#30701;&#35821;""\1 \2""&#21024;&#25481;.</message></rule>
+        </rule>
 
         
 
@@ -25068,31 +25079,34 @@ USA
             <pattern>
                 <token>#</token>
             </pattern>
+            <message>Wikipedia style. Replace "#" with <suggestion>No. </suggestion> or <suggestion>number </suggestion> when referring to numbers or rankings.</message>
             <url>https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style#Number_signs</url>
             <example correction="No. |number ">The <marker>#</marker>3</example>
             <example>No. </example>
             <example>number </example>
-        <message>&#24314;&#35758;&#25226;""#""&#26367;&#25442;&#25104; <suggestion>No. </suggestion> &#25110;&#32773; <suggestion>number </suggestion> &#24403;&#25552;&#21040;&#25968;&#23383;&#25110;&#25490;&#21015;&#26102;&#12290;</message></rule>
+        </rule>
 
         <rule id="WIKIPEDIA_12_PM" name="Replace '12 pm' with 'noon'">
             <pattern>
                 <token>12</token>
                 <token>pm</token>
             </pattern>
+            <message>Wikipedia style. Replace "12 pm" with <suggestion>noon</suggestion> for clarity.</message>
             <url>https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style#Time_of_day</url>
             <example correction="noon">At <marker>12 pm</marker></example>
             <example>noon</example>
-        <message>&#24314;&#35758;&#25226;""12 pm""&#26367;&#25442;&#25104; <suggestion>noon</suggestion> &#12290;</message></rule>
+        </rule>
 
         <rule id="WIKIPEDIA_12_AM" name="Replace '12 am' with 'midnight'">
             <pattern>
                 <token>12</token>
                 <token>am</token>
             </pattern>
+            <message>Wikipedia style. Replace "12 am" with <suggestion>midnight</suggestion> for clarity.</message>
             <url>https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style#Time_of_day</url>
             <example correction="midnight">At <marker>12 am</marker></example>
             <example>midnight</example>
-        <message>&#24314;&#35758;&#25226;""12 pm""&#26367;&#25442;&#25104; <suggestion>midnight</suggestion> &#12290;</message></rule>
+        </rule>
 
         <rule id="WIKIPEDIA_CURRENTLY" name="Replace 'currently' with a specific date">
             <pattern>
@@ -27034,21 +27048,23 @@ USA
                 <pattern>
                     <token inflected="yes">trimester</token>
                 </pattern>
+                <message>In English, 'trimester' is used in medicine to refer to any of the three periods of approximately three months into which pregnancy is divided. It is rarely used to refer to three-month periods in other contexts. Alternatives: 
+                <suggestion>quarter</suggestion>, 
+                <suggestion>three months</suggestion>, 
+                <suggestion>three-month <match no="1" postag="NN.*">period</match></suggestion>.</message>
                 <url>http://euenglish.webs.com/</url>
                 <short>EU English: trimester</short>
                 <example correction="quarter|three months|three-month period" type="incorrect">&#8230; were given during 2011 and in the first <marker>trimester</marker> of 2012.</example>
                 <example correction="quarter|three months|three-month periods" type="incorrect">The course duration is four <marker>trimesters</marker>.</example>
                 <example>&#8230; were given during 2011 and in the first <marker>quarter</marker> of 2012.</example>
                 <example>&#8230; were given during 2011 and in the first <marker>three months</marker> of 2012.</example>
-            <message>&#22312;&#33521;&#35821;&#20013;&#65292;'semester'&#25351;&#30340;&#26159;&#23398;&#26415;&#26426;&#26500;&#20013;&#30340;&#19968;&#20010;&#23398;&#26399;&#65292;&#21363;&#19968;&#23398;&#24180;&#20998;&#20026;&#20004;&#23398;&#26399;&#12290;&#36825;&#22312;&#33521;&#22269;&#21644;&#29233;&#23572;&#20848;&#26159;&#24456;&#23569;&#35265;&#30340;&#65292;&#22312;&#37027;&#37324;&#65292;&#23398;&#24180;&#36890;&#24120;&#20998;&#20026;&#19977;&#20010;&#23398;&#26399;&#12290;&#22312;&#20854;&#20182;&#24773;&#20917;&#19979;&#65292;&#8220;&#23398;&#26399;&#8221;&#24456;&#23569;&#20351;&#29992;&#20845;&#20010;&#26376;&#12290;&#35797;&#35797;: 
-                <suggestion>half</suggestion> , 
-                <suggestion>six months</suggestion> , 
-                <suggestion>six-month <match no="1" postag="NN.*">period</match></suggestion> .</message></rule>
+            </rule>
         </rulegroup>
         <rule id="EUPUB_SERVICE" name="service">
             <pattern>
                 <token inflected="yes" postag="NN.*" postag_regexp="yes">service</token>
             </pattern>
+            <message>At the Commission (but not usually at the Court), the term 'service' is widely used with a meaning akin to 'department'. Alternatives: <suggestion>staff</suggestion>, <suggestion><match no="1" postag="NN.*">department</match></suggestion>.</message>
             <url>http://euenglish.webs.com/</url>
             <short>EU English: service</short>
             <example correction="staff|departments" type="incorrect">The <marker>services</marker> of the Commission's Accounting Officer carried out a&#8230;</example>
@@ -27056,7 +27072,7 @@ USA
             <example correction="staff|department" type="incorrect">In agreement with the <marker>service</marker> of the Commission, the group&#8230;</example>
             <example>In agreement with the <marker>Commission</marker>, the group&#8230;</example>
             <example type="triggers_error">When you <marker>service</marker> the vehicles&#8230;</example>
-        <message>&#22312;&#22996;&#21592;&#20250;&#65288;&#20294;&#36890;&#24120;&#19981;&#22312;&#27861;&#38498;&#65289;&#65292;'service' &#19968;&#35789;&#34987;&#24191;&#27867;&#20351;&#29992;&#65292;&#20854;&#21547;&#20041;&#31867;&#20284;&#20110;&#8220;&#37096;&#38376;&#8221;&#12290;&#35797;&#35797;: <suggestion>staff</suggestion> , <suggestion><match no="1" postag="NN.*">department</match></suggestion> .</message></rule>
+        </rule>
         <rule id="EUPUB_SHALL" name="shall">
             <antipattern>
                 <token>shall</token>
@@ -27069,6 +27085,7 @@ USA
             <pattern>
                 <token>shall</token>
             </pattern>
+            <message>The use of 'shall' in the third person (he/she/it/they) is archaic and is only used in legislation or contracts or direct quotes from them (in inverted commas). It should never be used when paraphrasing legislation or quoting it indirectly. Alternatives: <suggestion>must</suggestion>, <suggestion>should</suggestion>, is/are, is to/are to, <suggestion>can</suggestion>, <suggestion>may</suggestion>.</message>
             <url>http://euenglish.webs.com/</url>
             <short>EU English: shall</short>
             <example correction="must|should|can|may" type="incorrect">It <marker>shall</marker> also include&#8230;</example>
@@ -27076,85 +27093,93 @@ USA
             <example>It <marker>must</marker> also include&#8230;</example>
             <example><marker>Shall</marker> we go to London tomorrow?</example>
             <example>We <marker>shall</marker> be in London next week.</example>
-        <message>&#31532;&#19977;&#20010;&#20154;&#31216;(he/she/it/they)&#20351;&#29992;'shall'&#26159;&#38472;&#26087;&#30340;&#65292;&#21482;&#22312;&#31435;&#27861;&#25110;&#21512;&#21516;&#20013;&#20351;&#29992;&#65292;&#25110;&#32773;&#30452;&#25509;&#24341;&#29992;&#65288;&#29992;&#24341;&#21495;&#25324;&#36215;&#26469;&#65289;&#12290;&#23427;&#19981;&#24212;&#35813;&#22312;&#35299;&#37322;&#31435;&#27861;&#25110;&#38388;&#25509;&#24341;&#29992;&#23427;&#30340;&#26102;&#20505;&#20351;&#29992;&#12290;&#35797;&#35797;: <suggestion>must</suggestion> , <suggestion>should</suggestion> , is/are, is to/are to, <suggestion>can</suggestion> , <suggestion>may</suggestion> .</message></rule>
+        </rule>
         <rule id="EUPUB_SICKNESS_INSURANCE" name="sickness insurance">
             <pattern>
                 <token>sickness</token>
                 <token inflected="yes">insurance</token>
             </pattern>
+            <message>As the correct term is health insurance, presumably one would take out 'sickness insurance' if one wanted to stay in bad health. Alternatives: <suggestion>health insurance</suggestion>.</message>
             <url>http://euenglish.webs.com/</url>
             <short>EU English: sickness insurance</short>
             <example correction="health insurance" type="incorrect">&#8230; from an establishment with which the insured person's <marker>sickness insurance</marker> fund has an agreement.</example>
-        <message>&#27491;&#30830;&#30340;&#35828;&#27861;&#24212;&#35813;&#26159;&#20581;&#24247;&#20445;&#38505;,&#22914;&#26524;&#19968;&#20010;&#20154;&#36523;&#20307;&#19981;&#20581;&#24247;&#65292;&#20182;&#38656;&#35201;&#25343;&#20986;&#30340;&#26159;&#8220;&#30142;&#30149;&#20445;&#38505;&#8221;&#12290;&#35797;&#35797;: <suggestion>health insurance</suggestion> .</message></rule>
+        </rule>
         <rule id="EUPUB_SO_CALLED" name="so-called">
             <pattern>
                 <token>so-called</token>
             </pattern>
+            <message>This is a risky term to use; although some dictionaries allow the meaning 'commonly known as', others, like the Collins dictionary, emphasise that its use casts doubt on the veracity of the term it introduces = 'called (in the speaker's opinion, wrongly) by that name'. Often, 'so-called' is superfluous and the other term can stand alone. In other cases we can say 'known as' or 'this is called'.</message>
             <url>http://euenglish.webs.com/</url>
             <short>EU English: so-called</short>
             <example correction="" type="incorrect">The <marker>so-called</marker> transitional system for the application of VAT&#8230;</example>
             <example correction="" type="incorrect">&#8230;, designed for monitoring the respiratory and anaesthetic gases of a patient under medical treatment (<marker>so-called</marker> 'Gas Analyser Module')'</example>
             <example>The transitional system for the application of VAT&#8230;</example>
             <example>&#8230;, designed for monitoring the respiratory and anaesthetic gases of a patient under medical treatment ('Gas Analyser Module').</example>
-        <message>&#36825;&#26159;&#19968;&#20010;&#21361;&#38505;&#30340;&#26415;&#35821;;&#23613;&#31649;&#19968;&#20123;&#23383;&#20856;&#26377;&#8220;&#36890;&#24120;&#34987;&#31216;&#20026;&#8221;&#30340;&#24847;&#24605;&#65292;&#20294;&#20854;&#20182;&#30340;&#23383;&#20856;&#65292;&#27604;&#22914;&#26607;&#26519;&#26031;&#23383;&#20856;&#65292;&#24378;&#35843;&#23427;&#30340;&#20351;&#29992;&#20351;&#20154;&#20204;&#23545;&#23427;&#25152;&#20171;&#32461;&#30340;&#26415;&#35821;&#30340;&#30495;&#23454;&#24615;&#20135;&#29983;&#20102;&#24576;&#30097;&#65292;&#23427;&#34987;&#31216;&#20026;&#8220;&#65288;&#22312;&#35828;&#35805;&#32773;&#30340;&#35266;&#28857;&#20013;&#65292;&#38169;&#35823;&#22320;&#65289;&#8221;&#12290;&#36890;&#24120;&#65292;'so-called'&#26159;&#22810;&#20313;&#30340;&#65292;&#32780;&#21478;&#19968;&#20010;&#21333;&#35789;&#21487;&#20197;&#21333;&#29420;&#20986;&#29616;&#12290;&#22312;&#20854;&#20182;&#24773;&#20917;&#19979;&#65292;&#25105;&#20204;&#21487;&#20197;&#35828;'known as'&#25110;'this is called'&#12290;</message></rule>
+        </rule>
         <rulegroup id="EUPUB_SUPPRESS_SUPPRESSION" name="suppress/suppression">
             <rule>
                 <pattern>
                     <token regexp="yes">suppress(es)?</token>
                 </pattern>
+                <message>'Suppress' is a bit like 'incite' in that it is often related to violence. It is also often combined with the adverbs 'savagely' or forcibly'. Indeed, the first definition of suppress in the Oxford online dictionary is 'forcibly put an end to'. You can suppress a revolt or an uprising, but you cannot suppress a bus stop. Alternatives: 
+                <suggestion><match no="1" postag="VB.*">abolish</match></suggestion>, 
+                <suggestion><match no="1" postag="VB.*">cancel</match></suggestion>, 
+                <suggestion><match no="1" postag="VB.*">withdraw</match></suggestion>.</message>
                 <url>http://euenglish.webs.com/</url>
                 <short>EU English: suppress</short>
                 <example correction="abolish|cancel|withdraw" type="incorrect">&#8230; to <marker>suppress</marker> the fees at the start of 2015.</example>
                 <example correction="abolishes|cancels|withdraws" type="incorrect">If the authority <marker>suppresses</marker> the fees&#8230;</example>
                 <example>&#8230; to <marker>abolish</marker> the fees at the start of 2015.</example>
-            <message>'Suppress'&#26377;&#28857;&#20687;&#8220;&#29053;&#21160;&#8221;&#65292;&#22240;&#20026;&#23427;&#32463;&#24120;&#19982;&#26292;&#21147;&#26377;&#20851;&#12290;&#23427;&#20063;&#32463;&#24120;&#19982;&#21103;&#35789;&#8220;&#37326;&#34542;&#8221;&#25110;&#8220;&#24378;&#34892;&#8221;&#32467;&#21512;&#12290;&#20107;&#23454;&#19978;&#65292;&#29275;&#27941;&#22312;&#32447;&#35789;&#20856;&#30340;&#31532;&#19968;&#20010;&#23450;&#20041;&#26159;&#8220;&#24378;&#34892;&#32456;&#27490;&#8221;&#12290;&#20320;&#21487;&#20197;&#38215;&#21387;&#21467;&#20081;&#25110;&#36215;&#20041;&#65292;&#20294;&#20320;&#19981;&#33021;&#21387;&#21046;&#20844;&#20849;&#27773;&#36710;&#31449;&#12290; &#35797;&#35797;: 
-                <suggestion><match no="1" postag="VB.*">abolish</match></suggestion> , 
-                <suggestion><match no="1" postag="VB.*">cancel</match></suggestion> , 
-                <suggestion><match no="1" postag="VB.*">withdraw</match></suggestion> .</message></rule>
+            </rule>
             <rule>
                 <pattern>
                     <token>suppressed</token>
                 </pattern>
+                <message>'Suppress' is a bit like 'incite' in that it is often related to violence. It is also often combined with the adverbs 'savagely' or forcibly'. Indeed, the first definition of suppress in the Oxford online dictionary is 'forcibly put an end to'. You can suppress a revolt or an uprising, but you cannot suppress a bus stop. Alternatives: 
+                <suggestion>abolished</suggestion>, 
+                <suggestion>cancelled</suggestion>, 
+                <suggestion>withdrew</suggestion>, 
+                <suggestion>withdrawn</suggestion>.</message>
                 <url>http://euenglish.webs.com/</url>
                 <short>EU English: suppress</short>
                 <example correction="abolished|cancelled|withdrew|withdrawn" type="incorrect">&#8230; where fees were <marker>suppressed</marker> at the start of 2015.</example>
                 <example correction="abolished|cancelled|withdrew|withdrawn" type="incorrect">The authority <marker>suppressed</marker> the fees at the start of 2015.</example>
                 <example>&#8230; where fees were <marker>withdrawn</marker> at the start of 2015.</example>
                 <example>The authority <marker>withdrew</marker> the fees at the start of 2015.</example>
-            <message>'Suppress'&#26377;&#28857;&#20687;&#8220;&#29053;&#21160;&#8221;&#65292;&#22240;&#20026;&#23427;&#32463;&#24120;&#19982;&#26292;&#21147;&#26377;&#20851;&#12290;&#23427;&#20063;&#32463;&#24120;&#19982;&#21103;&#35789;&#8220;&#37326;&#34542;&#8221;&#25110;&#8220;&#24378;&#34892;&#8221;&#32467;&#21512;&#12290;&#20107;&#23454;&#19978;&#65292;&#29275;&#27941;&#22312;&#32447;&#35789;&#20856;&#30340;&#31532;&#19968;&#20010;&#23450;&#20041;&#26159;&#8220;&#24378;&#34892;&#32456;&#27490;&#8221;&#12290;&#20320;&#21487;&#20197;&#38215;&#21387;&#21467;&#20081;&#25110;&#36215;&#20041;&#65292;&#20294;&#20320;&#19981;&#33021;&#21387;&#21046;&#20844;&#20849;&#27773;&#36710;&#31449;&#12290; &#35797;&#35797;: 
-                <suggestion><match no="1" postag="VB.*">abolish</match></suggestion> , 
-                <suggestion><match no="1" postag="VB.*">cancel</match></suggestion> , 
-                <suggestion><match no="1" postag="VB.*">withdraw</match></suggestion> .</message></rule>
+            </rule>
             <rule>
                 <pattern>
                     <token>suppressing</token>
                 </pattern>
+                <message>'Suppress' is a bit like 'incite' in that it is often related to violence. It is also often combined with the adverbs 'savagely' or forcibly'. Indeed, the first definition of suppress in the Oxford online dictionary is 'forcibly put an end to'. You can suppress a revolt or an uprising, but you cannot suppress a bus stop. Alternatives: 
+                <suggestion>abolishing</suggestion>, 
+                <suggestion>cancelling</suggestion>, 
+                <suggestion>withdrawing</suggestion>.</message>
                 <url>http://euenglish.webs.com/</url>
                 <short>EU English: suppress</short>
                 <example correction="abolishing|cancelling|withdrawing" type="incorrect">If you are <marker>suppressing</marker> the fees, &#8230;</example>
                 <example correction="abolishing|cancelling|withdrawing" type="incorrect">&#8230; if <marker>suppressing</marker> the fees is necessary.</example>
                 <example>If you are <marker>withdrawing</marker> the fees, &#8230;</example>
-            <message>'Suppress'&#26377;&#28857;&#20687;&#8220;&#29053;&#21160;&#8221;&#65292;&#22240;&#20026;&#23427;&#32463;&#24120;&#19982;&#26292;&#21147;&#26377;&#20851;&#12290;&#23427;&#20063;&#32463;&#24120;&#19982;&#21103;&#35789;&#8220;&#37326;&#34542;&#8221;&#25110;&#8220;&#24378;&#34892;&#8221;&#32467;&#21512;&#12290;&#20107;&#23454;&#19978;&#65292;&#29275;&#27941;&#22312;&#32447;&#35789;&#20856;&#30340;&#31532;&#19968;&#20010;&#23450;&#20041;&#26159;&#8220;&#24378;&#34892;&#32456;&#27490;&#8221;&#12290;&#20320;&#21487;&#20197;&#38215;&#21387;&#21467;&#20081;&#25110;&#36215;&#20041;&#65292;&#20294;&#20320;&#19981;&#33021;&#21387;&#21046;&#20844;&#20849;&#27773;&#36710;&#31449;&#12290; &#35797;&#35797;: 
-                <suggestion><match no="1" postag="VB.*">abolish</match></suggestion> , 
-                <suggestion><match no="1" postag="VB.*">cancel</match></suggestion> , 
-                <suggestion><match no="1" postag="VB.*">withdraw</match></suggestion> .</message></rule>
+            </rule>
             <rule>
                 <pattern>
                     <token inflected="yes">suppression</token>
                 </pattern>
+                <message>'Suppress' is a bit like 'incite' in that it is often related to violence. Alternatives: <suggestion>abolition</suggestion>, <suggestion>cancellation</suggestion>, <suggestion>withdrawal</suggestion>.</message>
                 <url>http://euenglish.webs.com/</url>
                 <short>EU English: suppression</short>
                 <example correction="abolition|cancellation|withdrawal" type="incorrect">Furthermore, the <marker>suppression</marker> of inpatient fees from 2014&#8230;</example>
-            <message>'Suppress'&#26377;&#28857;&#20687;&#8220;&#29053;&#21160;&#8221;&#65292;&#22240;&#20026;&#23427;&#32463;&#24120;&#19982;&#26292;&#21147;&#26377;&#20851;&#12290;&#23427;&#20063;&#32463;&#24120;&#19982;&#21103;&#35789;&#8220;&#37326;&#34542;&#8221;&#25110;&#8220;&#24378;&#34892;&#8221;&#32467;&#21512;&#12290;&#20107;&#23454;&#19978;&#65292;&#29275;&#27941;&#22312;&#32447;&#35789;&#20856;&#30340;&#31532;&#19968;&#20010;&#23450;&#20041;&#26159;&#8220;&#24378;&#34892;&#32456;&#27490;&#8221;&#12290;&#20320;&#21487;&#20197;&#38215;&#21387;&#21467;&#20081;&#25110;&#36215;&#20041;&#65292;&#20294;&#20320;&#19981;&#33021;&#21387;&#21046;&#20844;&#20849;&#27773;&#36710;&#31449;&#12290; &#35797;&#35797;: 
-                <suggestion><match no="1" postag="VB.*">abolish</match></suggestion> , 
-                <suggestion><match no="1" postag="VB.*">cancel</match></suggestion> , 
-                <suggestion><match no="1" postag="VB.*">withdraw</match></suggestion> .</message></rule>
+            </rule>
         </rulegroup>
         <rule id="EUPUB_THIRD_COUNTRY" name="third country">
             <pattern>
                 <token>third</token>
                 <token inflected="yes">country</token>
             </pattern>
+            <message>The USA is one country, Canada is another, and Ireland is a third. The USA could sign an agreement with Canada to exclude a third country (e.g. Ireland) from their territorial waters (for fishing, for example). In EU texts, however, this term is widely used to mean 'countries outside the European Union', and sometimes 'countries outside whatever grouping of countries we are talking about'. Use: 
+            <suggestion>non-member <match no="2" /></suggestion> (or state), 
+            <suggestion>non-Schengen <match no="2" /></suggestion> (or state), 
+            <suggestion><match no="2" /> outside the EU</suggestion>/EEA etc.</message>
             <url>http://euenglish.webs.com/</url>
             <short>EU English: third country</short>
             <example correction="non-member country|non-Schengen country|country outside the EU" type="incorrect">The standard values for imports from a <marker>third country</marker> are&#8230;</example>
@@ -27162,10 +27187,7 @@ USA
             <example>The standard values for imports from a <marker>non-member state</marker> are&#8230;</example>
             <example>He has a Schengen visa but he is not allowed to work in <marker>non-Schengen countries</marker>.</example>
             <example>He has a Schengen visa but he is not allowed to work in <marker>non-EU countries</marker>.</example>
-        <message>&#32654;&#22269;&#26159;&#19968;&#20010;&#22269;&#23478;&#65292;&#21152;&#25343;&#22823;&#26159;&#21478;&#19968;&#20010;&#22269;&#23478;&#65292;&#29233;&#23572;&#20848;&#26159;&#31532;&#19977;&#20010;&#22269;&#23478;&#12290;&#32654;&#22269;&#21487;&#20197;&#19982;&#21152;&#25343;&#22823;&#31614;&#32626;&#19968;&#39033;&#21327;&#35758;&#65292;&#23558;&#31532;&#19977;&#22269;&#65288;&#20363;&#22914;&#29233;&#23572;&#20848;&#65289;&#25490;&#38500;&#22312;&#39046;&#28023;&#20043;&#22806;&#65288;&#20363;&#22914;&#25429;&#40060;&#65289;&#12290;&#28982;&#32780;&#65292;&#22312;&#27431;&#30431;&#30340;&#25991;&#26412;&#20013;&#65292;&#36825;&#20010;&#26415;&#35821;&#34987;&#24191;&#27867;&#29992;&#20110;&#25351;&#8220;&#27431;&#30431;&#20197;&#22806;&#30340;&#22269;&#23478;&#8221;&#65292;&#26377;&#26102;&#20063;&#25351;&#8220;&#25105;&#20204;&#27491;&#22312;&#35848;&#35770;&#30340;&#20219;&#20309;&#19968;&#32452;&#22269;&#23478;&#20043;&#22806;&#30340;&#22269;&#23478;&#8221;&#12290;&#20351;&#29992;: 
-            <suggestion>non-member <match no="2" /></suggestion> (or state), 
-            <suggestion>non-Schengen <match no="2" /></suggestion> (or state), 
-            <suggestion><match no="2" /> outside the EU</suggestion> /EEA etc.</message></rule>
+        </rule>
         <rulegroup id="EUPUB_TRAINING" name="training (a)">
             <rule>
                 <pattern>
@@ -27174,127 +27196,139 @@ USA
                         <token>training</token>
                     </marker>
                 </pattern>
+                <message>This is one of a series of gerunds used creatively but incorrectly as countable nouns, which is not generally possible in English. Training in English is a process (the process of being trained) and it cannot be used as a synonym for a '(training) course'. Alternatives: <suggestion>course</suggestion> (language course/I am on a course/I am doing a course), <suggestion>workshop</suggestion> (attending a workshop), presentation, talk etc.</message>
                 <url>http://euenglish.webs.com/</url>
                 <short>EU English: training (a)</short>
                 <example correction="course|workshop" type="incorrect">&#8230; ICT (including for the purpose of a <marker>training</marker>).</example>
-            <message>&#36825;&#26159;&#19968;&#31995;&#21015;&#21160;&#21517;&#35789;&#20043;&#19968;&#65292;&#23427;&#21019;&#36896;&#24615;&#22320;&#20351;&#29992;&#20102;&#65292;&#20294;&#19981;&#27491;&#30830;&#22320;&#20351;&#29992;&#20102;&#21487;&#25968;&#21517;&#35789;&#30340;&#24418;&#24335;&#65292;&#36825;&#22312;&#33521;&#35821;&#20013;&#26159;&#19981;&#21487;&#33021;&#30340;&#12290;&#33521;&#35821;&#22521;&#35757;&#26159;&#19968;&#20010;&#36807;&#31243;&#65288;&#25509;&#21463;&#22521;&#35757;&#30340;&#36807;&#31243;&#65289;&#65292;&#23427;&#19981;&#33021;&#34987;&#29992;&#20316;&#8220;&#65288;&#22521;&#35757;&#65289;&#35838;&#31243;&#8221;&#30340;&#21516;&#20041;&#35789;&#12290;&#35797;&#35797;: <suggestion>course</suggestion> (language course/I am on a course/I am doing a course), <suggestion>workshop</suggestion> (attending a workshop), presentation, talk etc.</message></rule>
+            </rule>
             <rule>
                 <pattern>
                     <token>trainings</token>
                 </pattern>
+                <message>This is one of a series of gerunds used creatively but incorrectly as countable nouns, which is not generally possible in English. Training in English is a process (the process of being trained) and it cannot be used as a synonym for a '(training) course'. Alternatives: <suggestion>courses</suggestion> (language course/I am on a course/I am doing a course), <suggestion>workshops</suggestion> (attending a workshop), presentation, talk etc.</message>
                 <url>http://euenglish.webs.com/</url>
                 <short>EU English: training (a)</short>
                 <example correction="courses|workshops" type="incorrect">&#8230; ICT (including for the purpose of <marker>trainings</marker>).</example>
-            <message>&#36825;&#26159;&#19968;&#31995;&#21015;&#21160;&#21517;&#35789;&#20043;&#19968;&#65292;&#23427;&#21019;&#36896;&#24615;&#22320;&#20351;&#29992;&#20102;&#65292;&#20294;&#19981;&#27491;&#30830;&#22320;&#20351;&#29992;&#20102;&#21487;&#25968;&#21517;&#35789;&#30340;&#24418;&#24335;&#65292;&#36825;&#22312;&#33521;&#35821;&#20013;&#26159;&#19981;&#21487;&#33021;&#30340;&#12290;&#33521;&#35821;&#22521;&#35757;&#26159;&#19968;&#20010;&#36807;&#31243;&#65288;&#25509;&#21463;&#22521;&#35757;&#30340;&#36807;&#31243;&#65289;&#65292;&#23427;&#19981;&#33021;&#34987;&#29992;&#20316;&#8220;&#65288;&#22521;&#35757;&#65289;&#35838;&#31243;&#8221;&#30340;&#21516;&#20041;&#35789;&#12290;&#35797;&#35797;: <suggestion>course</suggestion> (language course/I am on a course/I am doing a course), <suggestion>workshop</suggestion> (attending a workshop), presentation, talk etc.</message></rule>
+            </rule>
         </rulegroup>
         <rule id="EUPUB_TRANSMIT" name="transmit">
             <pattern>
                 <token inflected="yes" regexp="yes">transmit|retransmit</token>
             </pattern>
+            <message>'Transmit' normally refers to radio or television, data, and, possibly, the sadly defunct, Morse code. When sending something by letter, email or fax, we normally say 'send'. If we are sending something on that has been sent to us, we say 'forward' or 'send on' rather than 'retransmit'. Alternatives: 
+            <suggestion><match no="1" postag="VB.*">send</match></suggestion>, 
+            <suggestion><match no="1" postag="VB.*">forward</match></suggestion>.</message>
             <url>http://euenglish.webs.com/</url>
             <short>EU English: transmit</short>
             <example correction="sends|forwards" type="incorrect">When the Court <marker>transmits</marker> its draft report&#8230;</example>
             <example correction="send|forward" type="incorrect">The Court would thus be required to <marker>transmit</marker> its draft report on the same day that the Commission is required&#8230;</example>
             <example correction="send|forward" type="incorrect">Each Member State shall <marker>retransmit</marker> to the NEAFC Secretary reports and messages&#8230;</example>
             <example>When the Court <marker>sends</marker> its draft report&#8230;</example>
-        <message>'Transmit'&#36890;&#24120;&#25351;&#30340;&#26159;&#24191;&#25773;&#25110;&#30005;&#35270;&#12289;&#25968;&#25454;&#65292;&#36824;&#26377;&#21487;&#33021;&#26159;&#24050;&#32463;&#22833;&#25928;&#30340;&#33707;&#23572;&#26031;&#30005;&#30721;&#12290;&#24403;&#29992;&#20449;&#20214;&#12289;&#30005;&#23376;&#37038;&#20214;&#25110;&#20256;&#30495;&#21457;&#36865;&#19996;&#35199;&#26102;&#65292;&#25105;&#20204;&#36890;&#24120;&#20250;&#35828;'send'&#12290;&#22914;&#26524;&#25105;&#20204;&#21457;&#36865;&#30340;&#19996;&#35199;&#24050;&#32463;&#21457;&#36865;&#32473;&#25105;&#20204;&#65292;&#25105;&#20204;&#35828;'forward'&#25110;'send on'&#65292;&#32780;&#19981;&#26159;'retransmit'&#12290;&#35797;&#35797;&#65306; 
-            <suggestion><match no="1" postag="VB.*">send</match></suggestion> , 
-            <suggestion><match no="1" postag="VB.*">forward</match></suggestion> .</message></rule>
+        </rule>
         <rulegroup id="EUPUB_TRANSPOSE_TRANSPOSITION" name="transpose/transposition">
             <rule>
                 <pattern>
                     <token inflected="yes">transpose</token>
                 </pattern>
+                <message>In English 'to transpose' means 'to put in a different order' or 'to transfer to a different place or context'. Alternatives: <suggestion><match no="1" postag="VB.*">incorporate</match></suggestion> (into national law).</message>
                 <url>http://euenglish.webs.com/</url>
                 <short>EU English: transpose/transposition</short>
                 <example correction="incorporate" type="incorrect">&#8230; which <marker>transpose</marker> Chapter 3 of Title XI of Directive 2006/112/EC.</example>
                 <example>&#8230; which <marker>incorporate</marker> Chapter 3 of Title XI of Directive 2006/112/EC.</example>
-            <message>&#22312;&#33521;&#35821;&#20013;&#65292;'to transpose'&#24847;&#24605;&#26159;&#8220;&#25442;&#19968;&#31181;&#39034;&#24207;&#8221;&#25110;&#8220;&#36716;&#31227;&#21040;&#21478;&#19968;&#20010;&#22320;&#26041;&#25110;&#29615;&#22659;&#8221;&#12290;&#35797;&#35797;: <suggestion><match no="1" postag="VB.*">incorporate</match></suggestion> (&#32435;&#20837;&#22269;&#23478;&#27861;&#24459;)</message></rule>
+            </rule>
             <rule>
                 <pattern>
                     <token inflected="yes">transposition</token>
                 </pattern>
+                <message>In English 'to transpose' means 'to put in a different order' or 'to transfer to a different place or context'. Alternatives: <suggestion>incorporation</suggestion> (into national law).</message>
                 <url>http://euenglish.webs.com/</url>
                 <short>EU English: transpose/transposition</short>
                 <example correction="incorporation" type="incorrect">The <marker>transposition</marker> of Chapter 3 of Title XI of Directive 2006/112/EC&#8230;</example>
                 <example>The <marker>incorporation</marker> of Chapter 3 of Title XI of Directive 2006/112/EC&#8230;</example>
-            <message>&#22312;&#33521;&#35821;&#20013;&#65292;'to transpose'&#24847;&#24605;&#26159;&#8220;&#25442;&#19968;&#31181;&#39034;&#24207;&#8221;&#25110;&#8220;&#36716;&#31227;&#21040;&#21478;&#19968;&#20010;&#22320;&#26041;&#25110;&#29615;&#22659;&#8221;&#12290;&#35797;&#35797;: <suggestion><match no="1" postag="VB.*">incorporate</match></suggestion> (&#32435;&#20837;&#22269;&#23478;&#27861;&#24459;)</message></rule>
+            </rule>
         </rulegroup>
         <rulegroup id="EUPUB_TRANSVERSE_TRANSVERSAL" name="transverse/transversal">
             <rule>
                 <pattern>
                     <token>transverse</token>
                 </pattern>
+                <message>'Transverse' (meaning 'lying across; situated or lying crosswise or athwart') has 223 BNC entries, but these nearly all refer to the fields of medicine ('transverse colon', being the most common), natural science and mechanical engineering. Transverse is not used figuratively. Alternatives: <suggestion>cross-cutting</suggestion>, inter + something (interdepartmental, interministerial); sometimes just '<suggestion>broad</suggestion>' or '<suggestion>general</suggestion>'. Some rephrasing might be needed ('across the board', for example).</message>
                 <url>http://euenglish.webs.com/</url>
                 <short>EU English: transverse/transveral</short>
                 <example correction="cross-cutting|broad|general" type="incorrect">The activities are <marker>transverse</marker> and apply to all&#8230;</example>
                 <example correction="Cross-cutting|Broad|General" type="incorrect"><marker>Transverse</marker> Activities (TAs) means actions with relevance across several ITDs&#8230;</example>
                 <example>The activities are <marker>general</marker> and apply to all&#8230;</example>
-            <message>'Transverse'(&#24847;&#24605;&#26159;&#8220;&#36538;&#22312;;&#20301;&#20110;&#25110;&#27178;&#21351;&#25110;&#27178;&#21351;&#30340;&#65289;&#26377;223&#20010;BNC&#26465;&#30446;&#65292;&#20294;&#36825;&#20123;&#20960;&#20046;&#37117;&#26159;&#25351;&#21307;&#23398;&#39046;&#22495;&#65288;&#8220;&#27178;&#21521;&#32467;&#32928;&#8221;&#65292;&#26159;&#26368;&#24120;&#35265;&#30340;&#65289;&#12289;&#33258;&#28982;&#31185;&#23398;&#21644;&#26426;&#26800;&#24037;&#31243;&#12290; Transverse&#19981;&#29992;&#20316;&#27604;&#21947;&#12290; &#35797;&#35797;: <suggestion>cross-cutting</suggestion> , inter + something (interdepartmental, interministerial); sometimes just '<suggestion>broad</suggestion> ' or '<suggestion>general</suggestion> '. &#21487;&#33021;&#38656;&#35201;&#19968;&#20123;&#25913;&#20889;&#65288;&#20363;&#22914;&#65292;'across the board'&#65289;&#12290;</message></rule>
+            </rule>
             <rule>
                 <pattern>
                     <token>transversal</token>
                 </pattern>
+                <message>'Transversal' (meaning 'intersecting a system of lines') occurs three times in the British National Corpus and 709 times in EUR-Lex. This is, in itself, an indication that something is amiss. Transversal is not used figuratively. Alternatives: <suggestion>cross-cutting</suggestion>, inter + something (interdepartmental, interministerial); sometimes just '<suggestion>broad</suggestion>' or '<suggestion>general</suggestion>'</message>
                 <url>http://euenglish.webs.com/</url>
                 <short>EU English: transverse/transveral</short>
                 <example correction="cross-cutting|broad|general" type="incorrect">Conclusions of the Council on a <marker>transversal</marker> approach to youth policy.</example>
                 <example correction="cross-cutting|broad|general" type="incorrect">To give priority to digital technology in a <marker>transversal</marker> manner&#8230;</example>
                 <example>Conclusions of the Council on a <marker>broad</marker> approach to youth policy.</example>
-            <message>'Transverse'(&#24847;&#24605;&#26159;&#8220;&#36538;&#22312;;&#20301;&#20110;&#25110;&#27178;&#21351;&#25110;&#27178;&#21351;&#30340;&#65289;&#26377;223&#20010;BNC&#26465;&#30446;&#65292;&#20294;&#36825;&#20123;&#20960;&#20046;&#37117;&#26159;&#25351;&#21307;&#23398;&#39046;&#22495;&#65288;&#8220;&#27178;&#21521;&#32467;&#32928;&#8221;&#65292;&#26159;&#26368;&#24120;&#35265;&#30340;&#65289;&#12289;&#33258;&#28982;&#31185;&#23398;&#21644;&#26426;&#26800;&#24037;&#31243;&#12290; Transverse&#19981;&#29992;&#20316;&#27604;&#21947;&#12290; &#35797;&#35797;: <suggestion>cross-cutting</suggestion> , inter + something (interdepartmental, interministerial); sometimes just '<suggestion>broad</suggestion> ' or '<suggestion>general</suggestion> '. &#21487;&#33021;&#38656;&#35201;&#19968;&#20123;&#25913;&#20889;&#65288;&#20363;&#22914;&#65292;'across the board'&#65289;&#12290;</message></rule>
+            </rule>
         </rulegroup>
         <rule id="EUPUB_TRAVEL" name="travels">
             <pattern>
                 <token postag="NNS">travels</token>
             </pattern>
+            <message>Trip is countable, travel is not, at least not in its normal meaning of 'the action of travelling'. Alternatives: 
+            <suggestion>trips</suggestion>, 
+            <suggestion>travel</suggestion> (singular).</message>
             <url>http://euenglish.webs.com/</url>
             <short>EU English: travel</short>
             <example correction="trips|travel" type="incorrect">The consent form for <marker>travels</marker> in and out of the Schengen area&#8230;</example>
             <example correction="trips|travel" type="incorrect">The findings of the report concerning Members' <marker>travels</marker> show that&#8230;</example>
             <example>The consent form for <marker>trips</marker> in and out of the Schengen area&#8230;</example>
             <example>If he <marker>travels</marker> for many hours&#8230;</example>
-        <message>Trip&#26159;&#21487;&#25968;&#30340;&#65292;travel&#19981;&#26159;,&#33267;&#23569;&#22312;&#23427;&#27491;&#24120;&#30340;&#21547;&#20041;&#8220;&#26053;&#34892;&#36825;&#19968;&#34892;&#20026;&#8221;&#37324;&#26159;&#19981;&#21487;&#25968;&#30340;&#12290; &#35797;&#35797;&#65306;
-            <suggestion>trips</suggestion> , 
-            <suggestion>travel</suggestion> (singular).</message></rule>
+        </rule>
         <rule id="EUPUB_TREATMENT" name="treatment [data]">
             <pattern>
                 <token>data</token>
                 <token inflected="yes">treatment</token>
             </pattern>
+            <message>We normally speak of data processing, not data treatment. Alternatives: <suggestion>data processing</suggestion>.</message>
             <url>http://euenglish.webs.com/</url>
             <short>EU English: data treatment</short>
             <example correction="data processing" type="incorrect">The significant efforts undertaken in <marker>data treatment</marker> and methodological developments&#8230;</example>
             <example correction="data processing" type="incorrect">Eurostat will continue its efforts to speed up the <marker>data treatment</marker> procedures.</example>
-        <message>&#25105;&#20204;&#36890;&#24120;&#35828;&#30340;&#25968;&#25454;&#22788;&#29702;&#26159;data processing,&#32780;&#19981;&#26159;data treatment&#12290;&#35797;&#35797;&#65306; <suggestion>data processing</suggestion> .</message></rule>
+        </rule>
         <rule id="EUPUB_VALORISE_VALORIZE" name="valorise|valorize">
             <pattern>
                 <token regexp="yes">valorise|valorises|valorised|valorising|valorize|valorizes|valorized|valorizing</token>
             </pattern>
+            <message>'To valorise' means 'to fix and maintain an artificial price for (a commodity) by governmental action'. In EU texts, however, it is often used to mean 'to assign a value to' or to 'make the most of'. Alternatives: increase the value of, give a value to, enhance, make the most of, accentuate, upgrade, put to good use.</message>
             <url>http://euenglish.webs.com/</url>
             <short>EU English: valorise|valorize</short>
             <example correction="" type="incorrect">The work of the Agency was <marker>valorised</marker> for both the public and the private sectors.</example>
             <example correction="" type="incorrect">&#8230; only those cultivation practices which seek to <marker>valorize</marker> almost the whole of the product cultivated should be accepted.</example>
             <example>The work of the Agency was <marker>assigned a value</marker> for both the public and the private sectors.</example>
-        <message>'To valorise'&#30340;&#24847;&#24605;&#26159;&#8220;&#36890;&#36807;&#25919;&#24220;&#34892;&#21160;&#26469;&#20462;&#22797;&#21644;&#32500;&#25345;&#65288;&#21830;&#21697;&#30340;&#65289;&#19968;&#20010;&#20154;&#20026;&#30340;&#20215;&#26684;&#8221;&#12290;&#28982;&#32780;&#65292;&#22312;&#27431;&#30431;&#30340;&#25991;&#26412;&#20013;&#65292;&#23427;&#36890;&#24120;&#34987;&#29992;&#26469;&#34920;&#31034;&#8220;&#20998;&#37197;&#19968;&#20010;&#20215;&#20540;&#8221;&#25110;&#8220;&#20805;&#20998;&#21033;&#29992;&#8221;&#12290;&#35797;&#35797;s: increase the value of, give a value to, enhance, make the most of, accentuate, upgrade, put to good use.</message></rule>
+        </rule>
         <rule id="EUPUB_VERIFICATIONS" name="verifications">
             <pattern>
                 <token>verifications</token>
             </pattern>
+            <message>Verification means 'the process of establishing the truth, accuracy, or validity of something'. It is an uncountable noun and does not normally have a plural. We do not, therefore, perform or 'do' (or even make) verifications in English. Alternatives: <suggestion>checks</suggestion>.</message>
             <url>http://euenglish.webs.com/</url>
             <short>EU English: verifications</short>
             <example correction="checks" type="incorrect">To increase the effectiveness of its on-the-spot <marker>verifications</marker> of the Member States' statistical reports&#8230;</example>
             <example correction="checks" type="incorrect">No ex post <marker>verifications</marker> were carried out for any transactions made after 2008.</example>
-        <message>Verification&#26159;&#25351;&#8220;&#30830;&#23450;&#20107;&#29289;&#30495;&#30456;&#65292;&#20934;&#30830;&#24615;&#25110;&#26377;&#25928;&#24615;&#30340;&#36807;&#31243;&#8221;&#12290;&#36825;&#26159;&#19968;&#20010;&#19981;&#21487;&#25968;&#21517;&#35789;&#65292;&#36890;&#24120;&#19981;&#20250;&#26377;&#22797;&#25968;&#12290;&#22240;&#27492;&#65292;&#25105;&#20204;&#19981;&#20250;&#20197;&#33521;&#35821;&#36827;&#34892;&#25110;&#8220;&#20570;&#8221;&#65288;&#25110;&#29978;&#33267;&#21046;&#36896;&#65289;verifications&#12290;&#35797;&#35797;: <suggestion>checks</suggestion> .</message></rule>
+        </rule>
         <rule id="EUPUB_VISA" name="visa">
             <pattern>
                 <token inflected="yes">visa</token>
             </pattern>
+            <message>Visa is misused to render not only 'approval', but also the act of giving approval. In English, a visa is generally 'an official authorisation appended to a passport, permitting entry into and travel within a particular country or region'. It is also the name of a credit card. Alternatives: approval, endorsement, to approve, to endorse.</message>
             <url>http://euenglish.webs.com/</url>
             <short>EU English: visa</short>
             <example correction="" type="incorrect">The centralised ex-ante <marker>visa</marker> performed by the Financial Controller, &#8230;</example>
             <example correction="" type="incorrect">The Finance Section has to <marker>visa</marker> all transactions before they can be authorised.</example>
             <example correction="" type="incorrect">&#8230; the ex-ante <marker>visa</marker> of the Delegation would be suspended unless&#8230;</example>
             <example>The centralised ex-ante <marker>approval</marker> performed by the Financial Controller, &#8230;</example>
-        <message>Visa&#34987;&#28389;&#29992;&#65292;&#19981;&#20165;&#26159;&#8220;&#25209;&#20934;&#8221;&#65292;&#32780;&#19988;&#26159;&#32473;&#20104;&#25209;&#20934;&#30340;&#34892;&#20026;&#12290;&#22312;&#33521;&#35821;&#20013;&#65292;visa&#36890;&#24120;&#26159;&#8220;&#22312;&#25252;&#29031;&#19978;&#38468;&#21152;&#30340;&#23448;&#26041;&#25480;&#26435;&#65292;&#20801;&#35768;&#36827;&#20837;&#25110;&#22312;&#26576;&#20010;&#29305;&#23450;&#22269;&#23478;&#25110;&#22320;&#21306;&#26053;&#34892;&#8221;&#12290;&#23427;&#20063;&#26159;&#19968;&#24352;&#20449;&#29992;&#21345;&#30340;&#21517;&#23383;&#12290;&#35797;&#35797;&#65306;approval, endorsement, to approve, to endorse&#12290;</message></rule>
+        </rule>
     </category>
 
 </rules>

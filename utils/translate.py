@@ -9,6 +9,7 @@ This module translates the English rule messages of LanguageTool.
 '''
 
 import os
+import xlrd
 import json
 import csv
 import codecs
@@ -18,7 +19,7 @@ import xml.etree.ElementTree as ET
 class Translater:
     def __init__(self):
         self.version = '4.2'
-        self.rules_csv_path = '../rules/grammar.csv'
+        self.rules_path = '../rules/grammar.xls'
         self.en_rules_xml_path = '../rules/grammar_' + self.version + '_en.xml'
         self.zh_rules_xml_path = '../rules/grammar_' + self.version + '_zh.xml'
         self.grammar_xml_path = '../rules/grammar.xml'
@@ -26,12 +27,24 @@ class Translater:
         self.rules = self.load_rules()
 
     def load_rules(self):
-        with codecs.open(self.rules_csv_path, 'r') as in_file:
-            rules = []
-            reader = csv.DictReader(in_file)
-            for line in reader:
-                line['zh_msg'] = self.preprocess(line['zh_msg'])
-                rules.append(line)
+        rules = []
+        keys = []
+        r_workbook = xlrd.open_workbook(self.rules_path)
+        sheet_names = r_workbook.sheet_names()
+        sheet_quantity = len(sheet_names)
+        
+        for sheet_index in range(sheet_quantity):
+            print("Processing sheet: " + sheet_names[sheet_index])
+            r_worksheet = r_workbook.sheet_by_index(sheet_index)
+            offset = 0  # change this depending on how many header rows are present
+            for row_index in range(r_worksheet.nrows):
+                if row_index <= offset:  # skip headers
+                    for col_index in range(r_worksheet.ncols):
+                        keys.append(r_worksheet.cell_value(row_index, col_index))
+                row_dict = {}
+                for col_index in range(r_worksheet.ncols):
+                    row_dict[keys[col_index]] = r_worksheet.cell_value(row_index, col_index)
+                rules.append(row_dict)
         return rules
 
     def search_zh_msg(self, type, group_index, rule_id):
@@ -39,11 +52,11 @@ class Translater:
         rule_counter = 1
         for rule in self.rules:
             if type == 'single':
-                if rule['\ufefftype'] == type and rule['group_index'] == '' and rule['rule_id'] == rule_id:
+                if rule['type'] == type and rule['group_index'] == '' and rule['rule_id'] == rule_id:
                     zh_msg = rule['zh_msg']
                     break
             else:
-                if rule['\ufefftype'] == type and int(rule['group_index']) == group_index and rule['rule_id'] == rule_id:
+                if rule['type'] == type and int(rule['group_index']) == group_index and rule['rule_id'] == rule_id:
                     zh_msg = rule['zh_msg']
                     break
             rule_counter += 1
