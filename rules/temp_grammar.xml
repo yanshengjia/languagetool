@@ -1,0 +1,20 @@
+<rules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" lang="en" xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd">
+<category id="GRAMMAR" name="Grammar" type="grammar">
+<rule id="BED_VS_BAD" name="bed vs bad">
+ <pattern>
+  <token>bed</token>
+  <token>English</token>
+ </pattern>
+ <message>Do you mean <suggestion>bad</suggestion>?</message>
+ <example correction="">Sorry for my <marker>bed English</marker>.</example>
+ <example>Sorry for my bad English.</example>
+</rule><rule id="BED_VS_BAD" name="bed vs bad">
+ <pattern>
+  <token>bed</token>
+  <token>English</token>
+ </pattern>
+ <message>Do you mean <suggestion>bad</suggestion>?</message>
+ <example correction="">Sorry for my <marker>bed English</marker>.</example>
+ <example>Sorry for my bad English.</example>
+</rule></category>
+</rules>
