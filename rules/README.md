@@ -16,7 +16,7 @@
 cd sjyan/services/languagetool/
 ```
 
-3.将包含新规则 XML 的 EXCEL 文件拷贝到 `rules/` 目录下
+3.将包含新规则 XML 的 EXCEL 文件 new_rules.xlsx 拷贝到 `rules/` 目录下
 
 ```shell
 cp path/to/new_rules.xlsx rules/new_rules.xlsx
