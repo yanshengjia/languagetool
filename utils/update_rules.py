@@ -18,10 +18,10 @@ import xml.etree.ElementTree as ET
 class RuleManager:
     def __init__(self):
         self.version = '4.2'
-        self.new_rules_path = '../rules/new_rules.xlsx'
-        self.empty_grammar_xml_path = '../rules/empty_grammar.xml'
-        self.temp_grammar_xml_path = '../rules/temp_grammar.xml'
-        self.grammar_xml_path = '../rules/grammar.xml'
+        self.new_rules_path = 'rules/new_rules.xlsx'
+        self.empty_grammar_xml_path = 'rules/empty_grammar.xml'
+        self.temp_grammar_xml_path = 'rules/temp_grammar.xml'
+        self.grammar_xml_path = 'rules/grammar.xml'
         self.head_lines = 38
         self.new_rule_xmls = self._load_new_rules()
     

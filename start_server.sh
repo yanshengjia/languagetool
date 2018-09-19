@@ -3,7 +3,7 @@ echo "Cleaning..."
 mvn clean
 
 echo "Updating rules..."
-python3 /utils/update_rules
+python3 utils/update_rules.py
 
 echo "Moving properties..."
 rm ./languagetool-core/src/main/resources/org/languagetool/MessagesBundle_en.properties
