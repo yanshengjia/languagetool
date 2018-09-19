@@ -4,6 +4,12 @@
 
 填写 new_rules.xlsx，message 标签中的建议信息用中文写。
 
+Requirements:
+
+- 文件名为 new_rules.xlsx，放置在 languagetool/rules/ 目录下
+- 第一行为表头
+- 保证第六列是规则的 XML
+
 
 
 ## How to update rules
