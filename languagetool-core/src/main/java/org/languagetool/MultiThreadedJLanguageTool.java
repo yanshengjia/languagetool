@@ -57,23 +57,33 @@ public class MultiThreadedJLanguageTool extends JLanguageTool {
    * @since 2.9
    */
   public MultiThreadedJLanguageTool(Language language, int threadPoolSize) {
-    this(language, null, threadPoolSize);
+    this(language, null, threadPoolSize, null);
   }
 
   /**
    * @see #shutdown()
    */
   public MultiThreadedJLanguageTool(Language language, Language motherTongue) {
-    this(language, motherTongue, getDefaultThreadCount());
+    this(language, motherTongue, getDefaultThreadCount(), null);
+  }
+
+  /**
+   * @since 4.2
+   */
+  public MultiThreadedJLanguageTool(Language language, Language motherTongue, UserConfig userConfig) {
+    this(language, motherTongue, getDefaultThreadCount(), userConfig);
   }
 
   /**
    * @see #shutdown()
    * @param threadPoolSize the number of concurrent threads
    * @since 2.9
+   * UserConfig added
+   * @since 4.2
    */
-  public MultiThreadedJLanguageTool(Language language, Language motherTongue, int threadPoolSize) {
-    super(language, motherTongue);
+  public MultiThreadedJLanguageTool(Language language, Language motherTongue, int threadPoolSize,
+      UserConfig userConfig) {
+    super(language, motherTongue, null, userConfig);
     this.threadPoolSize = threadPoolSize;
     threadPool = Executors.newFixedThreadPool(getThreadPoolSize(), new DaemonThreadFactory());
   }
@@ -154,7 +164,7 @@ public class MultiThreadedJLanguageTool extends JLanguageTool {
   @Override
   protected List<RuleMatch> performCheck(List<AnalyzedSentence> analyzedSentences, List<String> sentences,
        List<Rule> allRules, ParagraphHandling paraMode, 
-       AnnotatedText annotatedText, RuleMatchListener listener) throws IOException {
+       AnnotatedText annotatedText, RuleMatchListener listener, Mode mode) {
     int charCount = 0;
     int lineCount = 0;
     int columnCount = 1;
@@ -164,7 +174,7 @@ public class MultiThreadedJLanguageTool extends JLanguageTool {
     ExecutorService executorService = getExecutorService();
     try {
       List<Callable<List<RuleMatch>>> callables =
-              createTextCheckCallables(paraMode, annotatedText, analyzedSentences, sentences, allRules, charCount, lineCount, columnCount, listener);
+              createTextCheckCallables(paraMode, annotatedText, analyzedSentences, sentences, allRules, charCount, lineCount, columnCount, listener, mode);
       List<Future<List<RuleMatch>>> futures = executorService.invokeAll(callables);
       for (Future<List<RuleMatch>> future : futures) {
         ruleMatches.addAll(future.get());
@@ -178,7 +188,7 @@ public class MultiThreadedJLanguageTool extends JLanguageTool {
 
   private List<Callable<List<RuleMatch>>> createTextCheckCallables(ParagraphHandling paraMode,
        AnnotatedText annotatedText, List<AnalyzedSentence> analyzedSentences, List<String> sentences, 
-       List<Rule> allRules, int charCount, int lineCount, int columnCount, RuleMatchListener listener) {
+       List<Rule> allRules, int charCount, int lineCount, int columnCount, RuleMatchListener listener, Mode mode) {
     int threads = getThreadPoolSize();
     int totalRules = allRules.size();
     int chunkSize = totalRules / threads;
@@ -196,7 +206,7 @@ public class MultiThreadedJLanguageTool extends JLanguageTool {
       } else {
         subRules = allRules.subList(firstItem, firstItem + chunkSize);
       }
-      callables.add(new TextCheckCallable(subRules, sentences, analyzedSentences, paraMode, annotatedText, charCount, lineCount, columnCount, listener));
+      callables.add(new TextCheckCallable(subRules, sentences, analyzedSentences, paraMode, annotatedText, charCount, lineCount, columnCount, listener, mode));
       firstItem = firstItem + chunkSize;
     }
     return callables;
@@ -235,6 +245,7 @@ public class MultiThreadedJLanguageTool extends JLanguageTool {
     public Thread newThread(Runnable r) {
       Thread thread = new Thread(r);
       thread.setDaemon(true); // so we don't have to shut down executor explicitly
+      thread.setName("lt-multithread");
       return thread;
     }
   }

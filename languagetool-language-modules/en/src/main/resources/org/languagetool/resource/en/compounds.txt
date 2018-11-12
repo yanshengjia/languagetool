@@ -150,6 +150,8 @@ non-custodial+
 none-the-less+
 non-verbal+
 non-verbally+
+note-book+
+note-books+
 over-whelmed+
 paper-boy+
 paper-boys+
@@ -514,6 +516,7 @@ double-barrelled*
 double-blind*
 double-breasted*
 double-checked*
+double-click*
 double-cross*
 double-crossing*
 double-dealing*

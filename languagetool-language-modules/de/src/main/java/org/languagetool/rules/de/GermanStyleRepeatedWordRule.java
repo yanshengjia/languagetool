@@ -18,9 +18,16 @@
  */
 package org.languagetool.rules.de;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import org.languagetool.AnalyzedToken;
 import org.languagetool.AnalyzedTokenReadings;
+import org.languagetool.Language;
+import org.languagetool.UserConfig;
 import org.languagetool.rules.AbstractStyleRepeatedWordRule;
 import org.languagetool.rules.Categories;
 
@@ -30,11 +37,12 @@ import org.languagetool.rules.Categories;
  * This rule detects no grammar error but a stylistic problem (default off)
  * @author Fred Kruse
  */
-
-public class GermanStyleRepeatedWordRule  extends AbstractStyleRepeatedWordRule {
+public class GermanStyleRepeatedWordRule extends AbstractStyleRepeatedWordRule {
   
-  public GermanStyleRepeatedWordRule(ResourceBundle messages) {
-    super(messages);
+  private static final String SYNONYMS_URL = "https://www.openthesaurus.de/synonyme/";
+  
+  public GermanStyleRepeatedWordRule(ResourceBundle messages, Language lang, UserConfig userConfig) {
+    super(messages, lang, userConfig);
     super.setCategory(Categories.STYLE.getCategory(messages));
   }
 
@@ -75,7 +83,8 @@ public class GermanStyleRepeatedWordRule  extends AbstractStyleRepeatedWordRule 
    */
   protected boolean isTokenToCheck(AnalyzedTokenReadings token) {
     return (token.matchesPosTagRegex("(SUB|EIG|VER|ADJ):.*") 
-        && !token.matchesPosTagRegex("(PRO|ART|ADV|VER:(AUX|MOD)):.*"))
+        && !token.matchesPosTagRegex("(PRO|ART|ADV|VER:(AUX|MOD)):.*")
+        && !token.getToken().equals("Ich"))
         || isUnknownWord(token);
   }
 
@@ -84,28 +93,48 @@ public class GermanStyleRepeatedWordRule  extends AbstractStyleRepeatedWordRule 
    */
   protected boolean isTokenPair(AnalyzedTokenReadings[] tokens, int n, boolean before) {
     if (before) {
-      if (tokens[n-2].matchesPosTagRegex("SUB:.*") && tokens[n-1].matchesPosTagRegex("PRP:.*")
-              && tokens[n].matchesPosTagRegex("SUB:.*")) {
+      if (tokens[n-2].hasPosTagStartingWith("SUB:") && tokens[n-1].hasPosTagStartingWith("PRP:")
+              && tokens[n].hasPosTagStartingWith("SUB:")) {
         return true;
       }
     } else {
-      if (tokens[n].matchesPosTagRegex("SUB:.*") && tokens[n+1].matchesPosTagRegex("PRP:.*")
-              && tokens[n+2].matchesPosTagRegex("SUB:.*")) {
+      if (tokens[n].hasPosTagStartingWith("SUB:") && tokens[n+1].hasPosTagStartingWith("PRP:")
+              && tokens[n+2].hasPosTagStartingWith("SUB:")) {
         return true;
       }
     }
     return false;
   }
-  
+
+  @Override
   protected boolean isPartOfWord(String testTokenText, String tokenText) {
-    if((testTokenText.startsWith(tokenText) || testTokenText.endsWith(tokenText) 
-        || tokenText.startsWith(testTokenText) || tokenText.endsWith(testTokenText)) 
+    return ((testTokenText.startsWith(tokenText) || testTokenText.endsWith(tokenText)
+        || tokenText.startsWith(testTokenText) || tokenText.endsWith(testTokenText))
         && (testTokenText.length() == tokenText.length() || testTokenText.length() < tokenText.length() - 3
         || testTokenText.length() > tokenText.length() + 3)
-        || testTokenText.equals(tokenText + "s") || tokenText.equals(testTokenText + "s")) {
-      return true;
+        || testTokenText.equals(tokenText + "s") || tokenText.equals(testTokenText + "s"));
+  }
+
+  /* 
+   *  set an URL to the German openThesaurus
+   */
+  @Override
+  protected URL setURL(AnalyzedTokenReadings token) throws MalformedURLException {
+    if (token != null) {
+      List<AnalyzedToken> readings = token.getReadings();
+      List<String> lemmas = new ArrayList<>();
+      for (AnalyzedToken reading : readings) {
+        String lemma = reading.getLemma();
+        if (lemma != null) {
+          lemmas.add(lemma);
+        }
+      }
+      if (lemmas.size() == 1) {
+        return new URL(SYNONYMS_URL + lemmas.get(0));
+      }
+      return new URL(SYNONYMS_URL + token.getToken());
     }
-    return false;
+    return null;
   }
 
 }

@@ -80,6 +80,9 @@ class Main {
     if (options.getWord2VecModel() != null) {
       lt.activateWord2VecModelRules(options.getWord2VecModel());
     }
+    if (options.getNeuralNetworkModel() != null) {
+      lt.activateNeuralNetworkRules(options.getNeuralNetworkModel());
+    }
     Tools.selectRules(lt, options.getDisabledCategories(), options.getEnabledCategories(),
             new HashSet<>(options.getDisabledRules()), new HashSet<>(options.getEnabledRules()), options.isUseEnabledOnly());
   }
@@ -433,8 +436,14 @@ class Main {
               "category ids (" + catIds + ") are correct");
     }
     if (languageHint != null) {
-      String spellHint = prg.isSpellCheckingActive() ?
-              "" : " (no spell checking active, specify a language variant like 'en-GB' if available)";
+      String spellHint = "";
+      if (!prg.isSpellCheckingActive()) {
+        if (prg.lt.getLanguage().isVariant()) {
+          spellHint = " (no spell checking active)";
+        } else {
+          spellHint = " (no spell checking active, specify a language variant like 'en-GB' if available)";
+        }
+      }
       System.err.println(languageHint + spellHint);
     }
     prg.setListUnknownWords(options.isListUnknown());
@@ -471,8 +480,9 @@ class Main {
     }
   }
 
-  private static Language detectLanguageOfString(String text) {
+  private Language detectLanguageOfString(String text) {
     LanguageIdentifier identifier = new LanguageIdentifier();
+    identifier.enableFasttext(options.getFasttextBinary(), options.getFasttextModel());
     return identifier.detectLanguage(text);
   }
 

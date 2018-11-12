@@ -20,14 +20,13 @@
 package org.languagetool.rules.spelling.morfologik;
 
 import org.jetbrains.annotations.Nullable;
-import org.languagetool.AnalyzedSentence;
-import org.languagetool.AnalyzedTokenReadings;
-import org.languagetool.JLanguageTool;
-import org.languagetool.Language;
+import org.languagetool.*;
 import org.languagetool.rules.Categories;
 import org.languagetool.rules.ITSIssueType;
 import org.languagetool.rules.RuleMatch;
 import org.languagetool.rules.spelling.SpellingCheckRule;
+import org.languagetool.rules.spelling.morfologik.suggestions_ordering.SuggestionsOrderer;
+import org.languagetool.tools.Tools;
 
 import java.io.IOException;
 import java.util.*;
@@ -35,15 +34,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class MorfologikSpellerRule extends SpellingCheckRule {
-  
+
   protected MorfologikMultiSpeller speller1;
   protected MorfologikMultiSpeller speller2;
   protected MorfologikMultiSpeller speller3;
   protected Locale conversionLocale;
 
+  private static SuggestionsOrderer suggestionsOrderer = null;
+  
   private boolean ignoreTaggedWords = false;
   private boolean checkCompound = false;
   private Pattern compoundRegex = Pattern.compile("-");
+  private final UserConfig userConfig;
 
   /**
    * Get the filename, e.g., <tt>/resource/pl/spelling.dict</tt>.
@@ -54,11 +56,21 @@ public abstract class MorfologikSpellerRule extends SpellingCheckRule {
   public abstract String getId();
 
   public MorfologikSpellerRule(ResourceBundle messages, Language language) throws IOException {
-    super(messages, language);
+    this(messages, language, null);
+  }
+  
+  public MorfologikSpellerRule(ResourceBundle messages, Language language, UserConfig userConfig) throws IOException {
+    this(messages, language, userConfig, Collections.emptyList());
+  }
+  
+  public MorfologikSpellerRule(ResourceBundle messages, Language language, UserConfig userConfig, List<Language> altLanguages) throws IOException {
+    super(messages, language, userConfig, altLanguages);
+    this.userConfig = userConfig;
     super.setCategory(Categories.TYPOS.getCategory(messages));
     this.conversionLocale = conversionLocale != null ? conversionLocale : Locale.getDefault();
     init();
     setLocQualityIssueType(ITSIssueType.Misspelling);
+    this.suggestionsOrderer = new SuggestionsOrderer(language, this.getId());
   }
 
   @Override
@@ -105,20 +117,20 @@ public abstract class MorfologikSpellerRule extends SpellingCheckRule {
       // if we use token.getToken() we'll get ignored characters inside and speller will choke
       String word = token.getAnalyzedToken(0).getToken();
       if (tokenizingPattern() == null) {
-        ruleMatches.addAll(getRuleMatches(word, token.getStartPos(), sentence));
+        ruleMatches.addAll(getRuleMatches(word, token.getStartPos(), sentence, ruleMatches));
       } else {
         int index = 0;
         Matcher m = tokenizingPattern().matcher(word);
         while (m.find()) {
           String match = word.subSequence(index, m.start()).toString();
-          ruleMatches.addAll(getRuleMatches(match, token.getStartPos() + index, sentence));
+          ruleMatches.addAll(getRuleMatches(match, token.getStartPos() + index, sentence, ruleMatches));
           index = m.end();
         }
         if (index == 0) { // tokenizing char not found
-          ruleMatches.addAll(getRuleMatches(word, token.getStartPos(), sentence));
+          ruleMatches.addAll(getRuleMatches(word, token.getStartPos(), sentence, ruleMatches));
         } else {
           ruleMatches.addAll(getRuleMatches(word.subSequence(
-              index, word.length()).toString(), token.getStartPos() + index, sentence));
+              index, word.length()).toString(), token.getStartPos() + index, sentence, ruleMatches));
         }
       }
     }
@@ -127,13 +139,17 @@ public abstract class MorfologikSpellerRule extends SpellingCheckRule {
 
   private void initSpeller(String binaryDict) throws IOException {
     String plainTextDict = null;
+    String languageVariantPlainTextDict = null;
     if (JLanguageTool.getDataBroker().resourceExists(getSpellingFileName())) {
       plainTextDict = getSpellingFileName();
     }
+    if (getLanguageVariantSpellingFileName() != null && JLanguageTool.getDataBroker().resourceExists(getLanguageVariantSpellingFileName())) {
+      languageVariantPlainTextDict = getLanguageVariantSpellingFileName();
+    }
     if (plainTextDict != null) {
-      speller1 = new MorfologikMultiSpeller(binaryDict, plainTextDict, 1);
-      speller2 = new MorfologikMultiSpeller(binaryDict, plainTextDict, 2);
-      speller3 = new MorfologikMultiSpeller(binaryDict, plainTextDict, 3);
+      speller1 = new MorfologikMultiSpeller(binaryDict, plainTextDict, languageVariantPlainTextDict, userConfig, 1);
+      speller2 = new MorfologikMultiSpeller(binaryDict, plainTextDict, languageVariantPlainTextDict, userConfig, 2);
+      speller3 = new MorfologikMultiSpeller(binaryDict, plainTextDict, languageVariantPlainTextDict, userConfig, 3);
       setConvertsCase(speller1.convertsCase());
     } else {
       throw new RuntimeException("Could not find ignore spell file in path: " + getSpellingFileName());
@@ -160,40 +176,53 @@ public abstract class MorfologikSpellerRule extends SpellingCheckRule {
       return false;
     }
 
-    if (checkCompound) {
-      if (compoundRegex.matcher(word).find()) {
-        String[] words = compoundRegex.split(word);
-        for (String singleWord: words) {
-          if (speller.isMisspelled(singleWord)) {
-            return true;
-          }
+    if (checkCompound && compoundRegex.matcher(word).find()) {
+      String[] words = compoundRegex.split(word);
+      for (String singleWord: words) {
+        if (speller.isMisspelled(singleWord)) {
+          return true;
         }
-        return false;
       }
+      return false;
     }
 
     return true;
   }
 
-  protected List<RuleMatch> getRuleMatches(String word, int startPos, AnalyzedSentence sentence) throws IOException {
+  protected List<RuleMatch> getRuleMatches(String word, int startPos, AnalyzedSentence sentence, List<RuleMatch> ruleMatchesSoFar) throws IOException {
     List<RuleMatch> ruleMatches = new ArrayList<>();
     if (isMisspelled(speller1, word) || isProhibited(word)) {
-      RuleMatch ruleMatch = new RuleMatch(this, sentence, startPos, startPos
-          + word.length(), messages.getString("spelling"),
-          messages.getString("desc_spelling_short"));
-      List<String> suggestions = speller1.getSuggestions(word);
-      if (suggestions.isEmpty() && word.length() >= 5) {
-        // speller1 uses a maximum edit distance of 1, it won't find suggestion for "garentee", "greatful" etc.
-        suggestions.addAll(speller2.getSuggestions(word));
-        if (suggestions.isEmpty()) {
-          suggestions.addAll(speller3.getSuggestions(word));
-        }
+      RuleMatch ruleMatch;
+      Language acceptingLanguage = acceptedInAlternativeLanguage(word);
+      if (acceptingLanguage != null) {
+        // e.g. "Der Typ ist in UK echt famous" -> could be German 'famos'
+        ruleMatch = new RuleMatch(this, sentence, startPos, startPos
+                + word.length(),
+                Tools.i18n(messages, "accepted_in_alt_language", word, messages.getString(acceptingLanguage.getShortCode())));
+        ruleMatch.setType(RuleMatch.Type.Hint);
+      } else {
+        ruleMatch = new RuleMatch(this, sentence, startPos, startPos
+                + word.length(), messages.getString("spelling"),
+                messages.getString("desc_spelling_short"));
       }
-      suggestions.addAll(0, getAdditionalTopSuggestions(suggestions, word));
-      suggestions.addAll(getAdditionalSuggestions(suggestions, word));
-      if (!suggestions.isEmpty()) {
-        filterSuggestions(suggestions);
-        ruleMatch.setSuggestedReplacements(orderSuggestions(suggestions, word));
+      if (userConfig == null || userConfig.getMaxSpellingSuggestions() == 0 || ruleMatchesSoFar.size() <= userConfig.getMaxSpellingSuggestions()) {
+        List<String> suggestions = speller1.getSuggestions(word);
+        if (suggestions.isEmpty() && word.length() >= 5) {
+          // speller1 uses a maximum edit distance of 1, it won't find suggestion for "garentee", "greatful" etc.
+          suggestions.addAll(speller2.getSuggestions(word));
+          if (suggestions.isEmpty()) {
+            suggestions.addAll(speller3.getSuggestions(word));
+          }
+        }
+        suggestions.addAll(0, getAdditionalTopSuggestions(suggestions, word));
+        suggestions.addAll(getAdditionalSuggestions(suggestions, word));
+        if (!suggestions.isEmpty()) {
+          filterSuggestions(suggestions);
+          ruleMatch.setSuggestedReplacements(orderSuggestions(suggestions, word, sentence, startPos, word.length()));
+        }
+      } else {
+        // limited to save CPU
+        ruleMatch.setSuggestedReplacement(messages.getString("too_many_errors"));
       }
       ruleMatches.add(ruleMatch);
     }
@@ -214,6 +243,16 @@ public abstract class MorfologikSpellerRule extends SpellingCheckRule {
 
   protected List<String> orderSuggestions(List<String> suggestions, String word) {
     return suggestions;
+  }
+
+  private List<String> orderSuggestions(List<String> suggestions, String word, AnalyzedSentence sentence, int startPos, int wordLength) {
+    List<String> orderedSuggestions;
+    if (suggestionsOrderer.isMlAvailable()) {
+      orderedSuggestions = suggestionsOrderer.orderSuggestionsUsingModel(suggestions, word, sentence, startPos, word.length());
+    } else {
+      orderedSuggestions = orderSuggestions(suggestions, word);
+    }
+    return orderedSuggestions;
   }
 
   /**
@@ -246,10 +285,17 @@ public abstract class MorfologikSpellerRule extends SpellingCheckRule {
       for (int i = 0; i < word.length() && isSurrogatePairCombination; i += 2) {
         isSurrogatePairCombination &= Character.isSurrogatePair(word.charAt(i), word.charAt(i + 1));
       }
-      if (isSurrogatePairCombination) {
-        return isSurrogatePairCombination;
-      }
+      return isSurrogatePairCombination;
     }
     return false;
+  }
+
+  /**
+   * Ignore surrogate pairs (emojis) 
+   * @since 4.3 
+   * @see org.languagetool.rules.spelling.SpellingCheckRule#ignoreWord(java.lang.String)
+   */
+  protected boolean ignoreWord(String word) throws IOException {
+    return super.ignoreWord(word) || isSurrogatePairCombination(word);
   }
 }

@@ -87,6 +87,14 @@ public class VerbAgreementRule extends TextLevelRule {
       new PatternTokenBuilder().token("ich").build()
     ),
     Arrays.asList(
+      new PatternTokenBuilder().csToken("Solltest").build(),
+      new PatternTokenBuilder().token("du").build()
+    ),
+    Arrays.asList(
+      new PatternTokenBuilder().csToken("Sollte").build(),
+      new PatternTokenBuilder().tokenRegex("er|sie").build()
+    ),
+    Arrays.asList(
       new PatternTokenBuilder().pos(JLanguageTool.SENTENCE_START_TAGNAME).build(),  // "Bin gleich wieder da"
       new PatternTokenBuilder().csToken("Bin").build()
     ),
@@ -129,6 +137,18 @@ public class VerbAgreementRule extends TextLevelRule {
      new PatternTokenBuilder().tokenRegex("du|e[rs]|sie|ich").build(),
      new PatternTokenBuilder().token("sein").matchInflectedForms().build(),
      new PatternTokenBuilder().tokenRegex("[\\.,]").build()
+    ),
+    Arrays.asList( // Musst du gehen?
+     new PatternTokenBuilder().tokenRegex("D[au]rf.*|Muss.*").build(),
+     new PatternTokenBuilder().posRegex("PRO:PER:NOM:.+").build(),
+     new PatternTokenBuilder().posRegex("VER:INF:.+").build(),
+     new PatternTokenBuilder().pos("PKT").build(),
+     new PatternTokenBuilder().tokenRegex("(?!die).+").build()
+    ),
+    Arrays.asList(
+     new PatternTokenBuilder().csToken("(").build(),
+     new PatternTokenBuilder().posRegex("VER:2:SIN:.+").build(),
+     new PatternTokenBuilder().csToken(")").build()
     )
   );
 
@@ -172,7 +192,9 @@ public class VerbAgreementRule extends TextLevelRule {
   private static final Set<String> CONJUNCTIONS = new HashSet<>(Arrays.asList(
     "weil",
     "obwohl",
-    "dass"/*,
+    "dass",
+    "indem",
+    "sodass"/*,
     "damit",
     "wenn"*/
   ));

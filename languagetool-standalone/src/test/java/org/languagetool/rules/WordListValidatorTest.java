@@ -38,12 +38,13 @@ public class WordListValidatorTest {
 
   private static final Pattern VALID_CHARS = Pattern.compile(
           "[0-9a-zA-ZöäüÖÄÜßëçèéáàóòÈÉÁÀÓÒãñíîş&" +
-          "âêôõû" +  // for Portuguese
-          "Œ€ūαΑβΒγɣΓδΔεΕζΖηΗθΘιΙκΚλΛμΜνΝξΞοΟπΠρΡσΣτΤυΥφΦχΧψΨωΩάΆέΈίΊήΉύΎϊϋΰΐœţ" +
-          "Śśōżúï" +
+          "Œ€ūαΑβΒγɣΓδΔεΕζΖηΗθΘιΙκΚλΛμΜνΝξΞοΟπΠρΡσΣτΤυΥφΦχΧψΨωΩάΆέΈίΊήΉύΎϊϋΰΐœţłń" +
+          "ŚśōżúïÎôêâû" +
+          "õ" +   // for Portuguese
           "·" +   // for Catalan
+          "'ÅıøğåšĝÇİŞŠ" +   // for Dutch
           "./-]+" + 
-          "|[khmcdµ]?m[²³]"
+          "|[khmcdµ]?m[²³]|°[CFR]"
   );
 
   // Words that are valid but with special characters so that we don't want to
@@ -51,6 +52,8 @@ public class WordListValidatorTest {
   private static final Set<String> VALID_WORDS = new HashSet<>(Arrays.asList(
           "Mondelēz",
           "Brač",
+          "Djuveč",
+          "Djuvečreis",
           "Hidschāb/S",
           "Dvořák/S",
           "Erdoğan/S",

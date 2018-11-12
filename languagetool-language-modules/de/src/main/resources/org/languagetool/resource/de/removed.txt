@@ -2,6 +2,13 @@
 # Useful to remove incorrect readings from the binary dictionary without rebuilding it.
 # File Encoding: UTF-8
 # Format: fullform baseform postags (tab separated)
+Schwimmerbecken	Schwimmerbecke	SUB:AKK:PLU:FEM
+Schwimmerbecken	Schwimmerbecke	SUB:DAT:PLU:FEM
+Schwimmerbecken	Schwimmerbecke	SUB:GEN:PLU:FEM
+Schwimmerbecken	Schwimmerbecke	SUB:NOM:PLU:FEM
+Deale	Deal	SUB:AKK:PLU:MAS
+Deale	Deal	SUB:NOM:PLU:MAS
+Dealen	Deal	SUB:DAT:PLU:MAS
 USA	USA	SUB:DAT:SIN:FEM
 USA	USA	SUB:AKK:SIN:FEM
 USA	USA	SUB:NOM:SIN:FEM
@@ -105,3 +112,9 @@ schützenswerte	schützenswerten	VER:1:SIN:KJ1:SFT
 schützenswerte	schützenswerten	VER:1:SIN:PRÄ:SFT
 schützenswerte	schützenswerten	VER:3:SIN:KJ1:SFT
 schützenswerte	schützenswerten	VER:IMP:SIN:SFT
+Damenumkleiden	Damenumkleiden	SUB:AKK:SIN:NEU:INF
+Damenumkleiden	Damenumkleiden	SUB:DAT:SIN:NEU:INF
+Damenumkleiden	Damenumkleiden	SUB:NOM:SIN:NEU:INF
+Herrenumkleiden	Herrenumkleiden	SUB:AKK:SIN:NEU:INF
+Herrenumkleiden	Herrenumkleiden	SUB:DAT:SIN:NEU:INF
+Herrenumkleiden	Herrenumkleiden	SUB:NOM:SIN:NEU:INF  

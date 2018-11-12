@@ -24,6 +24,7 @@ import org.languagetool.JLanguageTool;
 import org.languagetool.Language;
 import org.languagetool.Languages;
 import org.languagetool.MultiThreadedJLanguageTool;
+import org.languagetool.UserConfig;
 import org.languagetool.language.LanguageIdentifier;
 import org.languagetool.rules.*;
 
@@ -38,6 +39,7 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -152,6 +154,11 @@ class LanguageToolSupport {
 
     boolean update = false;
   
+    Language language = languageTool.getLanguage();
+    languageTool = new MultiThreadedJLanguageTool(language, config.getMotherTongue(), 
+        new UserConfig(config.getConfigurableValues()));
+    config.initStyleCategories(languageTool.getAllRules());
+
     Set<String> disabledRules = config.getDisabledRuleIds();
     if (disabledRules == null) {
       disabledRules = Collections.emptySet();
@@ -222,6 +229,8 @@ class LanguageToolSupport {
       languageTool.enableRule(ruleName);
       update = true;
     }
+    
+//    languageTool.setConfigValues(config.getConfigValues());
 
     if (update) {
       //FIXME
@@ -242,7 +251,9 @@ class LanguageToolSupport {
       //if (languageTool != null) {
       //  languageTool.shutdownWhenDone();
       //}
-      languageTool = new MultiThreadedJLanguageTool(language, config.getMotherTongue());
+      languageTool = new MultiThreadedJLanguageTool(language, config.getMotherTongue(), 
+          new UserConfig(config.getConfigurableValues()));
+      config.initStyleCategories(languageTool.getAllRules());
       languageTool.setCleanOverlappingMatches(false);
       Tools.configureFromRules(languageTool, config);
       activateLanguageModelRules(language);
@@ -513,7 +524,7 @@ class LanguageToolSupport {
       popup.add(new JSeparator());
 
       JMenuItem moreItem = new JMenuItem(messages.getString("guiMore"));
-      moreItem.addActionListener(e -> showDialog(textComponent, span.msg, span.desc, span.rule));
+      moreItem.addActionListener(e -> showDialog(textComponent, span.msg, span.desc, span.rule, span.url));
       popup.add(moreItem);
 
       JMenuItem ignoreItem = new JMenuItem(messages.getString("guiTurnOffRule"));
@@ -837,9 +848,10 @@ class LanguageToolSupport {
       try {
         if (span.start < span.end) { //to avoid the BadLocationException
           ITSIssueType issueType = span.rule.getLocQualityIssueType();
+          Color ulColor = config.getUnderlineColor(span.rule.getCategory().getName());
           Color colorForIssueType = getConfig().getErrorColors().get(issueType);
           Color bgColor = colorForIssueType != null ? colorForIssueType : null;
-          Color underlineColor = ITSIssueType.Misspelling == span.rule.getLocQualityIssueType() ? Color.red : Color.blue;
+          Color underlineColor = ITSIssueType.Misspelling == span.rule.getLocQualityIssueType() ? Color.red : ulColor;
           HighlightPainter painter = new HighlightPainter(bgColor, underlineColor);
           h.addHighlight(span.start, span.end, painter);
         }
@@ -849,8 +861,8 @@ class LanguageToolSupport {
     }
   }
 
-  private void showDialog(Component parent, String title, String message, Rule rule) {
-    Tools.showRuleInfoDialog(parent, title, message, rule, messages, languageTool.getLanguage().getShortCodeWithCountryAndVariant());
+  private void showDialog(Component parent, String title, String message, Rule rule, URL url) {
+    Tools.showRuleInfoDialog(parent, title, message, rule, url, messages, languageTool.getLanguage().getShortCodeWithCountryAndVariant());
   }
 
   private static class ReplaceMenuItem extends JMenuItem {
@@ -873,6 +885,7 @@ class LanguageToolSupport {
     private final String desc;
     private final List<String> replacement;
     private final Rule rule;
+    private final URL url;
 
     private Span(RuleMatch match) {
       start = match.getFromPos();
@@ -887,6 +900,7 @@ class LanguageToolSupport {
       List<String> repl = match.getSuggestedReplacements();
       replacement.addAll(repl.subList(0, Math.min(MAX_SUGGESTIONS, repl.size())));
       rule = match.getRule();
+      url = match.getUrl() != null ? match.getUrl() : rule.getUrl();
     }
   }
 

@@ -19,11 +19,12 @@
 package org.languagetool.rules.sr.ekavian;
 
 import org.languagetool.Language;
-import org.languagetool.language.SerbianSerbian;
+import org.languagetool.UserConfig;
 import org.languagetool.rules.Example;
 import org.languagetool.rules.spelling.morfologik.MorfologikSpellerRule;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -36,8 +37,8 @@ public class MorfologikEkavianSpellerRule extends MorfologikSpellerRule {
 
   public MorfologikEkavianSpellerRule(
           ResourceBundle messages,
-          Language language) throws IOException {
-    super(messages, language);
+          Language language, UserConfig userConfig, List<Language> altLanguages) throws IOException {
+    super(messages, language, userConfig, altLanguages);
     addExamplePair(
             Example.wrong("Изгубила све сам <marker>бткие</marker>, ал' још водим рат."),
             Example.fixed("Изгубила све сам <marker>битке</marker>, ал' још водим рат.")

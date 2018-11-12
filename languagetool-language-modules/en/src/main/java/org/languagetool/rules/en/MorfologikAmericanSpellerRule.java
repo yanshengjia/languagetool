@@ -20,18 +20,29 @@
 package org.languagetool.rules.en;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import org.languagetool.Language;
+import org.languagetool.UserConfig;
 
 public final class MorfologikAmericanSpellerRule extends AbstractEnglishSpellerRule {
 
   public static final String RULE_ID = "MORFOLOGIK_RULE_EN_US";
 
   private static final String RESOURCE_FILENAME = "/en/hunspell/en_US.dict";
+  private static final String LANGUAGE_SPECIFIC_PLAIN_TEXT_DICT = "en/hunspell/spelling_en-US.txt";
 
   public MorfologikAmericanSpellerRule(ResourceBundle messages, Language language) throws IOException {
-    super(messages, language);
+    super(messages, language, null, Collections.emptyList());
+  }
+
+  /**
+   * @since 4.2
+   */
+  public MorfologikAmericanSpellerRule(ResourceBundle messages, Language language, UserConfig userConfig, List<Language> altLanguages) throws IOException {
+    super(messages, language, userConfig, altLanguages);
   }
 
   @Override
@@ -44,4 +55,8 @@ public final class MorfologikAmericanSpellerRule extends AbstractEnglishSpellerR
     return RULE_ID;
   }
 
+  @Override
+  public String getLanguageVariantSpellingFileName() {
+    return LANGUAGE_SPECIFIC_PLAIN_TEXT_DICT;
+  }
 }

@@ -23,10 +23,10 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 import org.languagetool.AnalyzedSentence;
 import org.languagetool.AnalyzedTokenReadings;
+import org.languagetool.UserConfig;
 
 /**
  * A rule that warns on long sentences. Note that this rule is off by default.
@@ -36,28 +36,46 @@ public class LongSentenceRule extends Rule {
   public static final String RULE_ID = "TOO_LONG_SENTENCE";
   
   private static final int DEFAULT_MAX_WORDS = 50;
-  private static final Pattern NON_WORD_REGEX = Pattern.compile("[.?!…:;,~’'\"„“”»«‚‘›‹()\\[\\]\\-–—*×∗·+÷/=]");
   private static final boolean DEFAULT_ACTIVATION = false;
 
-  protected static int maxWords = DEFAULT_MAX_WORDS;
+  protected int maxWords = DEFAULT_MAX_WORDS;
 
   /**
-   * @since 3.7
+   * @since 4.2
    */
-  public LongSentenceRule(ResourceBundle messages, boolean defaultActive) {
+  public LongSentenceRule(ResourceBundle messages, UserConfig userConfig, int defaultWords, boolean defaultActive) {
     super(messages);
     super.setCategory(Categories.STYLE.getCategory(messages));
     if (!defaultActive) {
       setDefaultOff();
+    }
+    if(defaultWords > 0) {
+      this.maxWords = defaultWords;
+    }
+    if (userConfig != null) {
+      int confWords = userConfig.getConfigValueByID(getId());
+      if(confWords > 0) {
+        this.maxWords = confWords;
+      }
     }
     setLocQualityIssueType(ITSIssueType.Style);
   }
 
   /**
    * Creates a rule with default inactive
+   * @since 4.2
    */
-  public LongSentenceRule(ResourceBundle messages) {
-    this(messages, DEFAULT_ACTIVATION);
+  public LongSentenceRule(ResourceBundle messages, UserConfig userConfig, int defaultWords) {
+    this(messages, userConfig, defaultWords, DEFAULT_ACTIVATION);
+  }
+
+
+  /**
+   * Creates a rule with default values can be overwritten by configuration settings
+   * @since 4.2
+   */
+  public LongSentenceRule(ResourceBundle messages, UserConfig userConfig) {
+    this(messages, userConfig, -1, DEFAULT_ACTIVATION);
   }
 
   @Override
@@ -76,16 +94,6 @@ public class LongSentenceRule extends Rule {
   }
 
   /*
-   * set maximal Distance of words in number of sentences - note that this sets a static value
-   * that affects all instances of this rule!
-   * @since 4.1
-   */
-  @Override
-  public void setDefaultValue(int numWords) {
-    maxWords = numWords;
-  }
-  
-  /*
    * get maximal Distance of words in number of sentences
    * @since 4.1
    */
@@ -93,7 +101,39 @@ public class LongSentenceRule extends Rule {
   public int getDefaultValue() {
     return maxWords;
   }
-  
+
+  /**
+   * @since 4.2
+   */
+  @Override
+  public boolean hasConfigurableValue() {
+    return true;
+  }
+
+  /**
+   * @since 4.2
+   */
+  @Override
+  public int getMinConfigurableValue() {
+    return 5;
+  }
+
+  /**
+   * @since 4.2
+   */
+  @Override
+  public int getMaxConfigurableValue() {
+    return 100;
+  }
+
+  /**
+   * @since 4.2
+   */
+  @Override
+  public String getConfigureText() {
+    return messages.getString("guiLongSentencesText");
+  }
+
   public String getMessage() {
 		return MessageFormat.format(messages.getString("long_sentence_rule_msg2"), maxWords);
   }
@@ -110,8 +150,7 @@ public class LongSentenceRule extends Rule {
       int startPos = 0;
       int prevStartPos;
       for (AnalyzedTokenReadings aToken : tokens) {
-        String token = aToken.getToken();
-        if (!aToken.isSentenceStart() && !aToken.isSentenceEnd() && !NON_WORD_REGEX.matcher(token).matches()) {
+        if (!aToken.isSentenceStart() && !aToken.isSentenceEnd() && !aToken.isNonWord()) {
           numWords++;
           prevStartPos = startPos;
           startPos = aToken.getStartPos();

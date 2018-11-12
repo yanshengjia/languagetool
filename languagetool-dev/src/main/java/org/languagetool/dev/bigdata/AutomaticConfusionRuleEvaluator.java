@@ -121,10 +121,10 @@ class AutomaticConfusionRuleEvaluator {
     try {
       File sentencesFile = writeExampleSentencesToTempFile(new String[]{part1, part2});
       List<String> input = Arrays.asList(sentencesFile.getAbsolutePath());
-      Map<Long, ConfusionRuleEvaluator.EvalResult> results = evaluator.run(input, part1, part2, MAX_EXAMPLES, EVAL_FACTORS);
-      Map<Long, ConfusionRuleEvaluator.EvalResult> bestResults = findBestFactor(results);
+      Map<Long, RuleEvalResult> results = evaluator.run(input, part1, part2, MAX_EXAMPLES, EVAL_FACTORS);
+      Map<Long, RuleEvalResult> bestResults = findBestFactor(results);
       if (bestResults.size() > 0) {
-        for (Map.Entry<Long, ConfusionRuleEvaluator.EvalResult> entry : bestResults.entrySet()) {
+        for (Map.Entry<Long, RuleEvalResult> entry : bestResults.entrySet()) {
           System.out.println("=> " + entry.getValue().getSummary());
         }
       } else {
@@ -136,10 +136,10 @@ class AutomaticConfusionRuleEvaluator {
     }
   }
 
-  private Map<Long, ConfusionRuleEvaluator.EvalResult> findBestFactor(Map<Long, ConfusionRuleEvaluator.EvalResult> results) {
-    Map<Long, ConfusionRuleEvaluator.EvalResult> filteredResults = new HashMap<>();
-    for (Map.Entry<Long, ConfusionRuleEvaluator.EvalResult> entry : results.entrySet()) {
-      ConfusionRuleEvaluator.EvalResult result = entry.getValue();
+  private Map<Long, RuleEvalResult> findBestFactor(Map<Long, RuleEvalResult> results) {
+    Map<Long, RuleEvalResult> filteredResults = new HashMap<>();
+    for (Map.Entry<Long, RuleEvalResult> entry : results.entrySet()) {
+      RuleEvalResult result = entry.getValue();
       boolean candidate = result.getPrecision() >= MIN_PRECISION && result.getRecall() >= MIN_RECALL;
       if (candidate) {
         filteredResults.put(entry.getKey(), entry.getValue());

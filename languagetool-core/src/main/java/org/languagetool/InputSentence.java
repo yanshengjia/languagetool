@@ -20,6 +20,7 @@ package org.languagetool;
 
 import org.languagetool.rules.CategoryId;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -27,7 +28,6 @@ import java.util.Set;
  * For internal use only. Used as a key for caching check results.
  * @since 3.7
  */
-@Experimental
 class InputSentence {
 
   private final String text;
@@ -37,10 +37,14 @@ class InputSentence {
   private final Set<CategoryId> disabledRuleCategories;
   private final Set<String> enabledRules;
   private final Set<CategoryId> enabledRuleCategories;
-  
+  private final UserConfig userConfig;
+  private final List<Language> altLanguages;
+  private final JLanguageTool.Mode mode;
+
   InputSentence(String text, Language lang, Language motherTongue,
-                       Set<String> disabledRules, Set<CategoryId> disabledRuleCategories,
-                       Set<String> enabledRules, Set<CategoryId> enabledRuleCategories) {
+                Set<String> disabledRules, Set<CategoryId> disabledRuleCategories,
+                Set<String> enabledRules, Set<CategoryId> enabledRuleCategories, UserConfig userConfig,
+                List<Language> altLanguages, JLanguageTool.Mode mode) {
     this.text = Objects.requireNonNull(text);
     this.lang = Objects.requireNonNull(lang);
     this.motherTongue = motherTongue;
@@ -48,6 +52,9 @@ class InputSentence {
     this.disabledRuleCategories = disabledRuleCategories;
     this.enabledRules = enabledRules;
     this.enabledRuleCategories = enabledRuleCategories;
+    this.userConfig = userConfig;
+    this.altLanguages = altLanguages;
+    this.mode = Objects.requireNonNull(mode);
   }
 
   /** @since 4.1 */
@@ -67,12 +74,16 @@ class InputSentence {
            Objects.equals(disabledRules, other.disabledRules) &&
            Objects.equals(disabledRuleCategories, other.disabledRuleCategories) &&
            Objects.equals(enabledRules, other.enabledRules) &&
-           Objects.equals(enabledRuleCategories, other.enabledRuleCategories);
+           Objects.equals(enabledRuleCategories, other.enabledRuleCategories) &&
+           Objects.equals(userConfig, other.userConfig) &&
+           Objects.equals(altLanguages, other.altLanguages) &&
+           Objects.equals(mode, other.mode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, lang, motherTongue, disabledRules, disabledRuleCategories, enabledRules, enabledRuleCategories);
+    return Objects.hash(text, lang, motherTongue, disabledRules, disabledRuleCategories,
+            enabledRules, enabledRuleCategories, userConfig, altLanguages, mode);
   }
 
   @Override

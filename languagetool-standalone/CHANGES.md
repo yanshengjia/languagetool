@@ -1,6 +1,31 @@
 # LanguageTool Change Log
 
-## 4.2-SNAPSHOT (release planned for 2018-06-26)
+## 4.4-SNAPSHOT (release planned for 2018-12-27)
+
+#### English
+  * added and improved rules
+
+#### German
+  * added and improved rules
+
+#### HTTP API / LT server
+  * Experimental support for `altLanguages` parameter: takes a list of language
+    codes. Unknown words of the main languages (as specified by the `language` parameter)
+    will cause errors of type "Hint" if accepted by one of these languages.
+    We expect clients to interpret this like style issues, e.g. these words should
+    be underlined with a light blue instead of red.
+    Support for this is experimental, i.e. it might be removed again or implemented
+    in a different way. 
+  * Experimental support for `noopLanguages` parameter: takes a list of language
+    codes of languages that are not supported by LT but that will be detected and
+    mapped to a no-op language without rules. Useful for clients that rely on
+    language auto-detection and whose users might use languages not supported by LT.
+    NOTE 1: only works with fastText configured
+    NOTE 2: setting languages here will worsen language detection quality on average 
+
+
+
+## 4.3 (2018-09-26)
 
 #### Catalan
   * added and improved rules
@@ -11,16 +36,143 @@
 #### English
   * added and improved rules
 
+##### Esperanto
+  * added and improved rules
+
+##### French
+  * small rule improvements
+
+#### Galician
+  * added and improved rules
+
 #### German
   * added and improved rules
-  * updated jwordsplitter to 4.4 to prevent excessively long processing times for
-    artificial long compounds
+
+#### German (simple)
+  * added and improved rules
 
 #### Portuguese
+  * added and improved rules
+  * improvements to disambiguation, and segmentation
+  * updated Hunspell dictionaries to:
+    - [pt-PT pos-AO] Dicionários Portugueses Complementares 3.0
+
+#### Russian
   * added and improved rules
 
 #### Ukrainian
   * added and improved rules
+
+#### General
+  * Prepared support for AIX. See https://github.com/MartinKallinger/hunspell-aix
+    for the required libraries
+  * Email signatures are now ignored for language detection as long as they are
+    separated from the main text with `\n-- \n` 
+
+#### HTTP API / LT server
+  * The server can now accept JSON as the `data` parameter that describes
+    markup. For example:
+    ```
+    {"annotation":[
+      {"text": "A "},
+      {"markup": "<b>"},
+      {"text": "test"},
+      {"markup": "</b>"}
+    ]}
+    ```
+    With this input, LT will ignore the `markup` parts and run the check only
+    on the `text` parts. The error offset positions will still refer to the
+    original input including the markup, so that suggestions can easily be applied.
+    You can optionally use `interpretAs` to have markup interpreted as whitespace, like this:
+    ```
+    {"markup": "<p>", "interpretAs": "\n\n"}
+    ```  
+    Note that HTML entities (including `&nbsp;`) still need to be converted to Unicode characters
+    before feeding them into LT.  
+    (Issue: https://github.com/languagetool-org/languagetool/issues/757)
+  * The `blockedReferrers` setting now also considers the `Origin` header
+  * A `blockedReferrers` setting of `foobar.org` will now automatically match `http://foobar.org`, 
+   `http://www.foobar.org`, `https://foobar.org`, and `https://www.foobar.org`
+  * New setting `fasttextModel` (see https://fasttext.cc/docs/en/language-identification.html)
+    and `fasttextBinary` (see https://fasttext.cc/docs/en/support.html). With these
+    options set, the automatic language detection is much better than the built-in one.
+  * Experimental new `mode` parameter with `all`, `textLevelOnly`, or `allButTextLevelOnly` as value:
+    Will check only text-level rules or all other rules. As there are fewer text-level rules,
+    this is usually much faster and the access limit for characters per minute that can be
+    checked is more generous for this mode.
+  * Improved spellchecker suggestions (not yet enabled by default).
+    See https://forum.languagetool.org/t/gsoc-reports-spellchecker-server-side-framework-and-build-tool-tasks/2926/43
+  * Experimental new `type` in JSON. This is supposed to help clients choose the color
+    with which they underline/mark errors. Please do not rely on this yet, it might change
+    or even be removed.
+  
+
+## 4.2 (2018-06-26)
+
+#### Breton
+  * made many messages shorter
+  * updated FSA spelling dictionary from An Drouizig Breton Spellchecker 0.15
+
+#### Catalan
+  * added and improved rules
+  * rules and updated dictionary for new diacritics rules (IEC 2017)
+
+#### Dutch
+  * added and improved rules
+
+#### English
+  * added and improved rules
+  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict  (Version 2018-06-01)
+  * updated en_US spellchecker dictionary from http://wordlist.aspell.net (Version 2018.04.16)
+  * updated en_CA spellchecker dictionary from http://wordlist.aspell.net (Version 2018.04.16)
+
+#### Esperanto
+  * added and improved rules
+
+#### German
+  * added and improved rules
+  * updated jwordsplitter to 4.4 to prevent excessively long processing times for
+    artificially long compounds
+  * `prohibit.txt`: lines ending with ".*" will prohibit all words starting with
+    the previous string
+
+#### German (simple)
+  * added and improved rules
+
+#### Greek
+  * added rules
+
+#### Portuguese
+  * added and improved rules
+  
+#### Russian
+  * added and improved grammar and punctuation rules
+  * upgraded the tagging and synthesizer dictionaries from AOT.ru rev.269 (extend tags, add missing tags)
+  * spelling dictionary update
+
+#### Spanish
+  * added and improved a few rules
+
+#### Ukrainian
+  * dictionary update (more than 15k of new words)
+  * added and improved rules
+  * some improvements to tokenization, tagging and disambiguation
+
+#### HTTP API / LT server
+  * The JSON contains a new section `detectedLanguage` (under `language`) that
+    contains information about the automatically detected language. This way
+    clients can suggest switching to that language, e.g. in cases where the
+    user had selected the wrong language.
+  * New optional configuration setting `blockedReferrers`: a comma-separated list 
+    of HTTP referrers that are blocked and will not be served
+  * BETA: New optional configuration settings `dbDriver`, `dbUrl`, `dbUsername`,
+    `dbPassword` to allow user-specific dictionaries
+    
+#### Java API
+  * The parameters of the `*SpellerRule` classes (e.g. `MorfologikRussianSpellerRule`)
+    have changed
+  * `LanguageIdentifier` will now only consider the first 1000 characters when
+    identifying the language of a text. This improves performance for long texts. 
 
 
 

@@ -40,7 +40,7 @@ import org.languagetool.tools.StringTools;
 public class WordTokenizer implements Tokenizer {
 
   private static final List<String> PROTOCOLS = Collections.unmodifiableList(Arrays.asList("http", "https", "ftp"));
-  private static final Pattern URL_CHARS = Pattern.compile("[a-zA-Z0-9/%$-_.+!*'(),\\?]+");
+  private static final Pattern URL_CHARS = Pattern.compile("[a-zA-Z0-9/%$-_.+!*'(),\\?#]+");
   private static final Pattern E_MAIL = Pattern.compile("(?<!:)\\b[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))\\b");
 
   private static final String TOKENIZING_CHARACTERS = "\u0020\u00A0\u115f" +
@@ -50,7 +50,7 @@ public class WordTokenizer implements Tokenizer {
       + "\u2028\u2029\u202a\u202b\u202c\u202d\u202e\u202f"
       + "\u205F\u2060\u2061\u2062\u2063\u206A\u206b\u206c\u206d"
       + "\u206E\u206F\u3000\u3164\ufeff\uffa0\ufff9\ufffa\ufffb"
-      + ",.;()[]{}=*#∗×·+÷<>!?:/|\\\"'«»„”“`´‘’‛′…¿¡→‼⁇⁈⁉"
+      + ",.;()[]{}=*#∗×·+÷<>!?:/|\\\"'«»„”“`´‘’‛′›‹…¿¡→‼⁇⁈⁉"
       + "—"  // em dash
       + "\t\n\r";
 
@@ -117,7 +117,7 @@ public class WordTokenizer implements Tokenizer {
       sb.append(item);
     }
     String text = sb.toString();
-    if (E_MAIL.matcher(text).find()) {
+    if (text.contains("@") && E_MAIL.matcher(text).find()) {  // explicit check for "@" speeds up method by factor of ~10
       Matcher matcher = E_MAIL.matcher(text);
       List<String> l = new ArrayList<>();
       int currentPosition = 0, start, end, idx = 0;
@@ -204,14 +204,15 @@ public class WordTokenizer implements Tokenizer {
     } else if (token.equals(")") || token.equals("]")) {   // this is guesswork
       return true;
     } else if (l.size() > i + 1) {
-      String nToken = l.get(i + 1);
-      if (StringTools.isWhitespace(nToken) &&
+      String nextToken = l.get(i + 1);
+      if ((StringTools.isWhitespace(nextToken) || StringUtils.equalsAny(nextToken, "\"", "»", "«", "‘", "’", "“", "”", "'", ".")) &&
             (StringUtils.equalsAny(token, ".", ",", ";", ":", "!", "?") || token.equals(urlQuote))) {
+        return true;
+      } else if (!URL_CHARS.matcher(token).matches()) {
         return true;
       }
     } else {
-      Matcher matcher = URL_CHARS.matcher(token);
-      if (!matcher.matches()) {
+      if (!URL_CHARS.matcher(token).matches() || token.equals(".")) {
         return true;
       }
     }

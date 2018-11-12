@@ -21,6 +21,7 @@ package org.languagetool.language;
 import org.jetbrains.annotations.NotNull;
 import org.languagetool.Language;
 import org.languagetool.LanguageMaintainedState;
+import org.languagetool.UserConfig;
 import org.languagetool.chunking.Chunker;
 import org.languagetool.chunking.GermanChunker;
 import org.languagetool.languagemodel.LanguageModel;
@@ -155,7 +156,7 @@ public class German extends Language implements AutoCloseable {
   }
 
   @Override
-  public List<Rule> getRelevantRules(ResourceBundle messages) throws IOException {
+  public List<Rule> getRelevantRules(ResourceBundle messages, UserConfig userConfig, List<Language> altLanguages) throws IOException {
     return Arrays.asList(
             new CommaWhitespaceRule(messages,
                     Example.wrong("Die Partei<marker> ,</marker> die die letzte Wahl gewann."),
@@ -184,15 +185,21 @@ public class German extends Language implements AutoCloseable {
             new WordCoherencyRule(messages),
             new SimilarNameRule(messages),
             new WiederVsWiderRule(messages),
-            new WhiteSpaceBeforeParagraphEnd(messages),
+            new WhiteSpaceBeforeParagraphEnd(messages, this),
             new WhiteSpaceAtBeginOfParagraph(messages),
-            new EmptyLineRule(messages),
-            new GermanStyleRepeatedWordRule(messages),
+            new EmptyLineRule(messages, this),
+            new GermanStyleRepeatedWordRule(messages, this, userConfig),
             new CompoundCoherencyRule(messages),
-            new LongSentenceRule(messages),
-            new GermanParagraphRepeatBeginningRule(messages),
-            new PunctuationMarkAtParagraphEnd(messages),
-            new DuUpperLowerCaseRule(messages)
+            new LongSentenceRule(messages, userConfig),
+            new LongParagraphRule(messages, this, userConfig),
+            new GermanFillerWordsRule(messages, this, userConfig),
+            new GermanParagraphRepeatBeginningRule(messages, this),
+            new PunctuationMarkAtParagraphEnd(messages, this),
+            new DuUpperLowerCaseRule(messages),
+            new UnitConversionRule(messages),
+            new GermanReadabilityRule(messages, this, userConfig, true),
+            new GermanReadabilityRule(messages, this, userConfig, false),
+            new CompoundInfinitivRule(messages, this, userConfig)
     );
   }
 

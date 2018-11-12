@@ -23,8 +23,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.languagetool.JLanguageTool;
 import org.languagetool.Language;
 import org.languagetool.LanguageMaintainedState;
+import org.languagetool.UserConfig;
 import org.languagetool.rules.*;
 import org.languagetool.rules.nl.*;
 import org.languagetool.synthesis.Synthesizer;
@@ -115,7 +117,7 @@ public class Dutch extends Language {
   }
 
   @Override
-  public List<Rule> getRelevantRules(ResourceBundle messages) throws IOException {
+  public List<Rule> getRelevantRules(ResourceBundle messages, UserConfig userConfig, List<Language> altLanguages) throws IOException {
     return Arrays.asList(
             new CommaWhitespaceRule(messages),
             new DoublePunctuationRule(messages),
@@ -123,14 +125,31 @@ public class Dutch extends Language {
                     Arrays.asList("[", "(", "{", "“", "‹", "“", "„", "\""),
                     Arrays.asList("]", ")", "}", "”", "›", "”", "”", "\"")),
             new UppercaseSentenceStartRule(messages, this),
-            new MorfologikDutchSpellerRule(messages, this),
+            new MorfologikDutchSpellerRule(messages, this, userConfig, altLanguages),
             new MultipleWhitespaceRule(messages, this),
             new CompoundRule(messages),
             new DutchWrongWordInContextRule(messages),
             new WordCoherencyRule(messages),
             new SimpleReplaceRule(messages),
-            new LongSentenceRule(messages, true),
+            new LongSentenceRule(messages, userConfig, -1, true),
             new PreferredWordRule(messages)
     );
   }
+
+  @Override
+  public int getPriorityForId(String id) {
+    switch (id) {
+      case LongSentenceRule.RULE_ID: return -1;
+    }
+    return 0;
+  }
+
+  @Override
+  public List<String> getRuleFileNames() {
+    List<String> ruleFileNames = super.getRuleFileNames();
+    String dirBase = JLanguageTool.getDataBroker().getRulesDir() + "/" + getShortCode() + "/";
+    ruleFileNames.add(dirBase + "grammar-test-1.xml");
+    return ruleFileNames;
+  }
+
 }

@@ -28,6 +28,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
@@ -37,6 +38,7 @@ import org.languagetool.*;
 import org.languagetool.rules.Categories;
 import org.languagetool.rules.RuleMatch;
 import org.languagetool.rules.spelling.SpellingCheckRule;
+import org.languagetool.tools.Tools;
 
 /**
  * A hunspell-based spellchecking-rule.
@@ -64,9 +66,19 @@ public class HunspellRule extends SpellingCheckRule {
   }
   protected Pattern nonWordPattern;
 
-  public HunspellRule(ResourceBundle messages, Language language) {
-    super(messages, language);
+  private final UserConfig userConfig;
+
+  public HunspellRule(ResourceBundle messages, Language language, UserConfig userConfig) {
+    this(messages, language, userConfig, Collections.emptyList());
+  }
+
+  /**
+   * @since 4.3
+   */
+   public HunspellRule(ResourceBundle messages, Language language, UserConfig userConfig, List<Language> altLanguages) {
+    super(messages, language, userConfig, altLanguages);
     super.setCategory(Categories.TYPOS.getCategory(messages));
+    this.userConfig = userConfig;
   }
 
   @Override
@@ -81,7 +93,7 @@ public class HunspellRule extends SpellingCheckRule {
 
   /**
    * Is the given token part of a hyphenated compound preceded by a quoted token (e.g., „Spiegel“-Magazin) 
-   * and should be treated as an ordinary hypenated compound (e.g., „Spiegel-Magazin“)
+   * and should be treated as an ordinary hyphenated compound (e.g., „Spiegel-Magazin“)
    */
   protected boolean isQuotedCompound (AnalyzedSentence analyzedSentence, int idx, String token) {
     return false;
@@ -112,24 +124,41 @@ public class HunspellRule extends SpellingCheckRule {
             len, len + word.length(),
             messages.getString("spelling"),
             messages.getString("desc_spelling_short"));
-        List<String> suggestions = getSuggestions(word);
-        List<String> additionalTopSuggestions = getAdditionalTopSuggestions(suggestions, word);
-        Collections.reverse(additionalTopSuggestions);
-        for (String additionalTopSuggestion : additionalTopSuggestions) {
-          if (!word.equals(additionalTopSuggestion)) {
-            suggestions.add(0, additionalTopSuggestion);
+        ruleMatch.setType(RuleMatch.Type.UnknownWord);
+        if (userConfig == null || userConfig.getMaxSpellingSuggestions() == 0 || ruleMatches.size() <= userConfig.getMaxSpellingSuggestions()) {
+          List<String> suggestions = getSuggestions(word);
+          List<String> additionalTopSuggestions = getAdditionalTopSuggestions(suggestions, word);
+          if (additionalTopSuggestions.size() == 0 && word.endsWith(".")) {
+            additionalTopSuggestions = getAdditionalTopSuggestions(suggestions, word.substring(0, word.length()-1)).
+                    stream().map(k -> k + ".").collect(Collectors.toList());
           }
-        }
-        List<String> additionalSuggestions = getAdditionalSuggestions(suggestions, word);
-        for (String additionalSuggestion : additionalSuggestions) {
-          if (!word.equals(additionalSuggestion)) {
-            suggestions.addAll(additionalSuggestions);
+          Collections.reverse(additionalTopSuggestions);
+          for (String additionalTopSuggestion : additionalTopSuggestions) {
+            if (!word.equals(additionalTopSuggestion)) {
+              suggestions.add(0, additionalTopSuggestion);
+            }
           }
-        }
-        if (!suggestions.isEmpty()) {
+          List<String> additionalSuggestions = getAdditionalSuggestions(suggestions, word);
+          for (String additionalSuggestion : additionalSuggestions) {
+            if (!word.equals(additionalSuggestion)) {
+              suggestions.addAll(additionalSuggestions);
+            }
+          }
+          Language acceptingLanguage = acceptedInAlternativeLanguage(word);
+          boolean isSpecialCase = word.matches(".+-[A-ZÖÄÜ].*");
+          if (acceptingLanguage != null && !isSpecialCase) {
+            // e.g. "Der Typ ist in UK echt famous" -> could be German 'famos'
+            ruleMatch = new RuleMatch(this, sentence,
+                    len, len + word.length(),
+                    Tools.i18n(messages, "accepted_in_alt_language", word, messages.getString(acceptingLanguage.getShortCode())));
+            ruleMatch.setType(RuleMatch.Type.Hint);
+          }
           filterSuggestions(suggestions);
           filterDupes(suggestions);
           ruleMatch.setSuggestedReplacements(suggestions);
+        } else {
+          // limited to save CPU
+          ruleMatch.setSuggestedReplacement(messages.getString("too_many_errors"));
         }
         ruleMatches.add(ruleMatch);
       }
@@ -143,18 +172,18 @@ public class HunspellRule extends SpellingCheckRule {
    */
   @Experimental
   public boolean isMisspelled(String word) {
-    if (needsInit) {
-      try {
+    try {
+      if (needsInit) {
         init();
-      } catch (IOException e) {
-        throw new RuntimeException(e);
       }
+      boolean isAlphabetic = true;
+      if (word.length() == 1) { // hunspell dictionaries usually do not contain punctuation
+        isAlphabetic = Character.isAlphabetic(word.charAt(0));
+      }
+      return (isAlphabetic && !"--".equals(word) && hunspellDict.misspelled(word) && !ignoreWord(word)) || isProhibited(removeTrailingDot(word));
+    } catch (IOException e) {
+      throw new RuntimeException(e);
     }
-    boolean isAlphabetic = true;
-    if (word.length() == 1) { // hunspell dictionaries usually do not contain punctuation
-      isAlphabetic = Character.isAlphabetic(word.charAt(0));
-    }
-    return (isAlphabetic && !"--".equals(word) && hunspellDict.misspelled(word)) || isProhibited(removeTrailingDot(word));
   }
   
   void filterDupes(List<String> words) {
@@ -309,5 +338,5 @@ public class HunspellRule extends SpellingCheckRule {
       in.close();
     }
   }
-
+  
 }

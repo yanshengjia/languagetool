@@ -416,15 +416,21 @@ a contracor	LOC_ADV
 a contrafibra	LOC_ADV
 a contrafil	LOC_ADV
 a contrapèl	LOC_ADV
+a contrapel	LOC_ADV
+a repèl	LOC_ADV
+a repel	LOC_ADV
 a contrario sensu	LOC_ADV
 a cop d'	LOC_PREP
 a cop de	LOC_PREP
 a corre-corrents	LOC_ADV
 a corre-cuita	LOC_ADV
+a correcorrents	LOC_ADV
+a correcuita	LOC_ADV
 a costa d'	LOC_PREP
 a costa de	LOC_PREP
 a cremadent	LOC_ADV
 a cuita-corrents	LOC_ADV
+a cuitacorrents	LOC_ADV
 a culastrons	LOC_ADV
 a càrrec d'	LOC_PREP
 a càrrec de	LOC_PREP
@@ -472,6 +478,7 @@ a l'atenció de	LOC_PREP
 a l'empara d'	LOC_PREP
 a l'empara de	LOC_PREP
 a l'empèl	LOC_ADV
+a l'empel	LOC_ADV
 a l'emprompte	LOC_ADV
 a l'esquill	LOC_ADV
 d'esquill	LOC_ADV
@@ -578,11 +585,14 @@ a voltes	LOC_ADV
 a voluntat	LOC_ADV
 a última hora	LOC_ADV
 ab origine	LOC_ADV
+ab initio	LOC_ADV
 abans d'	LOC_PREP
 abans de	LOC_PREP
 abans-d'ahir	LOC_ADV
+ad absurdum	LOC_ADV
 ad hoc	LOC_ADJ
 ad hominem	LOC_ADJ
+ad libitum	LOC_ADV
 ad nauseam	LOC_ADV
 així mateix	LOC_CONJ
 això no obstant	LOC_ADV
@@ -707,6 +717,7 @@ concerti grossi	_GN_MP
 com ara	LOC_CONJ
 commedia dell'arte	_GN_FS
 corpore insepulto	LOC_ADV
+corpora allata	_GN_FP
 cos a cos	LOC_ADV
 cos per cos	LOC_ADV
 costa amunt	LOC_ADV
@@ -787,6 +798,7 @@ de futris	LOC_ADV
 de gaidó	LOC_ADV
 de gairell	LOC_ADV
 de genollons	LOC_ADV
+a genollons	LOC_ADV
 de gom a gom	LOC_ADV
 de iure	LOC_ADV
 de maljust	LOC_ADV
@@ -977,6 +989,7 @@ et alia	LOC_ADV
 ex abrupto	LOC_ADV
 ex aequo	LOC_ADV
 ex ante	LOC_ADV
+ex post	LOC_ADV
 ex cathedra	LOC_ADV
 ex nihilo	LOC_ADV
 ex novo	LOC_ADV
@@ -1035,8 +1048,10 @@ in dubio pro reo	LOC_ADV
 in extenso	LOC_ADV
 in extremis	LOC_ADV
 in fraganti	LOC_ADV
+in ovo	LOC_ADV
 in situ	LOC_ADV
 in vitro	LOC_ADV
+in vivo	LOC_ADV
 inter se	LOC_ADV
 inter nos	LOC_ADV
 inter vivos	LOC_ADV
@@ -1067,6 +1082,8 @@ menús degustació	_GN_MP
 mercès a	LOC_PREP
 mercés a	LOC_PREP
 millor dit	LOC_ADV
+moble bar	_GN_MS
+mobles bar	_GN_MP
 modus operandi	_GN_MN
 modus vivendi	_GN_MN
 molt i molt	LOC_ADV
@@ -1142,6 +1159,7 @@ per tal d'	LOC_PREP
 per tal de	LOC_PREP
 per virtut d'	LOC_PREP
 per virtut de	LOC_PREP
+post factum	LOC_ADV
 post mortem	LOC_ADV
 post meridiem	LOC_ADV
 post scriptum	_GN_MS
@@ -1240,8 +1258,10 @@ una per una	LOC_ADV
 una vegada per sempre	LOC_ADV
 una vegada per totes	LOC_ADV
 urbi et orbi	LOC_ADV
+ut infra	LOC_ADV
+ut supra	LOC_ADV
 vade retro	_GN_MS
-veni, vidi,vici	_GN_MS
+veni, vidi, vici	LOC_ADV
 vestit jaqueta	_GN_MS
 vestits jaqueta	_GN_MP
 via crucis	_GN_MS
@@ -1252,7 +1272,6 @@ vulgues no vulgues	LOC_ADV
 #noms oficials municipis valencians que difereixen del nom valencià i que tenen més d'una paraula
 #
 Rincón de Ademuz	NPMSG00
-Aras de Alpuente	NPMSG00
 Alcocer de Planes	NPCSG00
 Algar de Palancia	NPCSG00
 Algimia de Alfara	NPCSG00

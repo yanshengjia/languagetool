@@ -127,8 +127,14 @@ public class CaseRuleTest {
     assertGood("‚Dieser Satz.‘ Hier kommt der nächste Satz.");
     assertGood("Dabei werden im Wesentlichen zwei Prinzipien verwendet:");
     assertGood("Er fragte, ob das gelingen oder scheitern wird.");
+    assertGood("Einen Tag nach Bekanntwerden des Skandals");
+    assertGood("Das machen eher die Erwachsenen.");
+    assertGood("Das ist ihr Zuhause.");
+    assertGood("Das ist Sandras Zuhause.");
+    assertGood("Das machen eher wohlhabende Leute.");
 
     //assertBad("Sie sind nicht Verständlich");
+    assertBad("Das machen der Töne ist schwierig.");
     assertBad("Sie Vertraute niemandem.");
     assertBad("Beten Lernt man in Nöten.");
     assertBad("Ich gehe gerne Joggen.");
@@ -149,6 +155,9 @@ public class CaseRuleTest {
     assertBad("Damit sollen sie die Versorgung in der Region Übernehmen.");
     assertBad("Die Unfallursache scheint geklärt, ein Lichtsignal wurde Überfahren.");
     assertBad("Der Lenker hatte die Höchstgeschwindigkeit um 76 km/h Überschritten.");
+    //assertBad("Das Extreme Sportfest");
+    //assertBad("Das Extreme Sportfest findet morgen statt.");
+    assertGood("Stets suchte er das Extreme.");
     assertGood("Ich möchte zwei Kilo Zwiebeln.");
     // "NIL" reading in Morphy that used to confuse CaseRule:
     assertGood("Ein Menschenfreund.");

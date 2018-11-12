@@ -97,6 +97,7 @@ public class AgreementRuleTest {
     assertGood("Er nahm allen Mut zusammen und ging los.");
     assertGood("Sie kann einem Angst einjagen.");
     assertGood("Damit sollten zum einen neue Energien gefördert werden, zum anderen der Sozialbereich.");
+    assertGood("Nichts ist mit dieser einen Nacht zu vergleichen.");
 
     assertGood("Das Dach von meinem Auto.");
     assertGood("Das Dach von meinen Autos.");
@@ -211,8 +212,10 @@ public class AgreementRuleTest {
     assertGood("Auch das hatte sein Gutes.");
     assertGood("Auch wenn es sein Gutes hatte, war es doch traurig.");
     assertGood("Er wollte doch nur jemandem Gutes tun.");
+    assertGood("und das erst Jahrhunderte spätere Auftauchen der Legende");
 
     // incorrect sentences:
+    assertBad("Ein Buch mit einem ganz ähnlichem Titel.");
     assertBad("Meiner Chef raucht.");
     assertBad("Er hat eine 34-jährigen Sohn.");
     assertBad("Es sind die Tisch.", "dem Tisch", "den Tisch", "der Tisch", "die Tische");
@@ -289,6 +292,10 @@ public class AgreementRuleTest {
     
     assertBad("Ich weiß nicht mehr, was unser langweiligen Thema war.");
     assertGood("Aber mein Wissen über die Antike ist ausbaufähig.");
+    assertBad("Er ging ins Küche.");
+    assertBad("Er ging ans Luft.");
+    assertBad("Eine Niereninsuffizienz führt zur Störungen des Wasserhaushalts.");
+    assertBad("Er stieg durchs Fensters.");
 
     // TODO: not yet detected:
     //assertBad("Erst recht wir fleißiges Arbeiter.");

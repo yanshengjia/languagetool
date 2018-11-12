@@ -23,6 +23,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 import org.junit.Test;
 import org.languagetool.JLanguageTool;
@@ -34,7 +35,8 @@ public class MorfologikUkrainianSpellerRuleTest {
 
   @Test
   public void testMorfologikSpeller() throws IOException {
-    MorfologikUkrainianSpellerRule rule = new MorfologikUkrainianSpellerRule (TestTools.getMessages("uk"), new Ukrainian());
+    MorfologikUkrainianSpellerRule rule = new MorfologikUkrainianSpellerRule (TestTools.getMessages("uk"), new Ukrainian(), 
+            null, Collections.emptyList());
 
     JLanguageTool langTool = new JLanguageTool(new Ukrainian());
 
@@ -134,7 +136,8 @@ public class MorfologikUkrainianSpellerRuleTest {
 
   @Test
   public void testProhibitedSuggestions() throws IOException {
-    MorfologikUkrainianSpellerRule rule = new MorfologikUkrainianSpellerRule (TestTools.getMessages("uk"), new Ukrainian());
+    MorfologikUkrainianSpellerRule rule = new MorfologikUkrainianSpellerRule (TestTools.getMessages("uk"), new Ukrainian(), 
+            null, Collections.emptyList());
     JLanguageTool langTool = new JLanguageTool(new Ukrainian());
     
     RuleMatch[] match = rule.match(langTool.getAnalyzedSentence("онлайннавчання"));
@@ -161,6 +164,13 @@ public class MorfologikUkrainianSpellerRuleTest {
     assertEquals(1, match.length);
 
     assertTrue("Unexpected suggestions: " + match[0].getSuggestedReplacements().toString(), match[0].getSuggestedReplacements().isEmpty());
+
+    match = rule.match(langTool.getAnalyzedSentence("радіо- та відеоспостереження"));
+    assertEquals(0, match.length);
+
+    match = rule.match(langTool.getAnalyzedSentence("радіо- засоби"));
+    assertEquals(1, match.length);
+
   }  
   
 }

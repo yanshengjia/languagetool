@@ -1,13 +1,14 @@
 # CaseRule exceptions - phrases (regular expressions) to be spelled uppercase
 [A-Z].+angestellte[nr]?
 Afrikanischen? Union
+Akademische[nr]? Austauschdienst
 Aktuellen? Stunde
 Allgemeinen? (Geschäftsbedingungen|Zeitung)
 Allgemeine[nr]? Deutsche[nr]? Automobilclub
 Alt und Jung
 Amnesty International
 Apokalyptische[nr]? Reiters?
-Astronomischen? Einheit(en)?
+Astronomischen? Einheit(en)?|Union
 Arabischen? Halbinsel|Liga|Emiraten?
 Arabische[nr]? Frühlings?
 Arte
@@ -23,6 +24,7 @@ Blaue[nr]? Reiters?|Band(s|es)?|Planet(en)?|Brief[es]?|Moschee|Enzians?
 Bögen
 Botanische[rn]? Gartens?
 Braune[rn]? Zwerge?s?
+Brandenburgischen? Konzert[es]n?
 Britischen? Inseln
 Bundeskanzlers? Kurz
 Bundesminister(s?|iums?|in) für Arbeit und Soziales
@@ -36,10 +38,11 @@ Demokratischen? Republik|Partei|Volksrepublik
 Hohen? Pforte|Schule
 des Himmlischen Friedens
 Deutschen? Museums?
+Deutschen? [A-Z][a-zäöü]+ Gesellschaft(en)?
 (Deutsche[nr]?|Belgische[nr]?) Schäferhund(en?)?
 Digital (Video|Natives?)
 (Dreißig|Hundert|Sieben)jährigen? Kriege?s?
-Dritte[ns]? Welt|Reiche?s?
+Dritte[ns]? Welt|Reiche?s?|Oktober|Bürgermeisters?
 Drum und Dran
 Duisburger
 Dunklen? Materie|Energie
@@ -48,17 +51,19 @@ ein absolutes Muss
 [eE]ine (gute|glatte|schlechte) Eins|Zwei|Drei|Vier|Fünf|Sechs
 [eE]ine Eins|Zwei|Drei|Vier|Fünf|Sechs
 Eiserne[ns]? Kreuz
-Eisernen? Kreuzes?|Vorhangs?
+Eiserne[nr]? Kreuzes?|Vorhangs?
 Erste[rn]? Mai|Liga
 Erste[rnm]? (Weltkriege?s?|Bürgermeisters?)
 Essener
 Europäische[mnr]? Fonds|(Atomg|G)emeinschaft|Parlamente?s?|Union|Gerichtshof(es|s)?|Patentamt(es|s)?|Wirtschaftsgemeinschaft|Kommission|Rat(es|s)?|Zentralbank|Menschenrechtskonvention|Agentur|Arzneimittel-?[aA]gentur|Volkspartei|Haftbefehls?|Kulturhauptstadt|Währungsunion
 Ewige[rn]? Stadt
+Falsche[rn]? Hasen?
 Fast Food
 Ferne[rn]? Ostens?
 Fleißige[ns]? Lieschens?
 Französischen? Re(volution|publik)
 Freien? Universität
+Freiwillige[sn]? Soziale[sn]? Jahrs?
 Fränkische[nr]? Schweiz
 Geheimen? Staatspolizei
 Gelben? Karten?|Trikots?|Rüben?|Meer(e?s)?
@@ -93,8 +98,7 @@ Heiligen? Drei Königen?
 Heiligen Römischen Reich|Reiche?s
 Heilige Römische Reich
 Heiliges Römisches Reich
-Hohe[nr]? Rat|Kommissar|Vertreter|Tatra
-Hohen Rate?s|Kommissars|Vertreters
+Hohe[nr]? Rat(e?s)?|Kommissars?|Vertreters?|Tatra
 Hotel Vier Jahreszeiten
 [iI]m Großen und Ganzen
 [iI]m Guten wie im Schlechten
@@ -105,19 +109,17 @@ Indische[nr]? Ozeans?
 Inneren? Medizin|Gürtel|Mongolei
 Inoffizielle[rn]? Mitarbeiter[sn]?
 International Airlines
-Internationalen? Filmfestspielen?|Atomenergie(-Organisation|behörde|organisation)|Fernmeldeunion|Komitees?|.*tag|Raumstation
+Internationalen? Filmfestspielen?|Atomenergie(-Organisation|behörde|organisation)|Fernmeldeunion|Komitees?|.*tag|Raumstation|Energieagentur
 Internationale[mnr]? Währungsfonds|(Seeg|Strafg|Sportg|Militärg|G)erichtshof(e?s)?|Fonds|Klassifikation
-Internationale[ns]? Olympische[ns]?|Komitees?|Filmfestivals?|Einheitensystems?
+Internationale[ns]? Astronomischen?|Olympische[ns]?|Komitees?|Filmfestivals?|Einheitensystems?
 Islamische[rn]? Staat
 Islamischen Staate?s
+Italienische[nr]? Republik|Salat
 Japanische[ns]? Alpen|Meer
 Jung und Alt
-Jüngstes? Gericht
-Jüngsten Gerichts
-Jüngsten? Tags?
+Jüngste[ns]? Tags?|Gerichts?
 Kaps? der Guten Hoffnung
-Kalten Kriege?s
-Kalte[mnr]? Krieg
+Kalte[mnr]? Krieg(e?s)?
 Kanzler Kurz
 Katholischen? Liga|Universität
 kaum Neues
@@ -139,6 +141,7 @@ Mittwochfrüh
 (Mon|D(ien|onner)s|Frei|S(ams|onn))tagfrüh
 Muttersprachler[ns]?
 Nahe[nr]? Ostens?
+National Institute of
 Nationale[nr]? Sicherheitsrat(e?s)?|Volksarmee
 Neuen? Medien
 Niels Bohr
@@ -154,7 +157,7 @@ Osmanischen? Reich(es|s)?
 Palästinensischen? Autonomie.+
 Parlamentarische[rn]? Rats?|Rates|Kontrollgremiums?|Untersuchungsausschuss(es)?
 Persische[nr]? Golfs?
-Physikalische[nr]? Gesellschaft(en)?
+Physikalischen? Gesellschaft
 Real Bamako|Madrid
 Regierenden Bürgermeisters
 Regierende[mnr]? Bürgermeister(in)?
@@ -191,6 +194,7 @@ Staatlichen? Universität|Muse(ums?|en)
 Staatsange(hörig|stellt)e[rn]?
 Statistische[mns]? Bundesamt(s|es)?
 Statistische[rn]?|Theoretische[rn]? Physik
+Stiftung Preußischer?
 Steinerne[sn]? Meers?|Brücke
 Stiege
 Süddeutschen? Zeitung
@@ -198,10 +202,10 @@ Südlichen? Kalkalpen
 Süßes oder Saures
 Syrischen? Beobachtungsstelle
 Technische[ns]? Hilfswerks?
-Technischen? (Fachh|H)ochschulen?|Universität
+Technischen? (Fachh|H)ochschulen?|Universität(en)?
 Technische[nr]? Direktors?
 Tel Aviv
-T(schech|ürk)ischen?|Italienischen? Republik
+T(schech|ürk)ischen? Republik
 Trank
 Unbefleckten? Empfängnis
 Unserer Lieben Frau
@@ -216,6 +220,7 @@ Wenn und Aber
 Westfälischen? Frieden?|Friedens|Pforte
 Wilde[nr]? Westens?
 Wissenschaftlichen? Dienst(e?s)?
+Wohltemperierten? Klaviers?
 Zehn Geboten?
 Zweite Deutsche Fernsehen
 Zweite[mnr]? Weltkrieg(e?s)?

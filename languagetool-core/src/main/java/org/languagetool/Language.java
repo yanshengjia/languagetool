@@ -36,10 +36,7 @@ import org.languagetool.tokenizers.SimpleSentenceTokenizer;
 import org.languagetool.tokenizers.Tokenizer;
 import org.languagetool.tokenizers.WordTokenizer;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -100,9 +97,9 @@ public abstract class Language {
 
   /**
    * Get the rules classes that should run for texts in this language.
-   * @since 1.4 (signature modified in 2.7)
+   * @since 4.3
    */
-  public abstract List<Rule> getRelevantRules(ResourceBundle messages) throws IOException;
+  public abstract List<Rule> getRelevantRules(ResourceBundle messages, UserConfig userConfig, List<Language> altLanguages) throws IOException;
 
   // -------------------------------------------------------------------------
 
@@ -177,6 +174,15 @@ public abstract class Language {
   }
 
   /**
+   * Get a list of rules that load trained neural networks. Returns an empty list for
+   * languages that don't have such rules.
+   * @since 4.4
+   */
+  public List<Rule> getRelevantNeuralNetworkModels(ResourceBundle messages, File modelDir) {
+    return Collections.emptyList();
+  }
+
+  /**
    * Get this language's Java locale, not considering the country code.
    */
   public Locale getLocale() {
@@ -201,7 +207,8 @@ public abstract class Language {
 
   /**
    * Get the location of the rule file(s) in a form like {@code /org/languagetool/rules/de/grammar.xml},
-   * i.e. a path in the classpath.
+   * i.e. a path in the classpath. The files must exist or an exception will be thrown, unless the filename
+   * contains the string {@code -test-}.
    */
   public List<String> getRuleFileNames() {
     List<String> ruleFiles = new ArrayList<>();
@@ -354,7 +361,7 @@ public abstract class Language {
    */
   @SuppressWarnings("resource")
   protected synchronized List<AbstractPatternRule> getPatternRules() throws IOException {
-    // use lazy loading to speed up start of stand-alone LT, where all the languages get initialized:
+    // use lazy loading to speed up server use case and start of stand-alone LT, where all the languages get initialized:
     if (patternRules == null) {
       List<AbstractPatternRule> rules = new ArrayList<>();
       PatternRuleLoader ruleLoader = new PatternRuleLoader();
@@ -362,11 +369,23 @@ public abstract class Language {
         InputStream is = null;
         try {
           is = this.getClass().getResourceAsStream(fileName);
+          boolean ignore = false;
           if (is == null) {                     // files loaded via the dialog
-            is = new FileInputStream(fileName);
+            try {
+              is = new FileInputStream(fileName);
+            } catch (FileNotFoundException e) {
+              if (fileName.contains("-test-")) {
+                // ignore, used for testing
+                ignore = true;
+              } else {
+                throw e;
+              }
+            }
           }
-          rules.addAll(ruleLoader.getRules(is, fileName));
-          patternRules = Collections.unmodifiableList(rules);
+          if (!ignore) {
+            rules.addAll(ruleLoader.getRules(is, fileName));
+            patternRules = Collections.unmodifiableList(rules);
+          }
         } finally {
           if (is != null) {
             is.close();

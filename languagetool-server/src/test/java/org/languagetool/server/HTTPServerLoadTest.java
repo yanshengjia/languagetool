@@ -18,6 +18,7 @@
  */
 package org.languagetool.server;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -64,6 +65,7 @@ public class HTTPServerLoadTest extends HTTPServerTest {
   void doTest() throws InterruptedException, ExecutionException {
     ExecutorService executorService = Executors.newFixedThreadPool(getThreadCount());
     List<Future> futures = new ArrayList<>();
+    System.out.println("thread count: " + getThreadCount());
     for (int i = 0; i < getThreadCount(); i++) {
       Future<?> future = executorService.submit(new TestRunnable());
       futures.add(future);
@@ -97,7 +99,7 @@ public class HTTPServerLoadTest extends HTTPServerTest {
           throw new RuntimeException(e);
         } finally {
           int count = runningTests.decrementAndGet();
-          System.out.println("Tests currently running: " + count);
+          //System.out.println("Tests currently running: " + count);
         }
       }
     }

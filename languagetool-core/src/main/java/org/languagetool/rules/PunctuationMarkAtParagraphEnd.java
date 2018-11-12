@@ -21,10 +21,12 @@ package org.languagetool.rules;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import org.languagetool.AnalyzedSentence;
 import org.languagetool.AnalyzedTokenReadings;
+import org.languagetool.Language;
 
 /**
  * A rule that checks for a punctuation mark at the end of a paragraph
@@ -35,9 +37,11 @@ public class PunctuationMarkAtParagraphEnd extends TextLevelRule {
   
   private final static String PUNCTUATION_MARKS[] = {".", "!", "?", ":", ",", ";"};
   private final static String QUOTATION_MARKS[] = {"„", "»", "«", "\"", "”", "″", "’", "‚", "‘", "›", "‹", "′", "'"};
+  private final Language lang;
 
-  public PunctuationMarkAtParagraphEnd(ResourceBundle messages) {
+  public PunctuationMarkAtParagraphEnd(ResourceBundle messages, Language lang) {
     super(messages);
+    this.lang = Objects.requireNonNull(lang);
     super.setCategory(Categories.PUNCTUATION.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Grammar);
   }
@@ -52,33 +56,25 @@ public class PunctuationMarkAtParagraphEnd extends TextLevelRule {
     return messages.getString("punctuation_mark_paragraph_end_desc");
   }
   
-  private static boolean stringEqualsAny (String token, String[] any) {
-     for(int i = 0; i < any.length; i++) {
-      if(token.equals(any[i])) {
+  private static boolean stringEqualsAny(String token, String[] any) {
+    for (String s : any) {
+      if (token.equals(s)) {
         return true;
       }
     }
     return false;
   }
 
-  private static boolean isQuotationMark (AnalyzedTokenReadings tk) {
+  private static boolean isQuotationMark(AnalyzedTokenReadings tk) {
     return stringEqualsAny(tk.getToken(), QUOTATION_MARKS);
   }
 
-  private static boolean isPunctuationMark (AnalyzedTokenReadings tk) {
+  private static boolean isPunctuationMark(AnalyzedTokenReadings tk) {
     return stringEqualsAny(tk.getToken(), PUNCTUATION_MARKS);
   }
 
-  private static boolean isWord (AnalyzedTokenReadings tk) {
+  private static boolean isWord(AnalyzedTokenReadings tk) {
     return Character.isLetter(tk.getToken().charAt(0));
-  }
-
-  private static boolean isWhitespace (AnalyzedTokenReadings token) {
-    return token.isWhitespace() && !token.isLinebreak();
-  }
-
-  private static boolean isParaBreak (AnalyzedTokenReadings token) {
-    return "\n".equals(token.getToken()) || "\r\n".equals(token.getToken()) || "\n\r".equals(token.getToken());
   }
 
   @Override
@@ -86,39 +82,29 @@ public class PunctuationMarkAtParagraphEnd extends TextLevelRule {
     List<RuleMatch> ruleMatches = new ArrayList<>();
     int lastPara = -1;
     int pos = 0;
-    boolean doCheck = true;
     boolean isFirstWord = false;
     for (int n = 0; n < sentences.size(); n++) {
       AnalyzedSentence sentence = sentences.get(n);
-      AnalyzedTokenReadings[] tokens = sentence.getTokens();
-      if (doCheck) {
-        int i = 1;
-        for (; i < tokens.length && isWhitespace(tokens[i]); i++);
-        if (i < tokens.length) {
-          isFirstWord = tokens.length > i + 2 && ((isWord(tokens[i]) && !isPunctuationMark(tokens[i + 1]))
-              || (isQuotationMark(tokens[i]) && isWord(tokens[i + 1]) && !isPunctuationMark(tokens[i + 2])));
-        } else {
-          isFirstWord = false;
-        }
-        doCheck = false;
-      }
-      for (int i = 1; i < tokens.length; i++) {
-        if(isParaBreak(tokens[i]) || (n == sentences.size() - 1 && i == tokens.length - 1)) {
+      if(sentence.hasParagraphEndMark(lang) || n == sentences.size() - 1) {
+        AnalyzedTokenReadings[] tokens = sentence.getTokensWithoutWhitespace();
+        if (tokens.length > 2) {
+          isFirstWord = (isWord(tokens[1]) && !isPunctuationMark(tokens[2]))
+                || (tokens.length > 3 && isQuotationMark(tokens[1]) && isWord(tokens[2]) && !isPunctuationMark(tokens[3]));
           // paragraphs containing less than two sentences (e.g. headlines, listings) are excluded from rule
           if (n - lastPara > 1 && isFirstWord) {
-            if (n == sentences.size() - 1 && i == tokens.length - 1) {
-              i++;
+            int lastNWToken = tokens.length - 1;
+            while (tokens[lastNWToken].isLinebreak()) {
+              lastNWToken--;
             }
-            for (i--; i > 0 && isWhitespace(tokens[i]); i--);
-            if (i > 0 && (isWord(tokens[i]) 
-                || (i < tokens.length - 1 && isQuotationMark(tokens[i]) && isWord(tokens[i + 1])))) { 
-              int fromPos = pos + tokens[i].getStartPos();
-              int toPos = pos + tokens[i].getEndPos();
+            if (isWord(tokens[lastNWToken]) 
+                || (isQuotationMark(tokens[lastNWToken]) && isWord(tokens[lastNWToken - 1]))) {
+              int fromPos = pos + tokens[lastNWToken].getStartPos();
+              int toPos = pos + tokens[lastNWToken].getEndPos();
               RuleMatch ruleMatch = new RuleMatch(this, sentence, fromPos, toPos, 
                   messages.getString("punctuation_mark_paragraph_end_msg"));
-              List<String> replacements = new ArrayList<String>();
-              for(int j = 0; j < PUNCTUATION_MARKS.length; j++) {
-                replacements.add(tokens[i].getToken() + PUNCTUATION_MARKS[j]);
+              List<String> replacements = new ArrayList<>();
+              for (String PUNCTUATION_MARK : PUNCTUATION_MARKS) {
+                replacements.add(tokens[lastNWToken].getToken() + PUNCTUATION_MARK);
               }
               ruleMatch.setSuggestedReplacements(replacements);
               ruleMatches.add(ruleMatch);
@@ -126,7 +112,6 @@ public class PunctuationMarkAtParagraphEnd extends TextLevelRule {
           }
           lastPara = n;
           isFirstWord = false;
-          doCheck = true;
         }
       }
       pos += sentence.getText().length();

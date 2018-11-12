@@ -30,7 +30,7 @@ class LineExpander {
   List<String> expandLine(String line) {
     List<String> result = new ArrayList<>();
     if (!line.startsWith("#") && line.contains("/")) {
-      String[] parts = line.split("/");
+      String[] parts = cleanTags(line).split("/");
       if (parts.length != 2) {
         throw new RuntimeException("Unexpected line format, expected at most one slash: " + line);
       }
@@ -45,6 +45,8 @@ class LineExpander {
           result.add(word + "n");
         } else if (c == 'E') {
           result.add(word + "e");
+        } else if (c == 'F') {
+          result.add(word + "in"); // (m/f)
         } else if (c == 'A') {  // Adjektiv
           result.add(word + "e");
           result.add(word + "er");
@@ -56,9 +58,13 @@ class LineExpander {
         }
       }
     } else {
-      result.add(line);
+      result.add(cleanTags(line));
     }
     return result;
   }
 
+  // ignore "#..." so it can be used as a tag:
+  private String cleanTags(String s) {
+    return s.replaceFirst("\\s+#.*", "").trim();
+  }
 }

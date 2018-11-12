@@ -1,7 +1,7 @@
 # After validation, add here words suggested by users
 # General portuguese words
 # Do not add variant specific words
-# For specific variant words, comment the word before adding it. 
+# For specific variant words, comment the word before adding it.
 # It will be added to the specific dictionary later.
 afear
 baseball
@@ -16,7 +16,7 @@ laptops
 management
 premio
 #
-# Words handled by foreign words replacement lists
+# Words handled by foreign word replacement lists
 #
 abat-jour
 abat-jours
@@ -3968,7 +3968,7 @@ zoófilas
 Zuckerberg
 # Países e Capitais
 # https://pt.wikipedia.org/wiki/Lista_de_capitais_nacionais
-# Selecionados apenas os que tem grafias relativamente consensuais 
+# Selecionados apenas os que tem grafias relativamente consensuais
 Abecásia
 Sucumi
 Tshwane
@@ -5058,6 +5058,7 @@ Berlin-Tegel
 Bernabéu
 BES
 BI
+BIs
 bifidobactéria
 bifidobactérias
 bioanalítica
@@ -5376,6 +5377,7 @@ Esther
 estromatólito
 estromatólitos
 ET
+ETs
 Ethereum
 EUAC
 eufemística
@@ -6089,6 +6091,7 @@ RSI
 Ruzyne
 Ryanair
 SAD
+SADs
 salabim
 Saladino
 Samsung
@@ -6103,6 +6106,7 @@ saxitoxina
 Schott
 SciELO
 SCUT
+SCUTs
 Seagate
 sedeada
 sedeadas
@@ -6179,8 +6183,10 @@ supuração
 supurações
 sustentadamente
 SUV
+SUVs
 Swansea
 TAC
+TACs
 Tahrir
 TCP
 TechDirt
@@ -6416,3 +6422,321 @@ TXT
 WAV
 youtuber
 youtubers
+################################
+# Sugestões dos utilizadores 5 #
+################################
+AdC
+Aerosmith
+ALOHA
+Altice
+anomização
+anomizações
+aquícola
+aquícolas
+assexual
+assexuais
+assimbolia
+assimbolias
+Aston Villa
+Avanca
+Austro-Húngaro
+Bayer Leverkusen
+Bayern Munich
+biodiesel
+biodieseis
+bioética
+Bioética
+biofilme
+biofilmes
+biomedicina
+biomedicinas
+Bizâncio
+Borussia Dortmund
+Borussia Mönchengladbach
+assepsia
+assepsias
+Azeredo
+campaniça
+campaniças
+campaniço
+campaniços
+choninhas
+clientelismo
+clientelismos
+Club Brugge
+CNBC
+colagénio
+Coriolis
+craca
+cracas
+Crawford
+CRISPR
+DAESH
+Daytona
+despautério
+despautérios
+dignitária
+dignitárias
+dignitário
+dignitários
+dissensão
+dissensões
+dreno
+drenos
+EAU
+Eintracht Frankfurt
+Elidérico
+EMEL
+endotraqueal
+endotraqueais
+epidural
+epidurais
+estratosférica
+estratosféricas
+estratosférico
+estratosféricos
+Fabíola
+factualidade
+factualidades
+felídeo
+felídeos
+Feyenoord
+frenesi
+frenesis
+Friedrich
+fundacional
+fundacionais
+GALP
+geodesia
+geodinâmica
+geodinâmicas
+geoespacial
+geoespaciais
+geriátrica
+geriátricas
+geriátrico
+geriátricos
+globalista
+globalistas
+gravímetro
+gravímetros
+Hamas
+Heinrich
+hipersexualizada
+hipersexualizadas
+hipersexualizado
+hipersexualizados
+histoplasmose
+histoplasmoses
+histrionismo
+houthi
+houthis
+Idanha
+IMAX
+inadequação
+inadequações
+Inditex
+intimidante
+intimidantes
+impreterível
+impreterivelmente
+imunossupressor
+imunossupressora
+imunossupressoras
+imunossupressores
+irredutivelmente
+Johnson
+Jumbo
+Juventus
+Karen
+Karlowitz
+Kumar
+lânguida
+languidamente
+lânguidas
+lânguido
+lânguidos
+laxista
+laxistas
+Leeds United
+leptospirose
+leptospiroses
+libertarianismo
+libertarianismos
+McCain
+Medvedev
+megaoperação
+megaoperações
+marrequinha
+marrequinhas
+menorá
+menorás
+micologia
+microalga
+microalgas
+microcrédito
+microcréditos
+minudência
+minudências
+misandria
+misândrica
+misândricas
+misândrico
+misândricos
+Miramar
+motoclube
+motoclubes
+Murdoch
+Navratilova
+negacionista
+negacionistas
+Nestlé
+noodles
+nordestina
+nordestinas
+nordestino
+nordestinos
+Nottingham Forest
+Novichok
+oligossacarídeo
+oligossacarídeos
+oportunisticamente
+Panathinaikos
+paraolímpica
+paraolímpicas
+paraolímpico
+paraolímpicos
+passarela
+passarelas
+PDN
+Petrogrado
+pimenta-de-sichuan
+plurinominal
+plurinominais
+polímata
+polímatas
+poliquística
+poliquísticas
+poliquístico
+poliquísticos
+Portucel
+prevalente
+prevalentes
+proibicionista
+proibicionistas
+prostética
+prostéticas
+prostético
+prostéticos
+psicotrópica
+psicotrópicas
+psicotrópico
+psicotrópicos
+PSV Eindhoven
+purpurina
+purpurinas
+rebarbadora
+rebarbadoras
+recidivante
+recidivantes
+Red Star Belgrade
+Reich
+rooftop
+rooftops
+Romanov
+RGPD
+salafista
+salafistas
+Salisbury
+senciência
+senciente
+sencientes
+Skripal
+SONAE
+Saint-Étienne
+Steaua București
+Sumatra
+supracional
+supracionais
+Tinder
+TPP
+transfobia
+Transpacífico
+transumante
+transumantes
+website
+websites
+WONCA
+Yosemite
+Zapatero
+Zézinha
+################################
+# Sugestões dos utilizadores 6 #
+################################
+Abrunhosa
+anticíclica
+anticíclicas
+anticíclico
+anticíclicas
+autopreservação
+AZERTY
+Cabify
+candomblé
+cardiorrespiratória
+cardiorrespiratórias
+cardiorrespiratório
+cardiorrespiratórios
+Chaffeur Privé
+construtivismo
+epifania
+epifanias
+etnicismo
+exclusivista
+exclusivistas
+Farfetch
+genotóxica
+genotóxicas
+genotóxico
+genotóxicos
+genotoxicidade
+Guangdong
+hatchback # Estrangeirismo
+hatchbacks # Estrangeirismo
+IBAN
+instituinte
+instituintes
+interbancária
+interbancárias
+interbancário
+interbancários
+interparlamentar
+interparlamentares
+IPCC
+ISPs
+JPMorgan
+Kindle
+MBWay
+microeconomia
+Microeconomia
+millennial # Estrangeirismo
+millennials # Estrangeirismo
+mocassins # Estrangeirismo
+Mussulo
+não-Hodgkin
+neurobiologia
+revanche # Estrangeirismo
+revanches # Estrangeirismo
+provocatoriamente
+QWERTY
+QWERTZ
+Sonangol
+SWIFT
+taróloga
+tarólogas
+tarólogo
+tarólogos
+Taxify
+teatralização
+teatralizações
+transnacionalidade
+Uber

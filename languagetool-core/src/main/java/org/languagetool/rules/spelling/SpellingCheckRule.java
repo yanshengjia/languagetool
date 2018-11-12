@@ -18,10 +18,7 @@
  */
 package org.languagetool.rules.spelling;
 
-import org.languagetool.AnalyzedSentence;
-import org.languagetool.AnalyzedTokenReadings;
-import org.languagetool.JLanguageTool;
-import org.languagetool.Language;
+import org.languagetool.*;
 import org.languagetool.rules.ITSIssueType;
 import org.languagetool.rules.Rule;
 import org.languagetool.rules.RuleMatch;
@@ -47,32 +44,43 @@ public abstract class SpellingCheckRule extends Rule {
    * @since 2.3
    */
   public static final String LANGUAGETOOL = "LanguageTool";
-  /**
-   * The name of the LanguageTool Firefox extension, {@code LanguageToolFx}.
-   * @since 2.3
-   * @deprecated not needed anymore, the add-on is now just called 'LanguageTool' 
-   */
-  public static final String LANGUAGETOOL_FX = "LanguageToolFx";
 
   protected final Language language;
+  protected final CachingWordListLoader wordListLoader = new CachingWordListLoader();
 
   private static final String SPELLING_IGNORE_FILE = "/hunspell/ignore.txt";
   private static final String SPELLING_FILE = "/hunspell/spelling.txt";
   private static final String SPELLING_PROHIBIT_FILE = "/hunspell/prohibit.txt";
+  private static final String SPELLING_FILE_VARIANT = null;
   private static final Comparator<String> STRING_LENGTH_COMPARATOR = Comparator.comparingInt(String::length);
-  private Map<String,Set<String>> wordsToBeIgnoredDictionary = new HashMap<>();
-  private Map<String,Set<String>> wordsToBeIgnoredDictionaryIgnoreCase = new HashMap<>();
+
+  private final UserConfig userConfig;
   private final Set<String> wordsToBeIgnored = new HashSet<>();
   private final Set<String> wordsToBeProhibited = new HashSet<>();
-  protected final CachingWordListLoader wordListLoader = new CachingWordListLoader();
+  private final List<RuleWithLanguage> altRules;
+
+  private Map<String,Set<String>> wordsToBeIgnoredDictionary = new HashMap<>();
+  private Map<String,Set<String>> wordsToBeIgnoredDictionaryIgnoreCase = new HashMap<>();
   
   private List<DisambiguationPatternRule> antiPatterns = new ArrayList<>();
   private boolean considerIgnoreWords = true;
   private boolean convertsCase = false;
 
-  public SpellingCheckRule(ResourceBundle messages, Language language) {
+  public SpellingCheckRule(ResourceBundle messages, Language language, UserConfig userConfig) {
+    this(messages, language, userConfig, Collections.emptyList());
+  }
+
+  /**
+   * @since 4.4
+   */
+  public SpellingCheckRule(ResourceBundle messages, Language language, UserConfig userConfig, List<Language> altLanguages) {
     super(messages);
     this.language = language;
+    this.userConfig = userConfig;
+    if (userConfig != null) {
+      wordsToBeIgnored.addAll(userConfig.getAcceptedWords());
+    }
+    this.altRules = getAlternativeLangSpellingRules(altLanguages);
     setLocQualityIssueType(ITSIssueType.Misspelling);
   }
 
@@ -242,6 +250,17 @@ public abstract class SpellingCheckRule extends Rule {
   }
 
   /**
+   * 
+   * Get the name of the spelling file for a language variant (e.g., en-US or de-AT), 
+   * which lists words to be accepted and used for suggestions, even when the spell
+   * checker would not accept them.
+   * @since 4.3
+   */
+  public String getLanguageVariantSpellingFileName() {
+    return SPELLING_FILE_VARIANT;
+  }
+
+  /**
    * Get the name of the prohibit file, which lists words not to be accepted, even
    * when the spell checker would accept them.
    * @since 2.8
@@ -293,7 +312,7 @@ public abstract class SpellingCheckRule extends Rule {
   }
 
   /**
-   * @param list of words to be prohibited.
+   * @param words list of words to be prohibited.
    * @since 4.2
    */
   protected void addProhibitedWords(List<String> words) {
@@ -307,6 +326,45 @@ public abstract class SpellingCheckRule extends Rule {
    */
   protected List<String> expandLine(String line) {
     return Collections.singletonList(line);
+  }
+
+  protected List<RuleWithLanguage> getAlternativeLangSpellingRules(List<Language> alternativeLanguages) {
+    List<RuleWithLanguage> spellingRules = new ArrayList<>();
+    for (Language altLanguage : alternativeLanguages) {
+      List<Rule> rules;
+      try {
+        rules = altLanguage.getRelevantRules(messages, userConfig, Collections.emptyList());
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+      for (Rule rule : rules) {
+        if (rule.isDictionaryBasedSpellingRule()) {
+          spellingRules.add(new RuleWithLanguage(rule, altLanguage));
+        }
+      }
+    }
+    return spellingRules;
+  }
+
+  protected Language acceptedInAlternativeLanguage(String word) throws IOException {
+    for (RuleWithLanguage altRule : altRules) {
+      AnalyzedToken token = new AnalyzedToken(word, null, null);
+      AnalyzedToken sentenceStartToken = new AnalyzedToken("", JLanguageTool.SENTENCE_START_TAGNAME, null);
+      AnalyzedTokenReadings startTokenReadings = new AnalyzedTokenReadings(sentenceStartToken, 0);
+      AnalyzedTokenReadings atr = new AnalyzedTokenReadings(token, 0);
+      RuleMatch[] matches = altRule.getRule().match(new AnalyzedSentence(new AnalyzedTokenReadings[]{startTokenReadings, atr}));
+      if (matches.length == 0) {
+        return altRule.getLanguage();
+      } else {
+        if (word.endsWith(".")) {
+          Language language = acceptedInAlternativeLanguage(word.substring(0, word.length() - 1));
+          if (language != null) {
+            return language;
+          }
+        }
+      }
+    }
+    return null;
   }
 
   /**

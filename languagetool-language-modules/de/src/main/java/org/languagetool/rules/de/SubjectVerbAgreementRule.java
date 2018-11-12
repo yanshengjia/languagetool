@@ -18,6 +18,7 @@
  */
 package org.languagetool.rules.de;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
 import org.languagetool.AnalyzedSentence;
 import org.languagetool.AnalyzedToken;
@@ -90,6 +91,12 @@ public class SubjectVerbAgreementRule extends Rule {
       new PatternTokenBuilder().pos("PRP:CAU:GEN").setSkip(4).build(),
       new PatternTokenBuilder().csToken("und").setSkip(4).build(),
       new PatternTokenBuilder().tokenRegex("ist|war").build()
+    ),
+    Arrays.asList(
+      new PatternTokenBuilder().pos(JLanguageTool.SENTENCE_START_TAGNAME).build(),
+      new PatternTokenBuilder().posRegex("EIG:.*").build(),
+      new PatternTokenBuilder().csToken("und").setSkip(2).build(),
+      new PatternTokenBuilder().tokenRegex("sind|waren").build()
     )
   );
 
@@ -191,7 +198,7 @@ public class SubjectVerbAgreementRule extends Rule {
                       && prevChunkIsNominative(tokens, i-1)
                       && !hasUnknownTokenToTheLeft(tokens, i)
                       && !hasUnknownTokenToTheRight(tokens, i+1)
-                      && !tokens[1].getToken().matches("Alle|Viele") // "Viele Brunnen in Italiens Hauptstadt sind bereits abgeschaltet."
+                      && !StringUtils.equalsAny(tokens[1].getToken(), "Alle", "Viele") // "Viele Brunnen in Italiens Hauptstadt sind bereits abgeschaltet."
                       && !isFollowedByNominativePlural(tokens, i+1);  // z.B. "Die Zielgruppe sind Männer." - beides Nominativ, aber 'Männer' ist das Subjekt
       if (match) {
         String message = "Bitte prüfen, ob hier <suggestion>" + getSingularFor(tokenStr) + "</suggestion> stehen sollte.";

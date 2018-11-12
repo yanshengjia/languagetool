@@ -19,8 +19,8 @@
 package org.languagetool.rules;
 
 import org.jetbrains.annotations.Nullable;
-import org.languagetool.AnalyzedSentence;
-import org.languagetool.ApiCleanupNeeded;
+import org.languagetool.*;
+import org.languagetool.rules.patterns.PatternRule;
 import org.languagetool.tools.StringTools;
 
 import java.net.URL;
@@ -41,6 +41,23 @@ public class RuleMatch implements Comparable<RuleMatch> {
 
   private static final Pattern SUGGESTION_PATTERN = Pattern.compile("<suggestion>(.*?)</suggestion>");
 
+  /**
+   * Unlike {@link Category}, this is specific to a RuleMatch, not to a rule.
+   * It is mainly used for selecting the underline color in clients.
+   * Note: this is experimental and might change soon (types might be added, deleted or renamed
+   * without deprecating them first)
+   * @since 4.3
+   */
+  @Experimental
+  public enum Type {
+    /** Spelling errors, typically red. */
+    UnknownWord,
+    /** Style errors, typically light blue. */
+    Hint,
+    /** Other errors (including grammar), typically yellow/orange. */
+    Other
+  }
+
   private final Rule rule;
   private final OffsetPosition offsetPosition;
   private final String message;
@@ -51,6 +68,7 @@ public class RuleMatch implements Comparable<RuleMatch> {
   private ColumnPosition columnPosition = new ColumnPosition(-1, -1);
   private List<String> suggestedReplacements = new ArrayList<>();
   private URL url;
+  private Type type = Type.Other;
 
   /**
    * Creates a RuleMatch object, taking the rule that triggered
@@ -297,9 +315,29 @@ public class RuleMatch implements Comparable<RuleMatch> {
     return sentence;
   }
   
+  /**
+   * @since 4.3
+   */
+  @Experimental
+  public void setType(Type type) {
+    this.type = Objects.requireNonNull(type);
+  }
+
+  /**
+   * @since 4.3
+   */
+  @Experimental
+  public Type getType() {
+    return this.type;
+  }
+
   @Override
   public String toString() {
-    return rule.getId() + ":" + offsetPosition + ":" + message;
+    if (rule instanceof PatternRule) {
+      return ((PatternRule) rule).getFullId() + ":" + offsetPosition + ":" + message;
+    } else {
+      return rule.getId() + ":" + offsetPosition + ":" + message;
+    }
   }
 
   /** Compare by start position. */
@@ -318,12 +356,13 @@ public class RuleMatch implements Comparable<RuleMatch> {
         && Objects.equals(offsetPosition, other.offsetPosition)
         && Objects.equals(message, other.message)
         && Objects.equals(suggestedReplacements, other.suggestedReplacements)
-        && Objects.equals(sentence, other.sentence);
+        && Objects.equals(sentence, other.sentence)
+        && Objects.equals(type, other.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(rule.getId(), offsetPosition, message, suggestedReplacements, sentence);
+    return Objects.hash(rule.getId(), offsetPosition, message, suggestedReplacements, sentence, type);
   }
 
   static class OffsetPosition extends MatchPosition {

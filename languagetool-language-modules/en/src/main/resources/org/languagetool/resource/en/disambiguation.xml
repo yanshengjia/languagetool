@@ -33,22 +33,6 @@
           <example type="ambiguous" inputform="or[or/CC,or/NN:U]" outputform="or[or/CC]">Let's choose A <marker>or</marker> B.</example>
         </rule>
 
-        <rule name="remove NNP: lowercase hoopes" id="REMOVE_NNP_FOR_LOWERCASE_HOOPES"><!-- Cannot use removed.txt to remove the POS -->
-          <pattern case_sensitive="yes">
-            <token>hoopes</token>
-          </pattern>
-          <disambig action="remove"><wd pos="NNP"/></disambig>
-          <example type="ambiguous" inputform="hoopes[Hoopes/NNP]" outputform="hoopes[hoopes]">These <marker>hoopes</marker> are large.</example>
-        </rule>
-
-        <rule name="remove NNP: lowercase month names and day names" id="REMOVE_NNP_FOR_LOWERCASE_MONTHS_DAYS"><!-- Cannot use removed.txt to remove the POS -->
-          <pattern case_sensitive="yes">
-            <token regexp="yes">january|february|april|june|july|september|october|november|december|monday|tuesday|wednesday|thursday|friday|saturday</token>
-          </pattern>
-          <disambig action="remove"><wd pos="NNP"/></disambig>
-          <example type="ambiguous" inputform="january[January/NNP]" outputform="january[january]"><marker>january</marker> is a cold month in England.</example>
-        </rule>
-
     <rule id="CD" name="Tag numbers">
       <pattern>
         <token regexp="yes">\d+</token>
@@ -60,12 +44,23 @@
 
     <rule id="number_JJ" name="Tag number-based adjectives">
         <pattern>
-            <token regexp="yes">\d?(1st|2nd|3rd|\dth)</token>
+        <marker>
+          <token regexp="yes">\d?(1st|2nd|3rd|\dth)<exception postag="JJ"/></token>
+        </marker>
+        <token postag_regexp="yes" postag="NN(:UN?)?|JJS?"/>
         </pattern>
         <disambig postag="JJ"/>
         <example type="ambiguous" inputform="22nd[22nd]" outputform="22nd[22nd/JJ]">This is the <marker>22nd</marker> place.</example>
+        <example type="ambiguous" inputform="99th[99th]" outputform="99th[99th/JJ]">The <marker>99th</marker> conflict occurred yesterday.</example>
+        <example type="ambiguous" inputform="41st[41st]" outputform="41st[41st/JJ]">... making it the 42nd most populous and <marker>41st</marker> largest nation in the world.</example>
+        <example type="ambiguous" inputform="33rd[33rd]" outputform="33rd[33rd/JJ]">This is the <marker>33rd</marker> unscheduled repair this year.</example>
         <example type="untouched">1nd place</example>
         <example type="untouched">1 dollar</example>
+        <example type="untouched">The <marker>22nd</marker> is a good day for me.</example>
+        <example type="untouched">You must go to London on the <marker>22nd</marker> of the month.</example>
+        <example type="untouched">Refer to the <marker>22nd</marker> samples.</example>
+        <example type="untouched">There are too many problems. This is the <marker>99th</marker>, and it's only Tuesday.</example>
+        <example type="untouched">This is the <marker>23rd</marker> example. (The abbreviation has the postag JJ.)</example>
     </rule>
 
     <rule id="CD_PAST_CD" name="Disambiguate time">
@@ -212,16 +207,6 @@
         <disambig action="remove"><wd pos="NN:U"/></disambig>
         <example type="untouched">When you have a choice about which brush to use, use the <marker>large</marker>.</example>
         <example type="ambiguous" inputform="large[large/JJ,large/NN:U]" outputform="large[large/JJ]">Use the <marker>large</marker> brush.</example>
-    </rule>
-
-    <rule id="REMOVE_POS_NNP_LOWERCASE_CHEMICAL_SYMBOLS" name="Remove POS NNP from incorrect lower-case chemical symbols">
-      <pattern case_sensitive="yes">
-        <token regexp="yes">ac|ag|al|am|ar|as|at|au|ba|be|bh|bi|bk|br|ca|cd|ce|cf|cl|cm|cn|co|cr|cs|cu|db|ds|dy|er|es|eu|fe|fl|fm|fr|ga|gd|ge|he|hf|hg|ho|hs|in|ir|kr|la|li|lr|lu|lv|mc|md|mg|mn|mo|mt|na|nb|nd|ne|nh|ni|no|np|og|os|pa|pb|pd|pm|po|pr|pt|pu|ra|rb|re|rf|rg|rh|rn|ru|sb|sc|se|sg|si|sm|sn|sr|ta|tb|tc|te|th|ti|tl|tm|ts|xe|yb|zn|zr</token><!-- Source: http://education.jlab.org/itselemental/index_sym.html -->
-      </pattern>
-      <disambig action="remove"><wd pos="NNP"/></disambig>
-        <example type="untouched">The chemical symbol for thorium is <marker>Th</marker>.</example>
-        <example type="untouched"><marker>Th</marker> water is hot.</example><!-- TODO: A rule to find this type of problem -->
-        <example type="ambiguous" inputform="th[Th/NNP]" outputform="th[th]">When <marker>th</marker> water is hot, stop the test.</example>
     </rule>
 
     <rule id="UH" name="Interjections">
@@ -418,7 +403,7 @@
           <marker><token>word</token></marker>          
         </pattern>
         <disambig postag="NN:UN"/>
-        <example type="ambiguous" inputform="word[word/NN:UN,word/VB,word/VBP]" outputform="word[word/NN:UN]">I followed it word for <marker>word</marker>.</example>
+        <example type="ambiguous" inputform="word[word/NN,word/VB,word/VBP]" outputform="word[word/NN:UN]">I followed it word for <marker>word</marker>.</example>
       </rule>      
     </rulegroup>
 
@@ -796,6 +781,15 @@
             </pattern>
             <disambig postag="IN"/>
         </rule>
+        <rule name="learning as noun" id="LEARNING_AS_NOUN">
+            <pattern>
+                <token regexp="yes">deep|reinforcement</token>
+                <marker>
+                    <token>learning</token>
+                </marker>
+            </pattern>
+            <disambig action="remove"><wd pos="VBG"/></disambig>
+        </rule>
         <rule id="IN_ADJ_NN" name="in + adjective + noun">
           <pattern>
             <marker><token>in</token></marker>
@@ -1071,13 +1065,15 @@
   </rule>
    <rule>
     <pattern>
-      <marker><token regexp="yes">can|will|must</token></marker>
+      <marker><token regexp="yes">can|will|must<exception scope="previous" regexp="yes">be|am|is|was|are|were</exception></token></marker>
       <token postag="RB"/>
       <token postag="VB"/>      
     </pattern>
     <disambig postag="MD"/>
     <example type="untouched">It is a can of soup.</example>
+    <example type="untouched">Turkey's accession <marker>is will</marker> ultimately be impossible if Turkey fails to recognize Cyprus.</example>
     <example type="ambiguous" inputform="can[can/MD,can/NN,can/VB,can/VBP]" outputform="can[can/MD]">This <marker>can</marker> only be eliminated.</example>
+    <example type="ambiguous" inputform="will[will/MD,will/NN:UN]" outputform="will[will/MD]">Her very being <marker>will</marker> always express the utmost ...</example><!-- TODO 'will' is also a lexical verb. -->
     </rule>
     <rule>
         <pattern>
@@ -2155,13 +2151,14 @@
     <rule name="VBN + VBN + NN -&gt; JJ" id="VBN_VBN_NN_JJ">
         <pattern>
             <marker>
-                <token postag="VBN"><exception>been</exception></token>
+                <token postag="VBN"><exception regexp="yes">been|had</exception></token>
             </marker>
             <token postag="VBN"/>
             <token postag_regexp="yes" postag="NN:.*|NNS?"/>
         </pattern>
         <disambig postag="JJ"/>
         <example type="untouched">He had been proven innocent.</example>
+        <example type="untouched">...that is, they <marker>had</marker> become logograms as in Egyptian Demotic.</example>
     </rule>
     <rule name="of + VBN + JJ -&gt; JJ" id="OF_VBN_JJ">
         <pattern>
@@ -2498,12 +2495,13 @@
                 </and>
             </marker>
                 <token postag="NN.*" postag_regexp="yes"/>
-                <token postag="SENT_END|VB.|CC" postag_regexp="yes"><exception postag="NN.*" postag_regexp="yes"/></token>
+                <token postag="SENT_END|VB.|CC" postag_regexp="yes"><exception postag="NN.*" postag_regexp="yes"/><exception>for</exception></token>
         </pattern>
         <disambig action="remove" postag="NN.*"/>
         <example type="ambiguous" inputform="Canadian[Canadian/JJ,Canadian/NNP]" outputform="Canadian[Canadian/JJ]">The <marker>Canadian</marker> Badlands is nice.</example>
         <example type="ambiguous" inputform="red[red/JJ,red/NN:UN]" outputform="red[red/JJ]">I have a lot of <marker>red</marker> wine.</example>
         <example type="untouched">This is a nice machine.</example>
+        <example type="untouched">Is much powerful and wondrous <marker>magic necessary for</marker> Harry Potter to fly?</example>
     </rule>
     <rule name="required to" id="required_to">
         <pattern>
@@ -2806,7 +2804,7 @@
         <pattern>
             <marker>
                 <and>
-                    <token postag="PDT"><exception scope="previous" postag="JJ"/></token>
+                    <token postag="PDT"><exception scope="previous" postag_regexp="yes" postag="JJ|DT"/></token>
                     <token postag="DT"/>
                 </and>
             </marker>
@@ -2815,6 +2813,7 @@
         <disambig postag="DT"/>
         <example type="ambiguous" inputform="All[all/DT,all/JJ,all/PDT]" outputform="All[all/DT]"><marker>All</marker> students are happy.</example>
         <example type="untouched">All the people.</example>
+        <example type="untouched">Incorrect grammar. …and put <marker>the all</marker> effort on the other tasks.</example>
     </rule>
     <rule name="PDT/DT -&gt; PDT" id="PDT_PDT">
         <pattern>
@@ -4176,7 +4175,7 @@
           <pattern>
             <marker>
             <and>
-              <token postag="MD">will</token>
+              <token postag="MD">will<exception scope="previous" postag="POS"/></token>
               <token postag="NN:UN"/>
             </and>
             </marker>
@@ -4185,7 +4184,8 @@
           <disambig postag="MD"/>
           <example type="ambiguous" inputform="will[will/MD,will/NN:UN]" outputform="will[will/MD]">This road <marker>will</marker> designated.</example>
           <example type="untouched">I will do it.</example>
-        </rule>                 
+          <example type="untouched">A person's will is an important document.</example>
+        </rule>
                        
         <rule id="NNJJ_NN_JJ" name="noun/adj + noun => adj + noun">
           <pattern>
@@ -4196,11 +4196,12 @@
             </and>
             </marker>
             <token postag="NN.*" postag_regexp="yes"/>
-            <token><exception postag="NN.*" postag_regexp="yes"/></token>
+            <token><exception postag="NN.*" postag_regexp="yes"/><exception>for</exception></token>
           </pattern>
           <disambig action="filter" postag="JJ.?"/>
           <!-- example type="ambiguous" inputform="red[red/JJ,red/NN:UN]" outputform="red[red/JJ]">I have many <marker>red</marker> wine.</example -->
           <example type="untouched">This is a nice machine.</example>
+          <example type="untouched">Is much powerful and wondrous <marker>magic necessary for</marker> Harry Potter to fly?</example>
         </rule>
 
         <rule id="BENEATH_NOTICE" name="beneath notice">
@@ -4318,6 +4319,14 @@
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
+    <rule name="Ignore spelling of file names" id="IGNORE_SPELLING_OF_FILE_NAMES">
+      <pattern>
+        <token/>
+        <token spacebefore="no">.</token>
+        <token spacebefore="no" regexp="yes">asp|aspx|avi|bak|bat|bmp|cab|cfg|cgi|com|css|csv|dat|db|dbf|dll|eps|exe|flv|gif|htm|html|ibooks|ico|ini|jar|jpg|js|jsp|lnk|md|mdb|mid|mov|mp3|mp4|mpa|mpg|pdf|php|pl|png|pps|ppt|pptx|ps|psd|py|rss|sh|sql|svg|sys|tar|tif|tiff|tmp|txt|wav|wma|xhtml|xls|xlsx|xsl|xml|zip|zipx</token><!-- For more extensions, refer to https://fileinfo.com -->
+      </pattern>
+      <disambig action="ignore_spelling"></disambig>
+    </rule>
     <rule name="Ignore spelling of Ho Chi Minh" id="IGNORE_SPELLING_OF_HO_CHI_MINH">
         <pattern case_sensitive="yes">
             <token>Ho</token>
@@ -4330,6 +4339,13 @@
       <pattern>
           <marker><token>alter</token></marker>
           <token>ego</token>
+      </pattern>
+      <disambig postag="NN"/>
+    </rule>
+    <rule name="lingua franca" id="LINGUA_FRANCA">
+      <pattern>
+          <token>lingua</token><!-- Is NN = a medical/biological term -->
+          <marker><token regexp="yes">francas?</token></marker>
       </pattern>
       <disambig postag="NN"/>
     </rule>
