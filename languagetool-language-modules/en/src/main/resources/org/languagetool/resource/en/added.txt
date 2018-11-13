@@ -162,6 +162,7 @@ Africanized	Africanize	VBD
 Africanized	Africanize	VBN
 Africanizes	Africanize	VBZ
 Africanizing	Africanize	VBG
+aftershave	aftershave	NN:U
 agatise	agatise	VB
 agatise	agatise	VBP
 agatised	agatise	VBD
@@ -1220,6 +1221,7 @@ concretises	concretise	VBZ
 concretising	concretise	VBG
 conditionalisation	conditionalisation	NN:UN
 conditionalization	conditionalization	NN:UN
+confectionery	confectionery	NN:U
 Congleton	Congleton	NNP
 conscientise	conscientise	VB
 conscientise	conscientise	VBP
@@ -2522,6 +2524,7 @@ dualized	dualize	VBD
 dualized	dualize	VBN
 dualizes	dualize	VBZ
 dualizing	dualize	VBG
+dumplings	dumpling	NNS
 dynamise	dynamise	VB
 dynamise	dynamise	VBP
 dynamised	dynamise	VBD
@@ -3100,6 +3103,7 @@ Finlandized	Finlandize	VBN
 Finlandizes	Finlandize	VBZ
 Finlandizing	Finlandize	VBG
 Firefox	Firefox	NNP
+first	first	RB
 flamenco	flamenco	NN:U
 flipchart	flipchart	NN
 flipcharts	flipchart	NNS
@@ -5051,6 +5055,7 @@ Moslemized	Moslemize	VBN
 Moslemizes	Moslemize	VBZ
 Moslemizing	Moslemize	VBG
 mounting	mounting	JJ
+mouthwash	mouthwash	NN:U
 muchly	muchly	RB
 multilateralise	multilateralise	VB
 multilateralise	multilateralise	VBP
@@ -5393,6 +5398,7 @@ Occidentalised	Occidentalise	VBN
 Occidentalises	Occidentalise	VBZ
 Occidentalising	Occidentalise	VBG
 OCTOBER	October	NNP
+octopus	octopus	NN:U
 Odesa	Odesa	NNP
 odorise	odorise	VB
 odorise	odorise	VBP
@@ -5747,6 +5753,7 @@ parodized	parodize	VBD
 parodized	parodize	VBN
 parodizes	parodize	VBZ
 parodizing	parodize	VBG
+parsnip	parsnip	NN:U
 partialise	partialise	VB
 partialise	partialise	VBP
 partialised	partialise	VBD
@@ -5872,6 +5879,7 @@ pelletizes	pelletize	VBZ
 pelletizing	pelletize	VBG
 Pendle	Pendle	NNP
 pennyroyal	pennyroyal	NN:U
+pentane	pentane	NN:U
 peptisable	peptisable	JJ
 peptisation	peptisation	NN:UN
 peptise	peptise	VB
@@ -9051,6 +9059,7 @@ wiki	wiki	NN
 Wikipedia	Wikipedia	NNP
 wikis	wiki	NNS
 wood	wood	NN
+woodcarving	woodcarving	NN:U
 word	word	NN
 WordPress	WordPress	NNP
 worksite	worksite	NN
