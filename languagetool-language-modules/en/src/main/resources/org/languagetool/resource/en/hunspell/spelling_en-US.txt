@@ -201,6 +201,7 @@ burnettize
 burnettized
 burnettizes
 burnettizing
+businesspeople
 calorize
 calorized
 calorizes
@@ -656,6 +657,7 @@ dualize
 dualized
 dualizes
 dualizing
+earthrise
 ebonize
 ebonized
 ebonizes
@@ -1173,6 +1175,7 @@ metathesize
 metathesized
 metathesizes
 metathesizing
+metonymy
 microgram
 micrograms
 microliter

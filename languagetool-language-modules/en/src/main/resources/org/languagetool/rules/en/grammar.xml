@@ -33,10 +33,13 @@ USA
     <!ENTITY abbrevWeekdays "Mon?|Tue?|Wed?|Thu?|Fri?|Sat?|Sun?">
     <!ENTITY months "January|February|March|April|May|Ju(ne|ly)|August|September|October|November|December">
     <!ENTITY abbrevMonths "Jan|Feb|Mar|Apr|Ju[ln]|Aug|Sept?|Oct|Nov|Dec">
+    <!ENTITY abbreviations "pp|[Vv]iz|i\.?\s*e|[Vvol]|[Rr]col|maj|Lt|[Ff]ig|[Ff]igs|[Vv]iz|[Vv]ols|[Aa]pprox|[Ii]ncl|[Ii]nc|Pres|[Dd]ept|min|max|[Gg]ovt|lb|ft|c\.?\s*f|vs|dia|lbs|\d+-(:?oz|kc|in|h[rp]|ml)|M?sec|Atty|Sg?t|[SG]en|Gov|Hon|Prof|Mr?s|[DMJS]r|Col|Maj|L(ieu)?t|Brig|Capt|Cmdr|Cmnd|Revd?|Rep|Drs|Messrs|Mmes">
+    <!ENTITY abbreviations2 "a(?:bbrev|bl|bsol|bstr|cc|ccus|dv|dvb|dvs|gst|lt|phet|pp|ppos|cc|dj|djs|rch|rt|ttrib)|A(?:bbrev|bd|berd|berdeensh|bol|borig|bp|br|bridg|bridgem|bsol|bst|bstr|cad|cc|ccept|ccomm|ccompl|ccs|cct|ccts|chievem|dd|ddit|ddr|dm|dmin|dmir|dmon|dmonit|dv|dvancem|dvert|dvoc|dvt|dvts|erodynam|eronaut|ff|ffect|fr|gric|lch|lg|lleg|llit|lm|lph|mer|nal|nalyt|nat|nc|necd|ng|ngl|nim|nn|nniv|nnot|nsw|nt|nthrop|nthropol|ntiq|poc|pol|pp|ppl|pplic|rch|rchaeol|rchipel|rchit|rgt|rith|rithm|rrangem|rtic|rtific|rtill|ssemb|ssoc|ssyriol|str|strol|stron|stronaut|tt|ttrib|ustral|uth|utobiog|utobiogr|yrsh)|rab)|B(?:acteriol|edford|edfordsh|elg|erks|erksh|erw|erwicksh|ibliogr|iochem|iog|iogr|iol|ks|ord|ot|raz|rit|ucks|uild|ull|ur)|b(?:ef|etw)|c(?:ent|ollect|olloq|ompar|ompl|onc|oncr|omp|onj|ons|onst|ontempt|orresp|pd|ontr)|C(?:ontradict|ontrib|ontrov|onv|onvent|onversat|onvoc|ornw|oron|orr|orresp|ounc|ourtsh|raniol|raniom|rim|rit|rt|rts|ryptogr|rystallogr|umb|umberld|umbld|ycl|ytol)|ollect)|onn|al|alc|alend|alif|alligr|amb|ambr|ampanol|anad|anterb|artogr|atal|atech|ath|ent|eram|ert|ertif|hamb|har|harac|has|hem|hesh|hr|hron|hronol|hrons|inematogr|irc|lass|lassif|limatol|lin|oll|olloq|om|omb|ombs|omm|ommandm|ommend|ommerc|ommiss|ommonw|ommunic|omp|ompan|ompar|ompend|ompl|ompos|onc|onch|oncl|onf|onfid|onfl|onfut|ongr|ongreg|ongress|onsc|onsecr|onsid|onsol|onstit|onstr|ontemp|ontempl|ontend|ontent|ontin)|d(?:at|em|ial|im|yslog|ef|eriv|erog)|D(?:au|eb|eclar|ed|ef|eliv|emonstr|ep|epred|epredat|erbysh|escr|evel|evonsh|ial|ict|iffic|irect|is|isc|iscipl|iscov|iscrim|iscuss|iss|istemp|istill|istrib|iv|ivers|oc|octr|omest|urh)|e(?:tym|tymol|uphem|xc|ast|llipt|mph|rron)|E(?:val|vang|ven|vid|vol|xalt|xam|xch|xec|xerc|xhib|xped|xper|xplan|xplic|xplor|xpos)|tymol|ccl|ccles|col|con|din|dinb|duc|dw|gypt|gyptol|lectr|lectro-magn|lectro-physiol|lem|liz|lizab|mb|mbryol|ncycl|ng|ngin|nglishw|nq|nt|nthus|ntom|ntomol|nzymol|pil|pisc|pist|pit|quip|ss|ssent|stabl|thnol)|f(?:em|req|ut)|am)|amil)|F(?:ifesh|ootpr|orfarsh|ortif|ortn|ound|ragm|ratern|riendsh|und|urnit|ab)|am)|arew)|G(?:ard|astron|az|eo|eog|eogr|eol|eom|eomorphol|er|lac|lasg|los|loss|louc|loucestersh|osp|ram|ynaecol)|g(?:erund|(?:en)|H(?:aematol|ampsh|andbk|ants|eb|en|er|erb|eref|ereford|erefordsh|ertfordsh|ierogl|ist|istol|om|orol|ort|osp|ouseh|ousek|usb|ydraul|ydrol)|hist|I(?:nd|ndustr|nfl|nnoc|norg|nq|nst|ntell|ntellect|nterc|nterl|nternat|nterpr|chth|cthyol|deol|dol|llustr|mag|mpr|naug|nclos|nd|nstr|tal|ntro|ntrod|nv|nvent|nvertebr|nvestig|nvestm|nvoc|rel)|mmunol)|i(?:nt|nterj|nterrog|ntr|ntrans|mp|mperf|mpers|mpf|mprop|nstr|nd|ndef|ndic|ndir|nfin|nfl|ron|rreg|mit)|J(?:ahrb|ap|as|rnl|rnls|urisd|urisdict|urispr|ustif|ustific)|joc|K(?:ent|ingd|nowl|pr)|L(?:ab|anc|ancash|ancs|ang|angs|at|d|ds|ect|eechd|eg|eicest|eicester|eicestersh|eics|et|ett|ex|ibr|imnol|incolnsh|incs|ing|inn|it|ithogr|ithol|iturg|ond)|m(?:asc|ed|etaphor|idl|ispr|od)|M(?:ach|ag|agn|an|anagem|anch|anip|anuf|ath|eas|easurem|ech|ed|edit|em|erc|erch|etall|etallif|etallogr|etamorph|etaph|eteorol|eth|etrop|ex|ich|icrobiol|icrosc|il|ilit|in|ineral|isc|iscell|od|onum|orphol|SS|tg|unic|unif|unim|us|yst|yth|ythol)|n(?:once-wd|orth)|om)|N(?:arr|arrat|at|aut|av|avig|eighb|erv|eurol|eurosurg|ewc|ewspr|onconf|orf|orthamptonsh|orthants|orthumb|orthumbld|orthumbr|orw|orweg|otts|ucl|umism)|on-conf)|o(?:ccas|pp|rig)|bj|bl|bs)|O(?:bs|bserv|bstet|bstetr|ccas|ccup|ccurr|ceanogr|ff|ffic|kla|nt|phthalm|phthalmol|ppress|pt|rac|rd|rg|rig|rkn|rnith|rnithol|rthogr|utl|xf|xfordsh|xon|bed)|bj)|p(?:ass|erf|ers|ersonif|honet|hr|op|lur|oet|ref|rep|riv|rob|oss|pl|ple|ples|rec|red|redic|ron|ronunc|rop|rov|ropr|(?:seudo-arch|seudo-dial|seudo-Sc)|erh)|res)|P(?:eriodontol|redict)|rerog|sych|sychoanal|sychoanalyt|sychol|sychopathol|ubl|urg)|erf|alaeobot|alaeogr|alaeont|alaeontol|araphr|arasitol|arl|arnass|ath|athol|eculat|enins|ers|ersec|erthsh|etrogr|etrol|harm|harmaceut|harmacol|hil|hilad|hilol|hilos|hoen|honol|hotog|hotogr|hrenol|hys|hysiogr|hysiol|ict|oet|ol|olit|olytechn|op|orc|ort|osth|ostm|ott|ract|ref|reh|rehist|resb|reserv|rim|rinc|rint|robab|robl|roc|rod|rol|rov|rovid|rovinc|rovis|ronunc|rop)|ros)|Qld|q(?:uot|uots)|r(?:edupl|eg|epr|het|efash|efl|el)|R(?:adiol|eas|eb|ebell|ec|eclam|ecoll|edempt|ef|efl|efus|efut|eg|egic|egist|egr|el|elig|eminisc|emonstr|enfrewsh|eprod|ept|epub|es|esid|et|etrosp|evol|het|ich|om|oxb|oy|udim|uss)|s(?:ing|outh|pec|tr|ubj|ubjunct|ubord|ubseq|ubst|uff|uperl|yll)|S(?:ubj|uff|ubscr|ubscript|uppl|upplic|uppress|urg|urv|ymmetr|ymp|yst)|pan|ask|at|ax|cand|ch|ci|cot|cotl|cript|culpt|eismol|el|elect|er|erm|ess|ettlem|ev|hakes|haks|heph|hetl|hropsh|oc|ociol|om|onn|pec|pecif|pecim|pectrosc|taff|tafford|taffordsh|taffs|tand|tat|tatist|tratigr|truct|tud)|t(?:echn|rans|ransf|ransl)|T(?:ransl|ransubstant|rav|reas|reat|reatm|rib|rig|rigonom|rop|roub|roubl|ypog|ypogr|axon)|rans|echn|echnol|el|elecomm|elegr|eleph|eratol|erminol|errestr|est|extbk|heat|heatr|heol|heoret|hermonucl|hes|opogr|rag)|U(?:niv|rin)|u(?:nkn|nstr|lt|su)|U(?:nnat|noffic)|tilit)|V(?:ac|aledict)|v(?:ar|arr|ars|bl|bs)|ulg)|V(?:eg|enet|ertebr|et|ic|ict|ind|indic|irg|irol|oc|ocab|ol|oy|ulg)|W(?:estm|estmld|estmorld|estmrld|ill|ilts|iltsh|is|isd|kly|ks|onderf|orc|orcestersh|orcs|rit|arwicksh)|west|Y(?:earbk|ng|orks|orksh|rs)|Z(?:eitschr|oogeogr|ool)"><!-- See commit ######### -->
     <!ENTITY interjections "aah|aha|ahem|ahh|argh|aww|aw|bah|boo|boo-hoo|brr|d'oh|duh|eek|eep|eh|eww|fuff|gah|gee|grr|hmm|humph|haha?|huh|hurrah|ick|meh|mhm|mm|muahaha|mwah|nah|nuh-uh|oh|ooh-la-la|ooh|oomph|oops|ouch|oww|oy|pew|pff|phew|psst|sheesh|shh|shoo|tsk-tsk|uh-huh|uh-oh|uh-uh|uhh|umm|waah|wee|whoa|wow|yahoo|yay|yeah|yee-haw|yikes|yoo-hoo|yuh-uh|yuck|zing">
     <!ENTITY languages "Akan|Amharic|Arabic|Assamese|Awadhi|Azerbaijani|Balochi|Bangla|Belarusian|Bengali|Bhojpuri|Burmese|Cantonese|Cebuano|Chewa|Chhattisgarhi|Chinese|Chittagonian|Czech|Deccan|Dhundhari|Dutch|English|Filipino|French|Fula|Gaelic|German|Greek|Gujarati|Hakka|Haryanvi|Hausa|Hiligaynon|Hindi|Hmong|Hunanese|Hungarian|Igbo|Ilocano|Ilonggo|Indonesian|Italian|Ja[pv]anese|Jin|Kannada|Kazakh|Khmer|Kinyarwanda|Kirundi|Konkani|Korean|Kurdish|Madurese|Magahi|Maithili|Malagasy|Malay(alam)?|Malaysian|Mandarin|Marathi|Marwari|Mossi|Nepali|Odia|Oriya|Oromo|Pashto|Persian|Polish|Portuguese|Punjabi|Quechua|Romanian|Russian|Saraiki|Serbo-Croatian|Shona|Sindhi|Sinhalese|Somali|Spanish|Sundanese|Swedish|Sylheti|Tagalog|Tamil|Telugu|Thai|Turk(ish|men)|Ukrainian|Urdu|Uyghur|Uzbek|Vietnamese|Visayan|Wu|Xhosa|Xiang|Yoruba|Yue|Zhuang|Zulu"><!-- Most are from https://en.wikipedia.org/wiki/List_of_languages_by_number_of_native_speakers -->
     <!ENTITY short_adjectives "bad|big|black|bland|blue|bold|brave|brief|bright|broad|calm|cheap|chewy|clean|close|coarse|cold|cool|cruel|cute|damp|dark|deep|dense|dry|dull|dumb|early|easy|faint|fair|far|fast|fat|few|fierce|fine|firm|fit|flat|fresh|full|good|grand|grave|great|gross|hard|harsh|high|hip|hot|humble|kind|large|late|light|little|long|loud|low|mad|mean|mild|moist|narrow|near|neat|new|nice|odd|old|plain|poor|proud|pure|quick|quiet|rare|raw|rich|ripe|rough|rude|sad|safe|sane|shallow|sharp|short|shy|silly|simple|sincere|slim|slow|small|smart|smooth|soft|soon|sore|sour|steep|strange|strict|strong|sweet|tall|tan|thick|thin|tiny|tough|true|ugly|warm|weak|weird|wet|wide|wild|wise|young">
     <!ENTITY optional_short_adjectives "angry|bitter|bloody|bossy|busy|chubby|classy|clear|clever|cloudy|clumsy|crazy|creamy|creepy|crispy|crunchy|curly|curvy|deadly|dirty|dusty|fancy|filthy|flaky|friendly|funny|gentle|gloomy|greasy|greedy|guilty|hairy|handy|happy|healthy|heavy|hungry|icy|itchy|juicy|lazy|likely|lively|lonely|lovely|messy|nasty|naughty|needy|noisy|oily|polite|pretty|risky|roomy|rusty|salty|scary|shiny|skinny|sleepy|slimy|smelly|smoky|sorry|spicy|stingy|sunny|sweaty|tasty|thirsty|wealthy|windy|worldly|worthy">
+    <!ENTITY extreme_qualifiers "ex(?:treme(?:ly)?|ceedingly|ceptionally|tra(ordinarily)?)|especially|fault|tremendously|immensely|vastly|hugely|abundantly|intensely|acutely|singularly|significantly|distinctly|outstandingly|uncommonly|unusually|decidedly|particularly|eminently|supremely|highly|remarkably|really|truly|mightily|thoroughly|utmost|super|hiper|ultra">
     <!ENTITY ambiguous_date '
         <token regexp="yes">0?[1-9]|1[0-2]</token>
         <token>/</token>
@@ -180,6 +183,13 @@ USA
         </rule>
         <rulegroup id="APOS_RE" name="we'Re' (we're) etc">
           <rule>
+            <antipattern>
+              <marker>
+                <token regexp="yes">\p{Lu}+</token>
+                <token regexp="yes">['’]</token>
+                <token case_sensitive="yes">RE</token>
+              </marker>
+            </antipattern>
             <pattern>
               <marker>
                 <token regexp="yes">you|we|they|who</token>
@@ -191,18 +201,39 @@ USA
             <short>Possible typo</short>
             <example correction='We&apos;re'><marker>We'Re</marker> looking forward to our meeting.</example>         
             <example correction='We&apos;re'><marker>We'RE</marker> looking forward to our meeting.</example>         
+            <example correction='WE&apos;re'><marker>WE'Re</marker> here!</example><!-- The correction is not correct -->
+            <example><marker>We're</marker> looking forward to our meeting.</example>
+            <example>He's sad, but <marker>WE'RE</marker> happy.</example>
           </rule>
           <rule>
             <pattern>
               <marker>
-                <token regexp="yes">isn|aren|wasn|weren|don|doesn|didn|can|couldn|mayn|mightn|mustn|needn|oughtn|shan|shouldn|usedn|won|wouldn</token>
+                <token regexp="yes">isn|aren|wasn|weren|don|doesn|didn|can|couldn|mayn|mightn|mustn|needn|oughtn|shan|shouldn|usedn|won|wouldn<exception regexp="yes">\p{Lu}+</exception></token>
                 <token regexp="yes">['’]</token>
                 <token case_sensitive="yes">T</token>
               </marker>
             </pattern>
             <message>Did you mean <suggestion>\1\2t</suggestion>?</message>
             <short>Possible typo</short>
-            <example correction='don&apos;t'>We <marker>don'T</marker> need this.</example>         
+            <example correction='don&apos;t'>We <marker>don'T</marker> need this.</example>
+            <example>We <marker>don't</marker> need this.</example>
+            <example>We <marker>DON'T</marker> need this.</example>
+          </rule>
+          <rule>
+            <pattern case_sensitive="yes">
+              <marker>
+                <token postag_regexp="yes" postag="PRP|NN(:UN?)?"><exception regexp="yes">\p{Lu}+</exception></token>
+                <token regexp="yes">['’]</token>
+                <token>S</token>
+              </marker>
+            </pattern>
+            <message>Did you mean <suggestion>\1\2s</suggestion>?</message>
+            <short>Possible typo</short>
+            <example correction='it&apos;s'>… because <marker>it'S</marker> an example.</example>
+            <example correction='document&apos;s'>If the <marker>document'S</marker> too long, people won't read it.</example>
+            <example correction='Example&apos;s'>This <marker>Example'S</marker> not correct.</example>
+            <example>… because <marker>it's</marker> an example.</example>
+            <example>… but <marker>IT'S</marker> AN EXAMPLE!</example>
           </rule>
         </rulegroup>
         <rule id="AS_FOLLOW_AS_FOLLOWS" name="'as follow' (as follows)">
@@ -254,7 +285,7 @@ USA
                 <example correction="World War">He was a member of the anti-aircraft artillery during <marker>Word War</marker> II</example>
             </rule>
         </rulegroup>
-        <rule id="WONT" name="wont (won't)">
+        <rule id="WONT_CONTRACTION" name="wont (won't)">
             <pattern>
                 <marker>
                 <token>wont<exception scope="previous" postag="PRP$"/></token>
@@ -266,6 +297,16 @@ USA
             <example>We were wont to meet at that pleasant spot.</example>
             <example>As is his wont, Tourneur shows us only parts of the set, in logical sequence, each at the moment when, and not before, we need to see it.</example>
         </rule>
+        <rulegroup id="ISSUES_WITH_CONTRACTIONS" name="Contraction errors: e.g. did'nt->didn't">
+        <!-- Created by Tiago F. Santos, 2018-11-25 -->
+          <url>https://en.wikipedia.org/wiki/Wikipedia:List_of_English_contractions</url>
+          <rule>
+            <regexp>\b((ai|am|are|ca|could|dare|dares|das|did|does|do|has|have|is|ought|sha|should|was|wo)(['’]n?t|n['’][^t])|(?:I|you|s?he|it|we|they)([ds]['’]|l['’]l|l?l['’]|v['’]e|ve['’])|(oc['’]lock))\b</regexp>
+            <message>This contractions is incorrect. Please, check the apostrophe position.</message>
+            <example type='incorrect'>...it <marker>did'nt</marker> work.</example>
+            <example>... it didn't work.</example>
+          </rule>
+        </rulegroup>
         <rulegroup id="PERS_PRON_CONTRACTION" name="I'l (I'll) etc.">
             <rule>
                 <pattern>
@@ -3081,6 +3122,44 @@ USA
             <example>Mr. Lewis's dog bit me yesterday.</example>
             <example>People's Republic of China</example>
         </rule>
+      <rulegroup id="MISSING_GENITIVE" name="missing genitive (e.g., 'employees's' instead of 'employee's')">
+        <!-- Created by Tiago F. Santos, 2018-11-22 -->
+            <url>https://www.ef.edu/english-resources/english-grammar/forming-possessive/</url>
+      <rule>
+            <pattern case_sensitive="yes">
+                <token postag='SENT_START'/>
+              <marker>
+                <token postag="NNP">
+                  <exception regexp="yes">\p{L}+s</exception>
+                  <exception negate_pos='yes' postag="NNP"/></token>
+                <token postag="NN.+"  postag_regexp='yes'>
+                  <exception regexp='yes'>\p{Lu}\p{L}+</exception>
+                  <exception postag='NNP'/>
+                  <exception negate_pos='yes' postag_regexp='yes' postag="NN.+"/></token>
+              </marker>
+            </pattern>
+            <message>The genitive is possibly missing.</message>
+              <suggestion>\2's \3</suggestion>
+            <example correction="Angela's idea"><marker>Angela idea</marker> is good.</example>
+        </rule>
+        <rule>
+            <pattern case_sensitive="yes">
+                <token postag='SENT_START'/>
+              <marker>
+                <token postag="NNP" regexp='yes'>\p{L}+s
+                  <exception negate_pos='yes' postag="NNP"/></token>
+                <token postag="NN.+"  postag_regexp='yes'>
+                  <exception regexp='yes'>\p{Lu}\p{L}+</exception>
+                  <exception postag='NNP'/>
+                  <exception negate_pos='yes' postag_regexp='yes' postag="NN.+"/></token>
+              </marker>
+            </pattern>
+            <message>The genitive is possibly missing.</message>
+              <suggestion>\2' \3</suggestion>
+              <suggestion>\2's \3</suggestion>
+            <example correction="Fergus' idea|Fergus's idea"><marker>Fergus idea</marker> is good.</example>
+        </rule>
+      </rulegroup>
         <rulegroup id="WHOS" name="who's (whose)">
             <url>https://en.wikipedia.org/wiki/Wikipedia:Lists_of_common_misspellings/Grammar_and_Misc</url>
             <rule>
@@ -3135,7 +3214,7 @@ USA
                     <token>who</token>
                     <token spacebefore="no" regexp="yes">['’]</token>
                     <token>s</token>
-                    <token postag="NN|NN:UN?" postag_regexp="yes"><exception postag="NN|NN:UN?" postag_regexp="yes" negate_pos="yes"/></token>
+                    <token postag="NN(:UN?)?" postag_regexp="yes"><exception postag="NN|NN:UN?" postag_regexp="yes" negate_pos="yes"/></token>
                 </pattern>
                 <message>Did you mean <suggestion>whose <match no="4"/></suggestion>?</message>
                 <example correction="whose banana">Do we know <marker>who's banana</marker> this is on the table?</example>
@@ -3822,6 +3901,18 @@ USA
             </pattern>
             <message>Did you mean <suggestion>meanwhile</suggestion>?</message>
             <example correction="Meanwhile"><marker>Mean while</marker>, back on the farm...</example>
+        </rule>
+        <rule id="IN_THE_MEAN_TIME" name="in the mean time (meantime)">
+            <pattern>
+                <token>in</token>
+                <token case_sensitive="yes">the</token>
+                <marker>
+                    <token case_sensitive="yes">mean</token>
+                    <token case_sensitive="yes">time</token>
+                </marker>
+            </pattern>
+            <message>Did you mean <suggestion>meantime</suggestion> (=the period of time between two things).</message>
+            <example correction="meantime">They won't arrive before 6 p.m., but we can continue to use the old ones in the <marker>mean time</marker>.</example>
         </rule>
         <!-- nation wide::word=nationwide -->
         <rule id="NATION_WIDE" name="nation wide (nationwide)">
@@ -7010,6 +7101,21 @@ USA
                 <example>He became a well known graduate of the school.</example>
                 <example>This is a fully accredited graduate film school.</example>
             </rule>
+            <rule>
+                <antipattern>
+                    <token inflected="yes" skip="3">graduate</token>
+                    <token>from</token>
+                </antipattern>
+                <pattern case_sensitive="yes">
+                    <marker>
+                        <token inflected="yes">graduate<exception scope="next" regexp="yes">from|of</exception><exception>graduate</exception></token>
+                    </marker>
+                    <token postag="NNP" regexp="yes">[A-Z]\w+</token>
+                </pattern>
+                <message>The verb 'to graduate' requires the preposition 'from': <suggestion>\1 from</suggestion>.</message>
+                <url>https://www.merriam-webster.com/dictionary/graduate</url>
+                <example correction="graduated from">He <marker>graduated</marker> Yale last June.</example>
+            </rule>
         </rulegroup>
         <rule id="ALL_MOST_SOME_OF_NOUN" name="all/most/some (of) + noun">
             <antipattern>
@@ -7312,6 +7418,14 @@ USA
         <rulegroup id="PLURAL_VERB_AFTER_THIS" name="Plural verb after 'this' or 'that'">
     <!-- Created by Tiago F. Santos, 2018-09-15	-->
             <rule>
+                <antipattern><!--  and those that owe this are called subditus natus; -->
+                    <token>those</token>
+                    <token regexp='yes'>that|which|who</token>
+                    <token postag_regexp='yes' postag='VBD?'/>
+                    <token>this</token>
+                    <token regexp='yes'>are|were</token>
+                    <token postag='VBN'/>
+                </antipattern>
                 <pattern>
                     <token regexp='yes'>th(?:is|at)<exception scope="previous" postag='IN'/><exception postag='W.+' postag_regexp='yes'/></token>
                     <token min='0' postag_regexp='yes' postag='NN(:U|P)?'><exception>can</exception></token>
@@ -7367,6 +7481,7 @@ USA
                 <example>...rily intended for expressing algorithms in a form that can be executed by a computer, but are often used as a w...</example>
                 <example>...ut I suppose that it could do very completely all that can be rationally expected of any logical machine".</example>
                 <example>...rmal definition: "...any sequence of instructions that can be obeyed by a robot, is called an algorithm" (p. 4)...</example>
+                <example>...is called alta ligeantia, and those that owe this are called subditus natus;</example>
            </rule>
         </rulegroup>
         <rulegroup id="THIS_NNS_VB" name="this + plural noun + verb (these)">
@@ -9792,7 +9907,7 @@ USA
                 <example>The dog of war, however, was released.</example>
                 <example correction="were">What happened when the dogs of war, two dachshunds, <marker>was</marker> released.</example>
             </rule>
-            <!-- caused by VBZNNS_DT_NNS in disambiguation.xml: -->
+            <!-- caused by VBZNNS_NNS [was VBZNNS_DT_NNS] in disambiguation.xml: -->
             <rule>
                 <antipattern case_sensitive="yes">
                     <token regexp="yes">[A-Z]+</token>
@@ -9805,8 +9920,31 @@ USA
                 </pattern>
                 <message>Possible agreement error. You should probably use: <suggestion><match no="2" postag="VBP" case_conversion="startupper"/> \3</suggestion> or <suggestion>\2 <match no="3" postag="VBP"/></suggestion>.</message>
                 <short>Possible agreement error</short>
-                <example correction="Cat sleeps|Cats sleep"><marker>Cats sleeps</marker> more than 15 hours per day.</example>
                 <example correction="Do dogs|Does dog"><marker>Does dogs</marker> sleep more than 15 hours per day?</example>
+                <example>AIDS means "Acquired Immune Deficiency Syndrome".</example>
+                <!--example><marker>Cats sleeps</marker> more than 15 hours per day.</example>< 2018-11-26 corrected VBZNNS_NNS such that it does not give 'Cats' the postag VBZ. -->
+            </rule>
+            <rule><!-- needed after changes in VBZNNS_NNS in disambiguation.xml [3f2b9f5]: -->
+                <antipattern case_sensitive="yes">
+                    <token regexp="yes">[A-Z]+</token>
+                    <token regexp="yes">means|stands</token>
+                </antipattern>
+                <pattern>
+                    <token postag="SENT_START"/>
+                    <token postag_regexp='yes' postag="NNP?S">
+                      <exception postag="NN(P|:.*)?" postag_regexp="yes"/>
+                      <exception>media</exception></token>
+                    <token postag="VBZ">
+                      <exception regexp='yes'>is|was</exception></token><!-- XXX is/are to allow sub-rule 41 -->
+                </pattern>
+                <message>Possible agreement error. You should probably use: <suggestion><match no="2" postag_regexp='yes' postag="(NNP?)S" postag_replace='$1'/> \3</suggestion>.</message>
+                  <!-- suggestion>\2 <match no="3" postag="VBP"/></suggestion XXX bug: intermitent failures in suggestions. -->
+                <short>Possible agreement error</short>
+                <example correction="Cat sleeps"><marker>Cats sleeps</marker> more than 15 hours per day.</example>
+                <example correction="Alga has"><marker>Algae has</marker> emerged in recent years as a popular source of om...</example><!-- TODO remove haven from the POS dictionary -->
+                <example correction="Other authors"><marker>Others authors</marker> such as Komarios, and Chymes, we only know throug...</example>
+                <!--example><marker>Media sells</marker> a trace of hatred at bargain prices.</example TODO media should also be tagged as singular noun-->
+                <example><marker>Does dogs</marker> sleep more than 15 hours per day?</example>
                 <example>AIDS means "Acquired Immune Deficiency Syndrome".</example>
             </rule>
             <rule>
@@ -10348,6 +10486,10 @@ USA
         </marker>
         </antipattern>
             <rule>
+                <antipattern>
+                    <token regexp="yes">is|are</token>
+                    <token case_sensitive="yes">GO</token>
+                </antipattern>
                 <pattern>
                     <token inflected="yes">be
                         <exception scope="previous" postag_regexp="yes" postag="VBP?" negate="yes" regexp="yes">ha(?:ve|s)</exception>
@@ -10372,6 +10514,7 @@ USA
                 <example>The other patrons were taxi drivers.</example>
                 <example>All she does is eat.</example>
                 <example>Everybody's fault is nobody's fault.</example>
+                <example>Main Engines <marker>are GO</marker> … 3… 2… 1… And we have liftoff!”</example>
             </rule>
             <rule>
                 <antipattern><!-- Cannot use a chunk in an exception. Thus, use an antipattern with a chunk in a token. -->
@@ -10826,7 +10969,8 @@ USA
           </antipattern>
           <pattern>
             <marker>
-              <token regexp='yes'>I|you|s?he|we|they</token>
+              <token regexp='yes'>It?|you|s?he|we|they
+                <exception case_sensitive='yes'>i</exception></token>
               <token postag="N.+" postag_regexp='yes'>
                 <exception postag='V.+|RB|IN' postag_regexp='yes'/></token>
             </marker>
@@ -12361,7 +12505,7 @@ USA
                 <token>the</token>
                 <marker>
                     <token postag='(?:JJ|RB)R' postag_regexp='yes' regexp='yes'>\p{Ll}+
-                      <exception>layer<!--needs|best.*|\d+(st|nd|rd|th)--></exception>
+                      <exception regexp='yes'>layer|latter<!--needs|best.*|\d+(st|nd|rd|th)--></exception>
                       <exception postag='JJS|RBS' postag_regexp='yes'/></token>
                 </marker>
                 <token>of</token>
@@ -12546,6 +12690,164 @@ USA
                   <suggestion><match no='3' postag='(.+)' postag_regexp='yes' postag_replace='JJS'/></suggestion>
                 <example correction="silliest">This example is <marker>the most silly</marker> I have read.</example>
           </rule>
+        <rulegroup id="EXTREME_ADJECTIVES" name="Extreme adjectives">
+            <!--      Created by Tiago F. Santos, 2018-07-20      -->
+            <url>https://www.espressoenglish.net/extreme-adjectives-in-english/</url>
+            <short>Use the extreme adjective instead.</short>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">angry</token>
+            </pattern>
+            <message>The extreme adjective for angry is '<suggestion><match no="2">furious</match></suggestion>'.</message>
+            <example correction="furious">This is <marker>extremely angry</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">bad</token>
+            </pattern>
+            <message>The extreme adjective for bad is '<suggestion><match no="2">awful</match></suggestion>', or '<suggestion><match no="2">terrible</match></suggestion>', or '<suggestion><match no="2">horrible</match></suggestion>'.</message>
+            <example correction="awful|terrible|horrible">This is <marker>extremely bad</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">big</token>
+            </pattern>
+            <message>The extreme adjective for big is '<suggestion><match no="2">huge</match></suggestion>', or '<suggestion><match no="2">gigantic</match></suggestion>', or '<suggestion><match no="2">giant</match></suggestion>'.</message>
+            <example correction="huge|gigantic|giant">This is <marker>extremely big</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">clean</token>
+            </pattern>
+            <message>The extreme adjective for clean is '<suggestion><match no="2">spotless</match></suggestion>'.</message>
+            <example correction="spotless">This is <marker>extremely clean</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">cold</token>
+            </pattern>
+            <message>The extreme adjective for cold is '<suggestion><match no="2">freezing</match></suggestion>'.</message>
+            <example correction="freezing">This is <marker>extremely cold</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">crowded</token>
+            </pattern>
+            <message>The extreme adjective for crowded is '<suggestion><match no="2">packed</match></suggestion>'.</message>
+            <example correction="packed">This is <marker>extremely crowded</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">dirty</token>
+            </pattern>
+            <message>The extreme adjective for dirty is '<suggestion><match no="2">filthy</match></suggestion>'.</message>
+            <example correction="filthy">This is <marker>extremely dirty</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">funny</token>
+            </pattern>
+            <message>The extreme adjective for funny is '<suggestion><match no="2">hilarious</match></suggestion>'.</message>
+            <example correction="hilarious">This is <marker>extremely funny</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">good</token>
+            </pattern>
+            <message>The extreme adjective for good is '<suggestion><match no="2">wonderful</match></suggestion>', or '<suggestion><match no="2">fantastic</match></suggestion>', or '<suggestion><match no="2">excellent</match></suggestion>'.</message>
+            <example correction="wonderful|fantastic|excellent">This is <marker>extremely good</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">hot</token>
+            </pattern>
+            <message>The extreme adjective for hot is '<suggestion><match no="2">boiling</match></suggestion>'.</message>
+            <example correction="boiling">This is <marker>extremely hot</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">hungry</token>
+            </pattern>
+            <message>The extreme adjective for hungry is '<suggestion><match no="2">starving</match></suggestion>'.</message>
+            <example correction="starving">This is <marker>extremely hungry</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">interesting</token>
+            </pattern>
+            <message>The extreme adjective for interesting is '<suggestion><match no="2">fascinating</match></suggestion>'.</message>
+            <example correction="fascinating">This is <marker>extremely interesting</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">old</token>
+            </pattern>
+            <message>The extreme adjective for old is '<suggestion><match no="2">ancient</match></suggestion>'.</message>
+            <example correction="ancient">This is <marker>extremely old</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">pretty</token>
+            </pattern>
+            <message>The extreme adjective for pretty is '<suggestion><match no="2">gorgeous</match></suggestion>'.</message>
+            <example correction="gorgeous">This is <marker>extremely pretty</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">scary</token>
+            </pattern>
+            <message>The extreme adjective for scary is '<suggestion><match no="2">terrifying</match></suggestion>'.</message>
+            <example correction="terrifying">This is <marker>extremely scary</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">small</token>
+            </pattern>
+            <message>The extreme adjective for small is '<suggestion><match no="2">tiny</match></suggestion>'.</message>
+            <example correction="tiny">This is <marker>extremely small</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">surprising</token>
+            </pattern>
+            <message>The extreme adjective for surprising is '<suggestion><match no="2">astounding</match></suggestion>'.</message>
+            <example correction="astounding">This is <marker>extremely surprising</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">tired</token>
+            </pattern>
+            <message>The extreme adjective for tired is '<suggestion><match no="2">exhausted</match></suggestion>'.</message>
+            <example correction="exhausted">This is <marker>extremely tired</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp='yes'>&extreme_qualifiers;</token>
+                <token inflected="yes">ugly</token>
+            </pattern>
+            <message>The extreme adjective for ugly is '<suggestion><match no="2">hideous</match></suggestion>'.</message>
+            <example correction="hideous">This is <marker>extremely ugly</marker>.</example>
+        </rule>
+        </rulegroup>          
+
         <rulegroup id="DID_BASEFORM" name="Non-infinitive verb after modal verbs">
             <rule>
                 <antipattern>
@@ -12772,6 +13074,31 @@ USA
                 <example>This palace was used later as a prison.</example>
                 <example>The ozone layer then blocks most UVB.</example>
                 <example>It acts more or less as a replacement.</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="MISSING_PAST_TENSE" name="Missing past tense with '...last year/month/etc.'">
+            <rule>
+                <antipattern>
+                    <token postag="VB[DN]" postag_regexp="yes" skip="-1"></token>
+                    <token>last</token>
+                    <token regexp="yes">week|month|year</token>
+                </antipattern>
+                <antipattern>
+                    <token inflected="yes" regexp="yes" skip="-1">forget|remember</token>
+                    <token>last</token>
+                    <token regexp="yes">week|month|year</token>
+                </antipattern>
+                <pattern>
+                    <marker>
+                        <token><exception scope="previous" postag="IN"></exception>last</token>
+                        <token regexp="yes">month|week|year</token>
+                    </marker>
+                    <token postag="SENT_END"></token>
+                </pattern>
+                <message>‘last \2’ indicates a finished event of the past. Please check the predicate's tense.</message>
+                <example correction="">I choose to go to Italy <marker>last year</marker>.</example>
+                <example correction="">She leaves school <marker>last year</marker>.</example>
+                <example>I'll never forget shaking the President's hand last year.</example>
             </rule>
         </rulegroup>
         <rule id="USE_TO_VERB" name="Missing past tense for 'used to...'">
@@ -18347,7 +18674,7 @@ USA
                  <example>After circling it, he knew that they were dealing with a WW2-era explosive.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="INTERJECTIONS_PUNCTUATION" name="Missing comma after introductory phrase">
+        <rulegroup id="INTERJECTIONS_PUNCTUATION" name="Missing puncutation after an interjection">
     <!--  Created by Tiago F. Santos, 2018-07-16      -->
                  <url>http://www.chompchomp.com/terms/interjection.htm</url>
                  <short>Missing punctuation</short>
@@ -18803,6 +19130,33 @@ USA
             <suggestion>\1 \2</suggestion>
             <example correction="” said">“Good morning, Frank,<marker>”said</marker> Hal.</example>
         </rule>
+        <rulegroup id="UNIT_SPACE" name="Missing space between numeric value and unit (e.g., 25 km)">
+            <rule>
+                <regexp case_sensitive='yes'>(\-?[0-9]+[0-9,.]*(€|¥|°C|°F|°De?|°R[éeøa]?|(Z|E|P|T|G|M|k|h|da|d|c|m|µ|n|f|z|y)?[ΩΩm]|(Z|E|P|T|G|M|k|h|da|d|c|m|µ|n|p|f|a|z|y)?N|[kKMGTPEZY]i?B|[kmµnp]g|[Mk]t|kWh|GWa|MWd|MWh)(?!\w))</regexp>
+                <message>Insert a space between the numerical value and the unit symbol <suggestion><match no="1" regexp_match="((\-)?[0-9]+[0-9,.]*{1,})" regexp_replace="$1 "/></suggestion></message>
+                <url>https://www.bipm.org/en/publications/si-brochure/section5-3.html#section3</url>
+                <example correction="25 °C">The temperature is <marker>25°C</marker>.</example>
+                <example correction="-25 °C">The temperature is <marker>-25°C</marker>.</example>
+                <example correction="25,5 °F">The temperature is <marker>25,5°F</marker> warm.</example>
+                <example correction="5 km">Distance <marker>5km</marker>.</example>
+                <example correction="5 kg">It weighs <marker>5kg</marker>.</example>
+                <example>(AsCH3)2n</example>
+                <example>https://docs.google.com/document/d/1hEO7G3hm6bTkYnNlmT3uV</example>
+            </rule>
+            <rule>
+                <regexp>((\-)?[0-9]+[0-9.,]*{1,}) (°[^CFK])</regexp>
+                <message>For the unit symbols for degree, minute, and second for plane angle no space is left between the numerical value and the unit symbol: <suggestion>\1°</suggestion> or add a missing unit symbol (e.g., <suggestion>\1 °C</suggestion>).</message>
+                <example correction="25°|25 °C">The angle is <marker>25 ° </marker>.</example>
+            </rule>
+            <rule>
+                <regexp>(\-?[0-9]+) (″)</regexp>
+                <message>For the unit symbols for degree, minute, and second for plane angle no space is left between the numerical value and the unit symbol.</message>
+                <suggestion>\1\2</suggestion>
+                <url>https://www.bipm.org/en/publications/si-brochure/section5-3.html#section3</url>
+                <example>3° 14′ 45,54″</example>
+                <example correction="54″">45,<marker>54 ″</marker></example>
+            </rule>
+        </rulegroup>
         <rulegroup name="abbreviations with spaces in between (e. g.)" id="EG_SPACE">
             <rule>
                 <pattern case_sensitive="yes">
@@ -20101,6 +20455,11 @@ USA
             <example correction="then">Since <marker>than</marker> we've released two new versions.</example>
         </rule>
         <rule id="THE_THEY" name="the (they)">
+            <antipattern>
+                <token>the</token>
+                <token>must</token>
+                <token>have</token>
+            </antipattern>
             <pattern>
                 <marker><token>the</token></marker>
                 <token postag="MD"><exception>will</exception></token>
@@ -20108,6 +20467,7 @@ USA
             <message>Did you mean <suggestion>\1y</suggestion>?</message>
             <short>Possible typo</short>
             <example correction="They"><marker>The</marker> cannot help you.</example>
+            <example>The must have toy this year...</example>
         </rule>
         <rule id="NUMBER_OF_NNS" name="number or (of)">
             <pattern>
@@ -22399,7 +22759,7 @@ USA
                 </marker>
                 <token postag="NN(:UN?)?|NNP?S" postag_regexp="yes">
                     <exception postag="JJ"/>
-                    <exception regexp="yes">one|still|right|in|kind</exception></token>
+                    <exception regexp="yes">one|still|right|in|kind|well</exception></token>
                 <token><exception>enough</exception></token>
             </pattern>
             <message>Did you mean <suggestion>your</suggestion>?</message>
@@ -22416,6 +22776,7 @@ USA
             <example>You're Arthur Willis.</example>
             <example>You're kind of amazed.</example>
             <example>You're in better shape than I am.</example>
+            <example>Hope you're well.</example>
         </rule>
         <rule id="IN_YOU_RE_NN" name="you're (your)">
             <pattern>
@@ -23192,6 +23553,17 @@ USA
             <url>http://www.dictionary.com/browse/bar-b-que</url>
             <example correction="bar-b-que">A casual summer <marker>bar-b-queue</marker>.</example>
         </rule>
+    <!--rulegroup id='EASILY_CONFUSED_RARE_WORDS' name="Rare words easily confused with common words"-->
+    <!--      Created by Tiago F. Santos, Portuguese rule, 2018-11-26      -->
+      <!--rule>
+        <pattern>
+            <token inflected='yes'>nead</token>
+        </pattern>
+        <message>'\1' is a noun related to nests of beds. The verb is <suggestion><match no="1" regexp_match="nea" regexp_replace="nee"/></suggestion>.</message>
+        <url></url>
+        <example correction="needed">Every time I <marker>neaded</marker> it, it worked.</example>
+      </rule>
+    </rulegroup-->
     </category>
 
     <!-- ====================================================================== -->

@@ -168,8 +168,8 @@ public class GermanTagger extends BaseTagger {
               readings.addAll(substantivatedFormsList);
             } else {
               if (StringUtils.startsWithAny(word, "bitter", "dunkel", "erz", "extra", "früh",
-                "gemein", "hyper", "lau", "minder", "stock", "super", "tod", "ultra", "ur")) {
-                String lastPart = StringUtils.removePattern(word, "^(bitter|dunkel|erz|extra|früh|gemein|grund|hyper|lau|minder|stock|super|tod|ultra|ur|voll)");
+                "gemein", "hyper", "lau", "mega", "minder", "stock", "super", "tod", "ultra", "ur")) {
+                String lastPart = StringUtils.removePattern(word, "^(bitter|dunkel|erz|extra|früh|gemein|grund|hyper|lau|mega|minder|stock|super|tod|ultra|ur|voll)");
                 if (lastPart.length() > 1) {
                   String firstPart = StringUtils.removeEnd(word, lastPart);
                   List<TaggedWord> taggedWords = getWordTagger().tag(lastPart);
@@ -302,7 +302,7 @@ public class GermanTagger extends BaseTagger {
       List<TaggedWord> taggedFemaleForm = getWordTagger().tag(femaleForm);
       boolean isSubstantivatedForm = taggedFemaleForm.stream().anyMatch(t -> t.getPosTag().equals("SUB:NOM:SIN:FEM:ADJ"));
       if (isSubstantivatedForm) {
-        List<AnalyzedToken> list = new ArrayList<AnalyzedToken>();
+        List<AnalyzedToken> list = new ArrayList<>();
         list.add(new AnalyzedToken(word, "SUB:NOM:SIN:MAS:ADJ", word));
         list.add(new AnalyzedToken(word, "SUB:GEN:PLU:MAS:ADJ", word));
         //list.add(new AnalyzedToken(word, "SUB:NOM:SIN:MAS", word));

@@ -30,6 +30,8 @@ import org.languagetool.language.LanguageIdentifier;
 import org.languagetool.markup.AnnotatedText;
 import org.languagetool.rules.CategoryId;
 import org.languagetool.rules.RuleMatch;
+import org.languagetool.rules.bitext.BitextRule;
+import org.languagetool.tools.Tools;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -259,7 +261,6 @@ abstract class TextChecker {
     }
     int textSize = aText.getPlainText().length();
 
-
     List<RuleMatch> ruleMatchesSoFar = Collections.synchronizedList(new ArrayList<>());
     
     Future<List<RuleMatch>> future = executorService.submit(new Callable<List<RuleMatch>>() {
@@ -269,7 +270,7 @@ abstract class TextChecker {
         /*if (Math.random() < 0.1) {
           throw new OutOfMemoryError();
         }*/
-        return getRuleMatches(aText, lang, motherTongue, params, userConfig, f -> ruleMatchesSoFar.add(f));
+        return getRuleMatches(aText, lang, motherTongue, parameters, params, userConfig, f -> ruleMatchesSoFar.add(f));
       }
     });
     String incompleteResultReason = null;
@@ -355,7 +356,7 @@ abstract class TextChecker {
     }
     languageCheckCounts.put(lang.getShortCodeWithCountryAndVariant(), count);
     int computationTime = (int) (System.currentTimeMillis() - timeStart);
-    String version = parameters.get("v") != null ? ", version: " + parameters.get("v") : "";
+    String version = parameters.get("v") != null ? ", v:" + parameters.get("v") : "";
     print("Check done: " + aText.getPlainText().length() + " chars, " + languageMessage + ", #" + count + ", " + referrer + ", "
             + matches.size() + " matches, "
             + computationTime + "ms, agent:" + agent + version
@@ -387,7 +388,8 @@ abstract class TextChecker {
   }
 
   private List<RuleMatch> getRuleMatches(AnnotatedText aText, Language lang,
-                                         Language motherTongue, QueryParams params, UserConfig userConfig, RuleMatchListener listener) throws Exception {
+                                         Language motherTongue, Map<String, String> parameters, 
+                                         QueryParams params, UserConfig userConfig, RuleMatchListener listener) throws Exception {
     if (cache != null && cache.requestCount() > 0 && cache.requestCount() % CACHE_STATS_PRINT == 0) {
       double hitRate = cache.hitRate();
       String hitPercentage = String.format(Locale.ENGLISH, "%.2f", hitRate * 100.0f);
@@ -398,13 +400,25 @@ abstract class TextChecker {
       logger.log(new DatabaseCacheStatsLogEntry(logServerId, (float) hitRate));
     }
     PipelinePool.PipelineSettings settings = null;
-    Pipeline lt = null;
-    try {
-      settings = new PipelinePool.PipelineSettings(lang, motherTongue, params, userConfig);
-      lt = pipelinePool.getPipeline(settings);
-      return lt.check(aText, true, JLanguageTool.ParagraphHandling.NORMAL, listener, params.mode);
-    } finally {
-      pipelinePool.returnPipeline(settings, lt);
+
+    if (parameters.get("sourceText") != null) {
+      if (parameters.get("sourceLanguage") == null) {
+        throw new RuntimeException("'sourceLanguage' parameter missing - must be set when 'sourceText' is set");
+      }
+      Language sourceLanguage = Languages.getLanguageForShortCode(parameters.get("sourceLanguage"));
+      JLanguageTool sourceLt = new JLanguageTool(sourceLanguage);
+      JLanguageTool targetLt = new JLanguageTool(lang);
+      List<BitextRule> bitextRules = Tools.getBitextRules(sourceLanguage, lang);
+      return Tools.checkBitext(parameters.get("sourceText"), aText.getPlainText(), sourceLt, targetLt, bitextRules);
+    } else {
+      Pipeline lt = null;
+      try {
+        settings = new PipelinePool.PipelineSettings(lang, motherTongue, params, userConfig);
+        lt = pipelinePool.getPipeline(settings);
+        return lt.check(aText, true, JLanguageTool.ParagraphHandling.NORMAL, listener, params.mode);
+      } finally {
+        pipelinePool.returnPipeline(settings, lt);
+      }
     }
   }
 
@@ -428,10 +442,13 @@ abstract class TextChecker {
     return result;
   }
 
-  Language detectLanguageOfString(String text, String fallbackLanguage, List<String> preferredVariants, List<String> noopLangs) {
-    Language lang = identifier.detectLanguage(text, noopLangs);
-    if (lang == null) {
+  DetectedLanguage detectLanguageOfString(String text, String fallbackLanguage, List<String> preferredVariants, List<String> noopLangs) {
+    DetectedLanguage detected = identifier.detectLanguage(text, noopLangs);
+    Language lang;
+    if (detected == null) {
       lang = Languages.getLanguageForShortCode(fallbackLanguage != null ? fallbackLanguage : "en");
+    } else {
+      lang = detected.getDetectedLanguage();
     }
     if (preferredVariants.size() > 0) {
       for (String preferredVariant : preferredVariants) {
@@ -451,7 +468,7 @@ abstract class TextChecker {
         lang = lang.getDefaultLanguageVariant();
       }
     }
-    return lang;
+    return new DetectedLanguage(null, lang, detected != null ? detected.getDetectionConfidence() : 0f);
   }
 
   static class QueryParams {

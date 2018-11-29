@@ -2,11 +2,43 @@
 
 ## 4.4-SNAPSHOT (release planned for 2018-12-27)
 
+#### Catalan
+  * added and improved rules
+
 #### English
   * added and improved rules
+  * segmentation improvements
+  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict  (Version 2.67 - 2018-12-01)
 
 #### German
   * added and improved rules
+  * Swiss German: improved POS tagging of words that contain 'ß' in de-DE German (e.g.,
+    'gross' is tagged as 'gross[groß/ADJ:PRD:GRU]'); (#1147)
+
+#### Portuguese
+  * added and improved rules
+  * disambiguation improvements
+  * POS and spelling improvements
+
+#### Serbian
+  * Serbian never moved beyond its "initial support" state with a tiny number of rules,
+    and it has no active maintainer, so we have deactivated it for now. If you'd like to
+    maintain support for Serbian, let us know in the forum (https://forum.languagetool.org).
+    Once it's clear that a new active long-term maintainer has been found, we'll activate
+    support for Serbian again.
+    
+#### Russian
+  * added and improved rules
+  * internal dictionary improvements 
+
+#### Ukrainian
+  * dictionary update (about 7k of new words)
+  * added and improved rules
+  * improvements to tokenization, tagging, and disambiguation
+
+#### Dutch
+  * added and improved rules, including more confusion rules for dyslectic people
+  * added large amount of family names
 
 #### HTTP API / LT server
   * Experimental support for `altLanguages` parameter: takes a list of language
@@ -21,7 +53,10 @@
     mapped to a no-op language without rules. Useful for clients that rely on
     language auto-detection and whose users might use languages not supported by LT.
     NOTE 1: only works with fastText configured
-    NOTE 2: setting languages here will worsen language detection quality on average 
+    NOTE 2: setting languages here will worsen language detection quality on average
+  * Change to language detection behavior: Removed fallback to English when confidence of detection algorithm is low,
+    instead now always returning highest scoring detected language. Added a field `confidence` to `detectedLanguage`
+    object in the JSON response that contains the probability score for the detected language as computed by the detection algorithm.
 
 
 

@@ -6673,26 +6673,57 @@ Zézinha
 ################################
 # Sugestões dos utilizadores 6 #
 ################################
+Abidjan
 Abrunhosa
+aleivosia
+aleivosias
 anticíclica
 anticíclicas
 anticíclico
 anticíclicas
+antropomorfização
+antropomorfizações
 autopreservação
 AZERTY
+Bakunin
+Bastiat
+bioeconomia
+bioinformática
+Bolsonaro
+Böhm-Bawerk
 Cabify
+comatosa
+comatosas
+comatoso
+comatosos
 candomblé
 cardiorrespiratória
 cardiorrespiratórias
 cardiorrespiratório
 cardiorrespiratórios
 Chaffeur Privé
+clientelar
+clientelares
 construtivismo
+demonização
+demonizações
+ébola
 epifania
 epifanias
+epítome
+epítomes
 etnicismo
 exclusivista
 exclusivistas
+exponenciada
+exponenciadas
+exponenciado
+exponenciados
+expropriativa
+expropriativas
+expropriativo
+expropriativos
+FAPLA
 Farfetch
 genotóxica
 genotóxicas
@@ -6702,7 +6733,16 @@ genotoxicidade
 Guangdong
 hatchback # Estrangeirismo
 hatchbacks # Estrangeirismo
+Hayek
+hipertermia
+hipertermias
+hipotermia
+hipotermias
 IBAN
+impreparada
+impreparadas
+impreparado
+impreparados
 instituinte
 instituintes
 interbancária
@@ -6713,23 +6753,40 @@ interparlamentar
 interparlamentares
 IPCC
 ISPs
+Jair
 JPMorgan
 Kindle
+kVA
+maluquinha
+maluquinhas
+maluquinho
+maluquinhos
 MBWay
 microeconomia
 Microeconomia
 millennial # Estrangeirismo
 millennials # Estrangeirismo
 mocassins # Estrangeirismo
+MST
 Mussulo
 não-Hodgkin
 neurobiologia
+Nikolai
 revanche # Estrangeirismo
 revanches # Estrangeirismo
+perequação
+perequações
+Peterson
+Piaget
+Proudhon
 provocatoriamente
 QWERTY
 QWERTZ
+Schumpeter
+Silvano
 Sonangol
+Sowell
+supletivamente
 SWIFT
 taróloga
 tarólogas
@@ -6739,4 +6796,9 @@ Taxify
 teatralização
 teatralizações
 transnacionalidade
+Tsé-Tung
+tuia-gigante
+tuias-gigantes
 Uber
+umbundo
+Xbox

@@ -3,6 +3,7 @@
 # File Encoding: UTF-8
 # Format: three tab-separated fields: fullform baseform postags
 #
+Abidjan	Abidjan	NPCS000
 aceita	aceitar	VMP00SF
 aceitas	aceitar	VMP00PF
 aceito	aceitar	VMP00SM
@@ -15,12 +16,17 @@ acesos	acender	VMP00PM
 ANA	ANA	NPFS000_
 antecedência	antecedência	NCFS000
 antecedências	antecedência	NCFP000
+antípoda	antípoda	NCCS000
+antípodas	antípoda	NCCP000
+Arcos	Arcos	NPCNG00
 Arizona	Arizona	NPMSG00
 avifauna	avifauna	NCFS000
 avifaunas	avifauna	NCFP000
 Bairro	Bairro	NPMSG00
+Barbados	Barbados	NPFPG00
 BCE	BCE	NPMSO00
 Belenenses	Belenenses	NPMS000
+Bermudas	Bermudas	NPFPG00
 besta	besta	AQ0CS0
 bestas	besta	AQ0CP0
 biofilme	biofilme	NCMS000
@@ -28,6 +34,8 @@ biofilmes	biofilme	NCMP000
 boia	boia	NCFS000
 boias	boia	NCFP000
 Boris	Boris	NPMS000
+Buda	Buda	NPMSS00
+Campos	Campos	NPCNG00
 Champalimaud	Champalimaud	NPCS000
 chanceler	chanceler	NCCS000
 chanceleres	chanceler	NCCP000
@@ -35,6 +43,7 @@ chefe	chefe	NCCS000
 chefes	chefe	NCCP000
 creem	crer	VMIP3P0
 Coentrão	Coentrão	NPCS000
+Dácia	Dácia	NPFS000
 deem	dar	VMM03P0
 deem	dar	VMSP3P0
 demasiado	demasiado	RG
@@ -42,11 +51,14 @@ diafragma	diafragma	NCMS000
 diafragmas	diafragma	NCMP000
 docilidade	docilidade	NCFS000
 docilidades	docilidade	NCFP000
+Dom	Dom	NPMS000
 EAU	EAU	NPMPG00_
 eleita	eleger	VMP00SF
 eleitas	eleger	VMP00PF
 eleito	eleger	VMP00SM
 eleitos	eleger	VMP00PM
+# Enrique is arcaic
+Enrique	Enrique	NPMS000
 entregue	entregar	VMP00SC
 entregues	entregar	VMP00PC
 envolta	envolver	VMP00SF
@@ -57,6 +69,8 @@ epidural	epidural	NCFS000
 epidural	epidural	AQ0FS0
 epidurais	epidural	NCFP000
 epidurais	epidural	AQ0FP0
+Equador	Equador	NPMSG00
+Estremadura	Estremadura	NPFS000
 excecionais	excecional	AQ0CS0
 excecional	excecional	AQ0CP0
 exceto	exceto	CC
@@ -73,13 +87,16 @@ extinta	extinguir	VMP00SF
 extintas	extinguir	VMP00PF
 extinto	extinguir	VMP00SM
 extintos	extinguir	VMP00PM
+Fabiana	Fabiana	NPFS000
 fãs	fã	NCCP000
 FC	FC	NPMS000
+Fénix	Fénix	NPMS000
 Fonseca	Fonseca	NPCSS00
 frita	fritar	VMP00SF
 fritas	fritar	VMP00PF
 frito	fritar	VMP00SM
 fritos	fritar	VMP00PM
+Furnas	Furnas	NPCNG00
 Gana	Gana	NPMS000
 ganha	ganhar	VMP00SF
 ganhas	ganhar	VMP00PF
@@ -102,6 +119,7 @@ Hispânia	Hispânia	NPFSG00
 hospitalares	hospitalar	AQ0CP0
 hospitalar	hospitalar	AQ0CS0
 Iémen	Iémen	NPMSG00
+Igreja	Igreja	NPFS000
 impressa	imprimir	VMP00SF
 impressas	imprimir	VMP00PF
 impresso	imprimir	VMP00SM
@@ -113,6 +131,7 @@ inclusos	incluir	VMP00PM
 irrealismo	irrealismo	NCMS000
 irrealismos	irrealismo	NCMP000
 Jugoslávia	Jugoslávia	NPFS000
+Lajes	Lajes	NPCNG00
 LanguageTool	LanguageTool	NPMFO00_
 laranja	laranja	AQ0CS0
 laranjas	laranja	AQ0CP0
@@ -122,8 +141,16 @@ LEGOs	LEGO	NPMP000
 legos	LEGO	NCMP000
 lóbi	lóbi	NCMS000
 lóbis	lóbi	NCMP000
+Lobito	Lobito	NPMS000
+Lua	lua	NPFS000
+maliana	maliano	NCFS000
+maliano	maliano	NCMS000
+malianas	maliano	NCFP000
+malianos	maliano	NCMP000
+Marco	Marco	NPMS000
 marrequinha	marrequinha	NCFS000
 marrequinhas	marrequinha	NCFP000
+Mesopotâmia	Mesopotâmia	NPFS000
 microalga	microalga	NCFS000
 microalgas	microalga	NCFP000
 mirtilo	mirtilo	NCMS000
@@ -131,6 +158,7 @@ mirtilos	mirtilo	NCMP000
 modelo	modelo	NCCS000
 modelos	modelo	NCCP000
 Mohammed	Mohammed	NPMS000
+Morávia	Morávia	NPFS000
 morta	matar	VMP00SF
 morta	morrer	VMP00SF
 motard	motard	NCCS000
@@ -143,16 +171,20 @@ morto	matar	VMP00SM
 morto	morrer	VMP00SM
 mortos	matar	VMP00PM
 mortos	morrer	VMP00PM
+Neves	Neves	NPCNS00
+Odisseia	Odisseia	NPFS000
 OpenStreetMap	OpenStreetMap	NPMS000_
 paga	pagar	VMP00SF
 pagas	pagar	VMP00PF
 pago	pagar	VMP00SM
 pagos	pagar	VMP00PM
+Palestina	Palestina	NPFS000
 pega	pegar	VMP00SF
 pegas	pegar	VMP00PF
 pego	pegar	VMP00SM
 pegos	pegar	VMP00PM
 Perú	Perú	NPMSG00
+Peru	Peru	NPMSG00
 pisca	pisca	NCMS000
 piscas	pisca	NCMP000
 polo	polo	NCMS000
@@ -255,13 +287,16 @@ suspensas	suspender	VMP00PF
 suspensa	suspender	VMP00SF
 suspensos	suspender	VMP00PM
 suspenso	suspender	VMP00SM
+tiragens	tiragem	NCFP000
 traumas	trauma	NCMP000
 trauma	trauma	NCMS000
 Twitter	Twitter	NPMS000
 University	University	NPFS000
 vaginas	vagina	NCFP000
 vagina	vagina	NCFS000
+Vales	Vales	NPMPG00
 veem	ver	VMIP3P0
+Veiga	Veiga	NPCNS00
 vilãs	vilão	NCFP000
 vilã	vilão	NCFS000
 vírus	vírus	NCMN000

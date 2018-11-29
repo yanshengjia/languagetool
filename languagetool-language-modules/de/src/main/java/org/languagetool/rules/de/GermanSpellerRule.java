@@ -127,13 +127,15 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     putRepl("entt?euscht(e[mnrs]?)?", "entt?eusch", "enttäusch");
     putRepl("Phählen?", "^Ph", "Pf");
     putRepl("Kattermesser[ns]?", "Ka", "Cu");
-    putRepl("gehert(e[mnrs]?)?", "he", "eh"); // "geherte" -> "geehrte"
+    putRepl("geherr?t(e[mnrs]?)?", "herr?", "ehr"); // "geherte" -> "geehrte"
     putRepl("gehrter?", "^ge", "gee");
     putRepl("[nN]amenhaft(e[mnrs]?)?", "amen", "am");
     putRepl("hom(o?e|ö)ophatisch(e[mnrs]?)?", "hom(o?e|ö)ophat", "homöopath");
     putRepl("Geschwindlichkeit(en)?", "lich", "ig");
     put("Investion", "Investition");
     put("Pakur", w -> Arrays.asList("Parcours", "Parkuhr"));
+    put("Erstsemesterin", w -> Arrays.asList("Erstsemester", "Erstsemesters"));
+    put("Erstsemesterinnen", w -> Arrays.asList("Erstsemester", "Erstsemestern"));
     put("kreativlos(e[nmrs]?)?", w -> Arrays.asList(w.replaceFirst("kreativ", "fantasie"), w.replaceFirst("kreativ", "einfalls"), w.replaceFirst("kreativlos", "unkreativ"), w.replaceFirst("kreativlos", "uninspiriert")));
     put("Kreativlosigkeit", "Unkreativität");
     put("hinund?her", "hin und her");
@@ -149,6 +151,8 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     put("verhingen", "verhängten");
     put("fangte", "fing");
     put("fangten", "fingen");
+    put("schlie[sß]te", "schloss");
+    put("schlie[sß]ten", "schlossen");
     put("past", "passt");
     put("eingetragt", "eingetragen");
     put("getrunkt", "getrunken");
@@ -159,6 +163,9 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     put("befehlten", "befahlen");
     put("lügte", "log");
     put("lügten", "logen");
+    put("bratete", "briet");
+    put("brateten", "brieten");
+    put("gefahl", "gefiel");
     put("Komplexibilität", "Komplexität");
     put("abbonement", "Abonnement");
     put("perse", "per se");
@@ -177,11 +184,27 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     put("Opelarena", "Opel Arena");
     put("Toll-Collect", "Toll Collect");
     put("[pP][qQ]-Formel", "p-q-Formel");
-    put("desweitere[nm]", "des Weiteren");
+    put("desweitere?[nm]", "des Weiteren");
     put("handzuhaben", "zu handhaben");
     put("nachvollzuziehe?n", "nachzuvollziehen");
     put("[bB]ischen", "bisschen");
     put("Porto?folien", "Portfolios");
+    put("[sS]chwie?ri?chkeiten", "Schwierigkeiten");
+    put("[üÜ]bergrifflichkeiten", "Übergriffigkeiten");
+    put("[aA]r?th?rie?th?is", "Arthritis");
+    put("zugesand", "zugesandt");
+    put("weibt", "weißt");
+    put("instande?zusetzen", "instand zu setzen");
+    put("Lia(si|is)onen", "Liaisons");
+    put("[cC]asemana?ge?ment", "Case Management");
+    put("[aA]nn?[ou]ll?ie?rung", "Annullierung");
+    put("[sS]charm", "Charme");
+    put("[zZ]auberlich(e[mnrs]?)?", w -> Arrays.asList(w.replaceFirst("lich", "isch"), w.replaceFirst("lich", "haft")));
+    putRepl("([uU]n)?proff?esionn?ell?(e[mnrs]?)?", "proff?esionn?ell?", "professionell");
+    putRepl("[kK]inderlich(e[mnrs]?)?", "inder", "ind");
+    putRepl("[wW]iedersprichs?t", "ieder", "ider");
+    putRepl("[kK]önntes", "es$", "est");
+    putRepl("[aA]ssess?oare?s?", "[aA]ssess?oare?", "Accessoire");
     putRepl("indifiziert(e[mnrs]?)?", "ind", "ident");
     putRepl("dreite[mnrs]?", "dreit", "dritt");
     putRepl("verblüte[mnrs]?", "blü", "blüh");
@@ -266,11 +289,35 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     putRepl("[wW]ienerschnitzel[ns]?", "[wW]ieners", "Wiener S");
     putRepl("[sS]chwarzwälderkirschtorten?", "[sS]chwarzwälderk", "Schwarzwälder K");
     putRepl("[kK]oxial(e[nmrs]?)?", "x", "ax");
+    putRepl("([üÜ]ber|[uU]unter)durs?chnitt?lich(e[nmrs]?)?", "s?chnitt?", "chschnitt");
     putRepl("[dD]urs?chnitt?lich(e[nmrs]?)?", "s?chnitt?", "chschnitt");
+    putRepl("[dD]urs?chnitts?", "s?chnitt", "chschnitt");
+    putRepl("[sS]triktlich(e[mnrs]?)?", "lich", "");
+    putRepl("[hH]öchstwahrlich(e[mnrs]?)?", "wahr", "wahrschein");
     putRepl("[oO]rganisativ(e[nmrs]?)?", "tiv", "torisch");
     putRepl("[kK]ontaktfreundlich(e[nmrs]?)?", "ndlich", "dig");
+    put("berücksicht", "berücksichtigt");
+    put("must", "musst");
+    put("kaffe", "Kaffee");
+    put("zetel", "Zettel");
+    put("wie?daholung", "Wiederholung");
+    put("vie?d(er|a)sehen", "wiedersehen");
+    put("pr[eä]ventiert", "verhindert");
+    put("pr[eä]ventieren", "verhindern");
+    put("zur?verfügung", "zur Verfügung");
+    put("Verwahrlosigkeit", "Verwahrlosung");
     put("[oO]r?ganisazion", "Organisation");
     put("[oO]rganisative", "Organisation");
+    put("Emall?iearbeit", "Emaillearbeit");
+    put("[aA]petitt", "Appetit");
+    put("bezuggenommen", "Bezug genommen");
+    putRepl("trationell(e[mnrs]?)?", "^tra", "tradi");
+    putRepl("achsial(e[mnrs]?)?", "^achs", "ax");
+    putRepl("famielen?", "^famiel", "Famili");
+    putRepl("miter[ns]?", "^mi", "Mie");
+    putRepl("besig(t(e[mnrs]?)?|en?)", "sig", "sieg");
+    putRepl("[vV]erziehr(t(e[mnrs]?)?|en?)", "ieh", "ie");
+    putRepl("^[pP]iek(s?t|en?)", "iek", "ik");
     putRepl("[hH]eilei[td]s?", "[hH]eilei[td]", "Highlight");
     putRepl("[mM]atschscheiben?", "[mM]atschsch", "Mattsch");
     put("schafen?", w -> Arrays.asList(w.replaceFirst("sch", "schl"), w.replaceFirst("af", "arf"), w.replaceFirst("af", "aff")));
@@ -601,6 +648,15 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     return result;
   }
 
+  private boolean ignoreElative(String word) {
+    if (StringUtils.startsWithAny(word, "bitter", "dunkel", "erz", "extra", "früh",
+        "gemein", "hyper", "lau", "mega", "minder", "stock", "super", "tod", "ultra", "ur")) {
+      String lastPart = StringUtils.removePattern(word, "^(bitter|dunkel|erz|extra|früh|gemein|grund|hyper|lau|mega|minder|stock|super|tod|ultra|ur|voll)");
+      return !isMisspelled(lastPart);
+    }
+    return false;
+  }
+
   @Override
   protected boolean ignoreWord(List<String> words, int idx) throws IOException {
     boolean ignore = super.ignoreWord(words, idx);
@@ -613,7 +669,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
       }
       ignoreHyphenatedCompound = !ignoreByHyphen && ignoreCompoundWithIgnoredWord(words.get(idx));
     }
-    return ignore || ignoreUncapitalizedWord || ignoreByHyphen || ignoreHyphenatedCompound;
+    return ignore || ignoreUncapitalizedWord || ignoreByHyphen || ignoreHyphenatedCompound || ignoreElative(words.get(0));
   }
 
   @Override
@@ -1102,6 +1158,10 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     return false;
   }
 
+  /* (non-Javadoc)
+   * @see org.languagetool.rules.spelling.SpellingCheckRule#addProhibitedWords(java.util.List)
+   */
+  @Override
   protected void addProhibitedWords(List<String> words) {
     if(words.size() == 1 && words.get(0).endsWith(".*")) {
       wordStartsToBeProhibited.add(words.get(0).substring(0, words.get(0).length()-2));

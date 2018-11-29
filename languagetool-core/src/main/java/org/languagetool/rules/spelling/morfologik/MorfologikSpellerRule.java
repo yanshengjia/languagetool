@@ -70,7 +70,7 @@ public abstract class MorfologikSpellerRule extends SpellingCheckRule {
     this.conversionLocale = conversionLocale != null ? conversionLocale : Locale.getDefault();
     init();
     setLocQualityIssueType(ITSIssueType.Misspelling);
-    this.suggestionsOrderer = new SuggestionsOrderer(language, this.getId());
+    suggestionsOrderer = new SuggestionsOrderer(language, this.getId());
   }
 
   @Override
@@ -218,7 +218,7 @@ public abstract class MorfologikSpellerRule extends SpellingCheckRule {
         suggestions.addAll(getAdditionalSuggestions(suggestions, word));
         if (!suggestions.isEmpty()) {
           filterSuggestions(suggestions);
-          ruleMatch.setSuggestedReplacements(orderSuggestions(suggestions, word, sentence, startPos, word.length()));
+          ruleMatch.setSuggestedReplacements(orderSuggestions(suggestions, word, sentence, startPos));
         }
       } else {
         // limited to save CPU
@@ -245,7 +245,7 @@ public abstract class MorfologikSpellerRule extends SpellingCheckRule {
     return suggestions;
   }
 
-  private List<String> orderSuggestions(List<String> suggestions, String word, AnalyzedSentence sentence, int startPos, int wordLength) {
+  private List<String> orderSuggestions(List<String> suggestions, String word, AnalyzedSentence sentence, int startPos) {
     List<String> orderedSuggestions;
     if (suggestionsOrderer.isMlAvailable()) {
       orderedSuggestions = suggestionsOrderer.orderSuggestionsUsingModel(suggestions, word, sentence, startPos, word.length());
@@ -295,6 +295,7 @@ public abstract class MorfologikSpellerRule extends SpellingCheckRule {
    * @since 4.3 
    * @see org.languagetool.rules.spelling.SpellingCheckRule#ignoreWord(java.lang.String)
    */
+  @Override
   protected boolean ignoreWord(String word) throws IOException {
     return super.ignoreWord(word) || isSurrogatePairCombination(word);
   }

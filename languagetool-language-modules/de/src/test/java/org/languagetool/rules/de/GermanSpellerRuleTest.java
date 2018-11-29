@@ -297,6 +297,32 @@ public class GermanSpellerRuleTest {
     assertFirstSuggestion("namenhafte", "namhafte", rule, lt);
     assertFirstSuggestion("homeophatisch", "homöopathisch", rule, lt);
     assertFirstSuggestion("verswindet", "verschwindet", rule, lt);
+    assertFirstSuggestion("Durschnitt", "Durchschnitt", rule, lt);
+    assertFirstSuggestion("Durchnitts", "Durchschnitts", rule, lt);
+    assertFirstSuggestion("überdurschnittlichem", "überdurchschnittlichem", rule, lt);
+    assertFirstSuggestion("Unterdurschnittlicher", "Unterdurchschnittlicher", rule, lt);
+    assertFirstSuggestion("höchstwahrliche", "höchstwahrscheinliche", rule, lt);
+    assertFirstSuggestion("vidasehen", "wiedersehen", rule, lt);
+    assertFirstSuggestion("striktliches", "striktes", rule, lt);
+    assertFirstSuggestion("preventiert", "verhindert", rule, lt);
+    assertFirstSuggestion("zurverfügung", "zur Verfügung", rule, lt);
+    assertFirstSuggestion("trationelle", "traditionelle", rule, lt);
+    assertFirstSuggestion("achsiales", "axiales", rule, lt);
+    assertFirstSuggestion("famiele", "Familie", rule, lt);
+    assertFirstSuggestion("miters", "Mieters", rule, lt);
+    assertFirstSuggestion("besigen", "besiegen", rule, lt);
+    assertFirstSuggestion("verziehrte", "verzierte", rule, lt);
+    assertFirstSuggestion("pieken", "piken", rule, lt); // Duden insists on this spelling
+    assertFirstSuggestion("Erstsemesterin", "Erstsemester", rule, lt);
+    assertFirstSuggestion("zauberlicher", "zauberischer", rule, lt);
+    assertFirstSuggestion("assessoars", "Accessoires", rule, lt);
+    assertFirstSuggestion("könntes", "könntest", rule, lt);
+    assertFirstSuggestion("Casemangement", "Case Management", rule, lt);
+    assertFirstSuggestion("Anolierung", "Annullierung", rule, lt);
+    assertFirstSuggestion("Liaisonen", "Liaisons", rule, lt);
+    assertFirstSuggestion("kinderlichem", "kindlichem", rule, lt);
+    assertFirstSuggestion("wiedersprichst", "widersprichst", rule, lt);
+    assertFirstSuggestion("unproffesionele", "unprofessionelle", rule, lt);
   }
 
   @Test
@@ -354,6 +380,7 @@ public class GermanSpellerRuleTest {
     assertEquals(0, rule.match(lt.getAnalyzedSentence("ÖVP- und FPÖ-Chefverhandler")).length); // first part is from spelling.txt
     assertEquals(0, rule.match(lt.getAnalyzedSentence("α-Strahlung")).length); // compound with ignored word from spelling.txt
     assertEquals(0, rule.match(lt.getAnalyzedSentence("Primär-α-Mischkristallen")).length); // compound with ignored word from spelling.txt
+    assertEquals(0, rule.match(lt.getAnalyzedSentence("supergut")).length); // elativ meaning "sehr gut"
 
     assertEquals(1, rule.match(lt.getAnalyzedSentence("Miet und Zinseinkünfte")).length);
     assertEquals(1, rule.match(lt.getAnalyzedSentence("Stil- und Grammatik gut")).length);
