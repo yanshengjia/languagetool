@@ -127,6 +127,64 @@ def parse_rules(rules_path):
                 rules.append(rule_dict)
     return rules
 
+def get_example(rules_path):
+    rules = []
+    tree = ET.parse(rules_path)
+    root = tree.getroot()
+    for category in root:
+        category_id = category.get('id')
+        category_name = category.get('name')
+        category_type = category.get('type')
+        for rule in category:
+            rule_id = rule.get('id')
+            rule_name = rule.get('name')
+            if rule.tag == "rulegroup":
+                group_index = 0
+                for r in rule:
+                    rule_dict = {}
+                    example = r.find('example')
+                    if example is None:
+                        rule_dict['example']       = ""
+                        rule_dict['plain_example'] = ""
+                    else:
+                        example_content = ET.tostring(example, encoding='unicode')
+                        # msg_content = msg_content.encode('utf-8').decode('unicode_escape')
+                        example_content = example_content.strip()
+                        rule_dict['example']       = example_content
+                        rule_dict['plain_example'] = "".join(example.itertext())
+                    rule_dict['type']          = 'group'
+                    rule_dict['group_index']   = group_index
+                    rule_dict['category_id']   = category_id
+                    rule_dict['category_name'] = category_name
+                    rule_dict['category_type'] = category_type
+                    rule_dict['rule_id']       = rule_id
+                    rule_dict['rule_name']     = rule_name
+                    rule_dict['error_type']    = ""
+                    rules.append(rule_dict)
+                    group_index += 1
+            else:
+                rule_dict = {}
+                example = rule.find('example')
+                if example is None:
+                    rule_dict['example']       = ""
+                    rule_dict['plain_example'] = ""
+                else:
+                    example_content = ET.tostring(example, encoding='unicode')
+                    # msg_content = msg_content.encode('utf-8').decode('unicode_escape')
+                    example_content = example_content.strip()
+                    rule_dict['example']       = example_content
+                    rule_dict['plain_example'] = "".join(example.itertext())
+                rule_dict['type']          = 'single'
+                rule_dict['group_index']   = ''
+                rule_dict['category_id']   = category_id
+                rule_dict['category_name'] = category_name
+                rule_dict['category_type'] = category_type
+                rule_dict['rule_id']       = rule_id
+                rule_dict['rule_name']     = rule_name
+                rule_dict['error_type']    = ""
+                rules.append(rule_dict)
+    return rules
+
 def get_translation(en_rules_path, zh_rules_path):
     rules = []
     en_rules = parse_rules(en_rules_path)
@@ -178,11 +236,10 @@ def main():
     zh_rules_path = '../rules/grammar_4.0_zh.xml'
     zh_rules_csv_path = '../rules/grammar.csv'
     zh_rules_json_path = '../rules/grammar.json'
-    result_path = '../rules/grammar_rules.csv'
+    result_path = '../rules/example_sents.csv'
 
-    rules = get_translation(en_rules_path, zh_rules_path)
-    save_rules_as_csv(zh_rules_csv_path, rules)
-    save_rules_as_json(zh_rules_json_path, rules)
+    rules = get_example(en_rules_path)
+    save_rules_as_csv(result_path, rules)
 
 if __name__ == "__main__":
     main()
